@@ -6,7 +6,7 @@
 		<meta name="description" content="This is social network html5 template available in themeforest......" />
 		<meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
 		<meta name="robots" content="index, follow" />
-		<title>My Friends | Friend Finder Friend List</title>
+		<title>About Me | Learn Detail About Me</title>
 
     <!-- Stylesheets
     ================================================= -->
@@ -19,6 +19,7 @@
     <link rel="shortcut icon" type="image/png" href="images/fav.png"/>
 	</head>
   <body>
+
     <!-- Header
     ================================================= -->
 		<header id="header">
@@ -33,7 +34,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index-register.html"><img src="images/logo.png" alt="logo" /></a>
+            <a class="navbar-brand" href="index-register.php"><img src="images/logo.png" alt="logo" /></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -42,49 +43,49 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span><img src="images/down-arrow.png" alt="" /></span></a>
                   <ul class="dropdown-menu newsfeed-home">
-                    <li><a href="index.html">Landing Page 1</a></li>
-                    <li><a href="index-register.html">Landing Page 2</a></li>
+                    <li><a href="index.php">Landing Page 1</a></li>
+                    <li><a href="index-register.php">Landing Page 2</a></li>
                   </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Newsfeed <span><img src="images/down-arrow.png" alt="" /></span></a>
                   <ul class="dropdown-menu newsfeed-home">
-                    <li><a href="newsfeed.html">Newsfeed</a></li>
-                    <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>
-                    <li><a href="newsfeed-friends.html">My friends</a></li>
-                    <li><a href="newsfeed-messages.html">Chatroom</a></li>
-                    <li><a href="newsfeed-images.html">Images</a></li>
-                    <li><a href="newsfeed-videos.html">Videos</a></li>
+                    <li><a href="newsfeed.php">Newsfeed</a></li>
+                    <li><a href="newsfeed-people-nearby.php">Poeple Nearly</a></li>
+                    <li><a href="newsfeed-friends.php">My friends</a></li>
+                    <li><a href="newsfeed-messages.php">Chatroom</a></li>
+                    <li><a href="newsfeed-images.php">Images</a></li>
+                    <li><a href="newsfeed-videos.php">Videos</a></li>
                   </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Timeline <span><img src="images/down-arrow.png" alt="" /></span></a>
                 <ul class="dropdown-menu login">
-                  <li><a href="timeline.html">Timeline</a></li>
-                  <li><a href="timeline-about.html">Timeline About</a></li>
-                  <li><a href="timeline-album.html">Timeline Album</a></li>
-                  <li><a href="timeline-friends.html">Timeline Friends</a></li>
+                  <li><a href="timeline.php">Timeline</a></li>
+                  <li><a href="timeline-about.php">Timeline About</a></li>
+                  <li><a href="timeline-album.php">Timeline Album</a></li>
+                  <li><a href="timeline-friends.php">Timeline Friends</a></li>
                 </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">All Pages <span><img src="images/down-arrow.png" alt="" /></span></a>
                 <ul class="dropdown-menu page-list">
-                  <li><a href="index.html">Landing Page 1</a></li>
-                  <li><a href="index-register.html">Landing Page 2</a></li>
-                  <li><a href="newsfeed.html">Newsfeed</a></li>
-                  <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>
-                  <li><a href="newsfeed-friends.html">My friends</a></li>
-                  <li><a href="newsfeed-messages.html">Chatroom</a></li>
-                  <li><a href="newsfeed-images.html">Images</a></li>
-                  <li><a href="newsfeed-videos.html">Videos</a></li>
-                  <li><a href="timeline.html">Timeline</a></li>
-                  <li><a href="timeline-about.html">Timeline About</a></li>
-                  <li><a href="timeline-album.html">Timeline Album</a></li>
-                  <li><a href="timeline-friends.html">Timeline Friends</a></li>
-                  <li><a href="contact.html">Contact Us</a></li>
+                  <li><a href="index.php">Landing Page 1</a></li>
+                  <li><a href="index-register.php">Landing Page 2</a></li>
+                  <li><a href="newsfeed.php">Newsfeed</a></li>
+                  <li><a href="newsfeed-people-nearby.php">Poeple Nearly</a></li>
+                  <li><a href="newsfeed-friends.php">My friends</a></li>
+                  <li><a href="newsfeed-messages.php">Chatroom</a></li>
+                  <li><a href="newsfeed-images.php">Images</a></li>
+                  <li><a href="newsfeed-videos.php">Videos</a></li>
+                  <li><a href="timeline.php">Timeline</a></li>
+                  <li><a href="timeline-about.php">Timeline About</a></li>
+                  <li><a href="timeline-album.php">Timeline Album</a></li>
+                  <li><a href="timeline-friends.php">Timeline Friends</a></li>
+                  <li><a href="contact.php">Contact Us</a></li>
                 </ul>
               </li>
-              <li class="dropdown"><a href="contact.html">Contact</a></li>
+              <li class="dropdown"><a href="contact.php">Contact</a></li>
             </ul>
             <form class="navbar-form navbar-right hidden-sm">
               <div class="form-group">
@@ -117,10 +118,10 @@
               </div>
               <div class="col-md-9">
                 <ul class="list-inline profile-menu">
-                  <li><a href="timeline.html">Timeline</a></li>
-                  <li><a href="timeline-about.html">About</a></li>
-                  <li><a href="timeline-album.html">Album</a></li>
-                  <li><a href="timeline-friends.html" class="active">Friends</a></li>
+                  <li><a href="timeline.php">Timeline</a></li>
+                  <li><a href="timeline-about.php" class="active">About</a></li>
+                  <li><a href="timeline-album.php">Album</a></li>
+                  <li><a href="timeline-friends.php">Friends</a></li>
                 </ul>
                 <ul class="follow-me list-inline">
                   <li>1,299 people following her</li>
@@ -139,10 +140,10 @@
             </div>
             <div class="mobile-menu">
               <ul class="list-inline">
-                <li><a href="timline.html">Timeline</a></li>
-                <li><a href="timeline-about.html">About</a></li>
-                <li><a href="timeline-album.html">Album</a></li>
-                <li><a href="timeline-friends.html" class="active">Friends</a></li>
+                <li><a href="timline.php">Timeline</a></li>
+                <li><a href="timeline-about.php" class="active">About</a></li>
+                <li><a href="timeline-album.php">Album</a></li>
+                <li><a href="timeline-friends.php">Friends</a></li>
               </ul>
               <button class="btn-primary">Add Friend</button>
             </div>
@@ -154,127 +155,60 @@
             <div class="col-md-3"></div>
             <div class="col-md-7">
 
-              <!-- Friend List
+              <!-- About
               ================================================= -->
-              <div class="friend-list">
-                <div class="row">
-                  <div class="col-md-6 col-sm-6">
-                    <div class="friend-card">
-                      <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                      <div class="card-info">
-                        <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                        <div class="friend-info">
-                          <a href="#" class="pull-right text-green">My Friend</a>
-                          <h5><a href="timeline.html" class="profile-link">Sophia Lee</a></h5>
-                          <p>Student at Harvard</p>
-                        </div>
-                      </div>
+              <div class="about-profile">
+                <div class="about-content-block">
+                  <h4 class="grey"><i class="ion-ios-information-outline icon-in-title"></i>Personal Information</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur</p>
+                </div>
+                <div class="about-content-block">
+                  <h4 class="grey"><i class="ion-ios-briefcase-outline icon-in-title"></i>Work Experiences</h4>
+                  <div class="organization">
+                    <img src="images/envato.png" alt="" class="pull-left img-org" />
+                    <div class="work-info">
+                      <h5>Envato</h5>
+                      <p>Seller - <span class="text-grey">1 February 2013 to present</span></p>
                     </div>
                   </div>
-                  <div class="col-md-6 col-sm-6">
-                    <div class="friend-card">
-                      <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                      <div class="card-info">
-                        <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                        <div class="friend-info">
-                          <a href="#" class="pull-right text-green">My Friend</a>
-                          <h5><a href="timeline.html" class="profile-link">John Doe</a></h5>
-                          <p>Traveler</p>
-                        </div>
-                      </div>
+                  <div class="organization">
+                    <img src="images/envato.png" alt="" class="pull-left img-org" />
+                    <div class="work-info">
+                      <h5>Envato</h5>
+                      <p>Seller - <span class="text-grey">1 February 2013 to present</span></p>
                     </div>
                   </div>
-                  <div class="col-md-6 col-sm-6">
-                    <div class="friend-card">
-                      <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                      <div class="card-info">
-                        <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                        <div class="friend-info">
-                          <a href="timeline.html" class="pull-right text-green">My Friend</a>
-                          <h5><a href="#" class="profile-link">Julia Cox</a></h5>
-                          <p>Art Designer</p>
-                        </div>
-                      </div>
+                  <div class="organization">
+                    <img src="images/envato.png" alt="" class="pull-left img-org" />
+                    <div class="work-info">
+                      <h5>Envato</h5>
+                      <p>Seller - <span class="text-grey">1 February 2013 to present</span></p>
                     </div>
                   </div>
-                  <div class="col-md-6 col-sm-6">
-                    <div class="friend-card">
-                      <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                      <div class="card-info">
-                        <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                        <div class="friend-info">
-                          <a href="#" class="pull-right text-green">My Friend</a>
-                          <h5><a href="timelime.html" class="profile-link">Robert Cook</a></h5>
-                          <p>Photographer at Photography</p>
-                        </div>
-                      </div>
-                    </div>
+                </div>
+                <div class="about-content-block">
+                  <h4 class="grey"><i class="ion-ios-location-outline icon-in-title"></i>Location</h4>
+                  <p>228 Park Eve, New York</p>
+                  <div class="google-maps">
+                    <div id="map" class="map"></div>
                   </div>
-                  <div class="col-md-6 col-sm-6">
-                    <div class="friend-card">
-                      <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                      <div class="card-info">
-                        <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                        <div class="friend-info">
-                          <a href="#" class="pull-right text-green">My Friend</a>
-                          <h5><a href="timeline.html" class="profile-link">Richard Bell</a></h5>
-                          <p>Graphic Designer at Envato</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                    <div class="friend-card">
-                      <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                      <div class="card-info">
-                        <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                        <div class="friend-info">
-                          <a href="#" class="pull-right text-green">My Friend</a>
-                          <h5><a href="timeline.html" class="profile-link">Linda Lohan</a></h5>
-                          <p>Software Engineer</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                    <div class="friend-card">
-                      <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                      <div class="card-info">
-                        <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                        <div class="friend-info">
-                          <a href="#" class="pull-right text-green">My Friend</a>
-                          <h5><a href="timeline.html" class="profile-link">Anna Young</a></h5>
-                          <p>Musician</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                    <div class="friend-card">
-                      <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                      <div class="card-info">
-                        <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                        <div class="friend-info">
-                          <a href="#" class="pull-right text-green">My Friend</a>
-                          <h5><a href="timeline.html" class="profile-link">James Carter</a></h5>
-                          <p>CEO at IT Farm</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                    <div class="friend-card">
-                      <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                      <div class="card-info">
-                        <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                        <div class="friend-info">
-                          <a href="#" class="pull-right text-green">My Friend</a>
-                          <h5><a href="timeline.html" class="profile-link">Alexis Clark</a></h5>
-                          <p>Traveler</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                </div>
+                <div class="about-content-block">
+                  <h4 class="grey"><i class="ion-ios-heart-outline icon-in-title"></i>Interests</h4>
+                  <ul class="interests list-inline">
+                    <li><span class="int-icons" title="Bycycle riding"><i class="icon ion-android-bicycle"></i></span></li>
+                    <li><span class="int-icons" title="Photography"><i class="icon ion-ios-camera"></i></span></li>
+                    <li><span class="int-icons" title="Shopping"><i class="icon ion-android-cart"></i></span></li>
+                    <li><span class="int-icons" title="Traveling"><i class="icon ion-android-plane"></i></span></li>
+                    <li><span class="int-icons" title="Eating"><i class="icon ion-android-restaurant"></i></span></li>
+                  </ul>
+                </div>
+                <div class="about-content-block">
+                  <h4 class="grey"><i class="ion-ios-chatbubble-outline icon-in-title"></i>Language</h4>
+                    <ul>
+                      <li><a href="">Russian</a></li>
+                      <li><a href="">English</a></li>
+                    </ul>
                 </div>
               </div>
             </div>
@@ -376,9 +310,15 @@
         <p>Thunder Team © 2016. All rights reserved</p>
       </div>
 		</footer>
+    
+    <!--preloader-->
+    <div id="spinner-wrapper">
+      <div class="spinner"></div>
+    </div>
 
     <!-- Scripts
     ================================================= -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTMXfmDn0VlqWIyoOxK8997L-amWbUPiQ&callback=initMap"></script>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.sticky-kit.min.js"></script>

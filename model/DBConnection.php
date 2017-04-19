@@ -1,7 +1,7 @@
 <?php
 
 define ( 'DB_HOST', 'localhost' );
-define ( 'DB_NAME', 'final_project' );
+define ( 'DB_NAME', 'gettogether' );
 define ( 'DB_USER', 'root' );
 define ( 'DB_PASS', '' );
 
@@ -16,7 +16,7 @@ class DBConnection {
 				self::$db->setAttribute ( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 			}
 			catch (PDOException $e) {
-				throw new Exception("Databasata ne raboti!", $e);
+				throw new Exception("Connection to database failed", $e);
 			}
 		}
 		

@@ -34,7 +34,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index-register.html"><img src="images/logo.png" alt="logo" /></a>
+            <a class="navbar-brand" href="index-register.php"><img src="images/logo.png" alt="logo" /></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,49 +43,49 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span><img src="images/down-arrow.png" alt="" /></span></a>
                   <ul class="dropdown-menu newsfeed-home">
-                    <li><a href="index.html">Landing Page 1</a></li>
-                    <li><a href="index-register.html">Landing Page 2</a></li>
+                    <li><a href="index.php">Landing Page 1</a></li>
+                    <li><a href="index-register.php">Landing Page 2</a></li>
                   </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Newsfeed <span><img src="images/down-arrow.png" alt="" /></span></a>
                   <ul class="dropdown-menu newsfeed-home">
-                    <li><a href="newsfeed.html">Newsfeed</a></li>
-                    <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>
-                    <li><a href="newsfeed-friends.html">My friends</a></li>
-                    <li><a href="newsfeed-messages.html">Chatroom</a></li>
-                    <li><a href="newsfeed-images.html">Images</a></li>
-                    <li><a href="newsfeed-videos.html">Videos</a></li>
+                    <li><a href="newsfeed.php">Newsfeed</a></li>
+                    <li><a href="newsfeed-people-nearby.php">Poeple Nearly</a></li>
+                    <li><a href="newsfeed-friends.php">My friends</a></li>
+                    <li><a href="newsfeed-messages.php">Chatroom</a></li>
+                    <li><a href="newsfeed-images.php">Images</a></li>
+                    <li><a href="newsfeed-videos.php">Videos</a></li>
                   </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Timeline <span><img src="images/down-arrow.png" alt="" /></span></a>
                 <ul class="dropdown-menu login">
-                  <li><a href="timeline.html">Timeline</a></li>
-                  <li><a href="timeline-about.html">Timeline About</a></li>
-                  <li><a href="timeline-album.html">Timeline Album</a></li>
-                  <li><a href="timeline-friends.html">Timeline Friends</a></li>
+                  <li><a href="timeline.php">Timeline</a></li>
+                  <li><a href="timeline-about.php">Timeline About</a></li>
+                  <li><a href="timeline-album.php">Timeline Album</a></li>
+                  <li><a href="timeline-friends.php">Timeline Friends</a></li>
                 </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">All Pages <span><img src="images/down-arrow.png" alt="" /></span></a>
                 <ul class="dropdown-menu page-list">
-                  <li><a href="index.html">Landing Page 1</a></li>
-                  <li><a href="index-register.html">Landing Page 2</a></li>
-                  <li><a href="newsfeed.html">Newsfeed</a></li>
-                  <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>
-                  <li><a href="newsfeed-friends.html">My friends</a></li>
-                  <li><a href="newsfeed-messages.html">Chatroom</a></li>
-                  <li><a href="newsfeed-images.html">Images</a></li>
-                  <li><a href="newsfeed-videos.html">Videos</a></li>
-                  <li><a href="timeline.html">Timeline</a></li>
-                  <li><a href="timeline-about.html">Timeline About</a></li>
-                  <li><a href="timeline-album.html">Timeline Album</a></li>
-                  <li><a href="timeline-friends.html">Timeline Friends</a></li>
-                  <li><a href="contact.html">Contact Us</a></li>
+                  <li><a href="index.php">Landing Page 1</a></li>
+                  <li><a href="index-register.php">Landing Page 2</a></li>
+                  <li><a href="newsfeed.php">Newsfeed</a></li>
+                  <li><a href="newsfeed-people-nearby.php">Poeple Nearly</a></li>
+                  <li><a href="newsfeed-friends.php">My friends</a></li>
+                  <li><a href="newsfeed-messages.php">Chatroom</a></li>
+                  <li><a href="newsfeed-images.php">Images</a></li>
+                  <li><a href="newsfeed-videos.php">Videos</a></li>
+                  <li><a href="timeline.php">Timeline</a></li>
+                  <li><a href="timeline-about.php">Timeline About</a></li>
+                  <li><a href="timeline-album.php">Timeline Album</a></li>
+                  <li><a href="timeline-friends.php">Timeline Friends</a></li>
+                  <li><a href="contact.php">Contact Us</a></li>
                 </ul>
               </li>
-              <li class="dropdown"><a href="contact.html">Contact</a></li>
+              <li class="dropdown"><a href="contact.php">Contact</a></li>
             </ul>
             <form class="navbar-form navbar-right hidden-sm">
               <div class="form-group">
@@ -108,29 +108,29 @@
     			<div class="col-md-3 static">
             <div class="profile-card">
             	<img src="http://placehold.it/300x300" alt="user" class="profile-photo" />
-            	<h5><a href="timeline.html" class="text-white">Sarah Cruiz</a></h5>
+            	<h5><a href="timeline.php" class="text-white">Sarah Cruiz</a></h5>
             	<a href="#" class="text-white"><i class="ion ion-android-person-add"></i> 1,299 followers</a>
             </div><!--profile card ends-->
             <ul class="nav-news-feed">
-              <li><i class="icon ion-ios-paper"></i><div><a href="newsfeed.html">My Newsfeed</a></div></li>
-              <li><i class="icon ion-ios-people"></i><div><a href="newsfeed-people-nearby.html">People Nearby</a></div></li>
-              <li><i class="icon ion-ios-people-outline"></i><div><a href="newsfeed-friends.html">Friends</a></div></li>
-              <li><i class="icon ion-chatboxes"></i><div><a href="newsfeed-messages.html">Messages</a></div></li>
-              <li><i class="icon ion-images"></i><div><a href="newsfeed-images.html">Images</a></div></li>
-              <li><i class="icon ion-ios-videocam"></i><div><a href="newsfeed-videos.html">Videos</a></div></li>
+              <li><i class="icon ion-ios-paper"></i><div><a href="newsfeed.php">My Newsfeed</a></div></li>
+              <li><i class="icon ion-ios-people"></i><div><a href="newsfeed-people-nearby.php">People Nearby</a></div></li>
+              <li><i class="icon ion-ios-people-outline"></i><div><a href="newsfeed-friends.php">Friends</a></div></li>
+              <li><i class="icon ion-chatboxes"></i><div><a href="newsfeed-messages.php">Messages</a></div></li>
+              <li><i class="icon ion-images"></i><div><a href="newsfeed-images.php">Images</a></div></li>
+              <li><i class="icon ion-ios-videocam"></i><div><a href="newsfeed-videos.php">Videos</a></div></li>
             </ul><!--news-feed links ends-->
             <div id="chat-block">
               <div class="title">Chat online</div>
               <ul class="online-users list-inline">
-                <li><a href="newsfeed-messages.html" title="Linda Lohan"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="Sophia Lee"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="John Doe"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="Alexis Clark"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="James Carter"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="Robert Cook"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="Richard Bell"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="Anna Young"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-                <li><a href="newsfeed-messages.html" title="Julia Cox"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <li><a href="newsfeed-messages.php" title="Linda Lohan"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <li><a href="newsfeed-messages.php" title="Sophia Lee"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <li><a href="newsfeed-messages.php" title="John Doe"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <li><a href="newsfeed-messages.php" title="Alexis Clark"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <li><a href="newsfeed-messages.php" title="James Carter"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <li><a href="newsfeed-messages.php" title="Robert Cook"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <li><a href="newsfeed-messages.php" title="Richard Bell"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <li><a href="newsfeed-messages.php" title="Anna Young"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                <li><a href="newsfeed-messages.php" title="Julia Cox"><img src="http://placehold.it/300x300" alt="user" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
               </ul>
             </div><!--chat block ends-->
           </div>
@@ -172,7 +172,7 @@
                       <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
                       <div class="friend-info">
                         <a href="#" class="pull-right text-green">My Friend</a>
-                      	<h5><a href="timeline.html" class="profile-link">Sophia Lee</a></h5>
+                      	<h5><a href="timeline.php" class="profile-link">Sophia Lee</a></h5>
                       	<p>Student at Harvard</p>
                       </div>
                     </div>
@@ -185,7 +185,7 @@
                       <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
                       <div class="friend-info">
                         <a href="#" class="pull-right text-green">My Friend</a>
-                      	<h5><a href="timeline.html" class="profile-link">John Doe</a></h5>
+                      	<h5><a href="timeline.php" class="profile-link">John Doe</a></h5>
                       	<p>Traveler</p>
                       </div>
                     </div>
@@ -197,7 +197,7 @@
                   	<div class="card-info">
                       <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
                       <div class="friend-info">
-                        <a href="timeline.html" class="pull-right text-green">My Friend</a>
+                        <a href="timeline.php" class="pull-right text-green">My Friend</a>
                       	<h5><a href="#" class="profile-link">Julia Cox</a></h5>
                       	<p>Art Designer</p>
                       </div>
@@ -211,7 +211,7 @@
                       <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
                       <div class="friend-info">
                         <a href="#" class="pull-right text-green">My Friend</a>
-                      	<h5><a href="timelime.html" class="profile-link">Robert Cook</a></h5>
+                      	<h5><a href="timelime.php" class="profile-link">Robert Cook</a></h5>
                       	<p>Photographer at Photography</p>
                       </div>
                     </div>
@@ -224,7 +224,7 @@
                       <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
                       <div class="friend-info">
                         <a href="#" class="pull-right text-green">My Friend</a>
-                      	<h5><a href="timeline.html" class="profile-link">Richard Bell</a></h5>
+                      	<h5><a href="timeline.php" class="profile-link">Richard Bell</a></h5>
                       	<p>Graphic Designer at Envato</p>
                       </div>
                     </div>
@@ -237,7 +237,7 @@
                       <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
                       <div class="friend-info">
                         <a href="#" class="pull-right text-green">My Friend</a>
-                      	<h5><a href="timeline.html" class="profile-link">Linda Lohan</a></h5>
+                      	<h5><a href="timeline.php" class="profile-link">Linda Lohan</a></h5>
                       	<p>Software Engineer</p>
                       </div>
                     </div>
@@ -250,7 +250,7 @@
                       <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
                       <div class="friend-info">
                         <a href="#" class="pull-right text-green">My Friend</a>
-                      	<h5><a href="timeline.html" class="profile-link">Anna Young</a></h5>
+                      	<h5><a href="timeline.php" class="profile-link">Anna Young</a></h5>
                       	<p>Musician</p>
                       </div>
                     </div>
@@ -263,7 +263,7 @@
                       <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
                       <div class="friend-info">
                         <a href="#" class="pull-right text-green">My Friend</a>
-                      	<h5><a href="timeline.html" class="profile-link">James Carter</a></h5>
+                      	<h5><a href="timeline.php" class="profile-link">James Carter</a></h5>
                       	<p>CEO at IT Farm</p>
                       </div>
                     </div>
@@ -276,7 +276,7 @@
                       <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
                       <div class="friend-info">
                         <a href="#" class="pull-right text-green">My Friend</a>
-                      	<h5><a href="timeline.html" class="profile-link">Alexis Clark</a></h5>
+                      	<h5><a href="timeline.php" class="profile-link">Alexis Clark</a></h5>
                       	<p>Traveler</p>
                       </div>
                     </div>
@@ -294,35 +294,35 @@
               <div class="follow-user">
                 <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left" />
                 <div>
-                  <h5><a href="timeline.html">Diana Amber</a></h5>
+                  <h5><a href="timeline.php">Diana Amber</a></h5>
                   <a href="#" class="text-green">Add friend</a>
                 </div>
               </div>
               <div class="follow-user">
                 <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left" />
                 <div>
-                  <h5><a href="timeline.html">Cris Haris</a></h5>
+                  <h5><a href="timeline.php">Cris Haris</a></h5>
                   <a href="#" class="text-green">Add friend</a>
                 </div>
               </div>
               <div class="follow-user">
                 <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left" />
                 <div>
-                  <h5><a href="timeline.html">Brian Walton</a></h5>
+                  <h5><a href="timeline.php">Brian Walton</a></h5>
                   <a href="#" class="text-green">Add friend</a>
                 </div>
               </div>
               <div class="follow-user">
                 <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left" />
                 <div>
-                  <h5><a href="timeline.html">Olivia Steward</a></h5>
+                  <h5><a href="timeline.php">Olivia Steward</a></h5>
                   <a href="#" class="text-green">Add friend</a>
                 </div>
               </div>
               <div class="follow-user">
                 <img src="http://placehold.it/300x300" alt="" class="profile-photo-sm pull-left" />
                 <div>
-                  <h5><a href="timeline.html">Sophia Page</a></h5>
+                  <h5><a href="timeline.php">Sophia Page</a></h5>
                   <a href="#" class="text-green">Add friend</a>
                 </div>
               </div>

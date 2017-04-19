@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2017 at 09:41 AM
+-- Generation Time: Apr 19, 2017 at 01:59 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.9
 
@@ -68,6 +68,17 @@ CREATE TABLE `friendships` (
   `friend_id` int(11) NOT NULL,
   `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `friendships`
+--
+
+INSERT INTO `friendships` (`user_id`, `friend_id`, `date`) VALUES
+(1, 2, '2017-04-19 00:00:00'),
+(1, 3, '2017-04-19 00:00:00'),
+(2, 5, '2017-04-19 00:00:00'),
+(4, 1, '2017-04-19 00:00:00'),
+(5, 3, '2017-04-19 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -149,7 +160,7 @@ CREATE TABLE `photos` (
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
   `author_id` int(11) NOT NULL,
-  `type` varchar(50) DEFAULT NULL
+  `type` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -187,6 +198,17 @@ CREATE TABLE `timelines` (
   `date_started` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `timelines`
+--
+
+INSERT INTO `timelines` (`id`, `type`, `date_started`) VALUES
+(1, 'users', '2017-19-04'),
+(2, 'users', '2017-19-04'),
+(3, 'users', '2017-19-04'),
+(4, 'users', '2017-19-04'),
+(5, 'users', '2017-19-04');
+
 -- --------------------------------------------------------
 
 --
@@ -212,11 +234,22 @@ CREATE TABLE `users` (
   `first_name` varchar(60) NOT NULL,
   `last_name` varchar(60) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(20) DEFAULT NULL,
+  `password` varchar(70) NOT NULL,
   `gender` varchar(1) DEFAULT NULL,
   `date_of_birth` datetime NOT NULL,
   `personal_info` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `gender`, `date_of_birth`, `personal_info`) VALUES
+(1, 'Denitsa', 'Dremsizova', 'denitsa.dremsizova@gmail.com', '3a7306a7751a1079497609b718251c4a4d76a375f3d893280f1e50db6cbaf5a8', 'F', '1985-03-07 00:00:00', 'bla-bla'),
+(2, 'Luka-Bokluka', 'Makariopolski', 'bokluka@yahoo.com', '3a7306a7751a1079497609b718251c4a4d76a375f3d893280f1e50db6cbaf5a8', 'M', '1987-08-15 00:00:00', NULL),
+(3, 'Yan', 'Bibiyan', 'yan@abv.bg', '3a7306a7751a1079497609b718251c4a4d76a375f3d893280f1e50db6cbaf5a8', 'M', '1990-09-23 00:00:00', NULL),
+(4, 'Fred', 'Flinstone', 'fred@bedrock.com', '3a7306a7751a1079497609b718251c4a4d76a375f3d893280f1e50db6cbaf5a8', 'M', '1970-01-01 00:00:00', NULL),
+(5, 'Pesho', 'Ivanov', 'pesho@yahoo.com', '3a7306a7751a1079497609b718251c4a4d76a375f3d893280f1e50db6cbaf5a8', 'M', '1998-03-02 00:00:00', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quae cum essent dicta, discessimus. Duo Reges: constructio interrete. Illud dico, ea, quae dicat, praeclare inter se cohaerere. Ergo opifex plus sibi proponet ad formarum quam civis excellens ad factorum pulchritudinem? Inquit, dasne adolescenti veniam? Quamquam tu hanc copiosiorem etiam soles dicere. ');
 
 -- --------------------------------------------------------
 
@@ -252,7 +285,7 @@ CREATE TABLE `user_address` (
 
 CREATE TABLE `video_posts` (
   `id` int(11) NOT NULL,
-  `link` varchar(500) CHARACTER SET utf8 DEFAULT NULL,
+  `link` varchar(500) CHARACTER SET utf8 NOT NULL,
   `timeline_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -447,7 +480,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `timelines`
 --
 ALTER TABLE `timelines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `user_address`
 --

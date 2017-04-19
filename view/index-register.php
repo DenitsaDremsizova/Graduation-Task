@@ -34,7 +34,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index-register.html"><img src="images/logo.png" alt="logo" /></a>
+            <a class="navbar-brand" href="index-register.php"><img src="images/logo.png" alt="logo" /></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,49 +43,49 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span><img src="images/down-arrow.png" alt="" /></span></a>
                   <ul class="dropdown-menu newsfeed-home">
-                    <li><a href="index.html">Landing Page 1</a></li>
-                    <li><a href="index-register.html">Landing Page 2</a></li>
+                    <li><a href="index.php">Landing Page 1</a></li>
+                    <li><a href="index-register.php">Landing Page 2</a></li>
                   </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Newsfeed <span><img src="images/down-arrow.png" alt="" /></span></a>
                   <ul class="dropdown-menu newsfeed-home">
-                    <li><a href="newsfeed.html">Newsfeed</a></li>
-                    <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>
-                    <li><a href="newsfeed-friends.html">My friends</a></li>
-                    <li><a href="newsfeed-messages.html">Chatroom</a></li>
-                    <li><a href="newsfeed-images.html">Images</a></li>
-                    <li><a href="newsfeed-videos.html">Videos</a></li>
+                    <li><a href="newsfeed.php">Newsfeed</a></li>
+                    <li><a href="newsfeed-people-nearby.php">Poeple Nearly</a></li>
+                    <li><a href="newsfeed-friends.php">My friends</a></li>
+                    <li><a href="newsfeed-messages.php">Chatroom</a></li>
+                    <li><a href="newsfeed-images.php">Images</a></li>
+                    <li><a href="newsfeed-videos.php">Videos</a></li>
                   </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Timeline <span><img src="images/down-arrow.png" alt="" /></span></a>
                 <ul class="dropdown-menu login">
-                  <li><a href="timeline.html">Timeline</a></li>
-                  <li><a href="timeline-about.html">Timeline About</a></li>
-                  <li><a href="timeline-album.html">Timeline Album</a></li>
-                  <li><a href="timeline-friends.html">Timeline Friends</a></li>
+                  <li><a href="timeline.php">Timeline</a></li>
+                  <li><a href="timeline-about.php">Timeline About</a></li>
+                  <li><a href="timeline-album.php">Timeline Album</a></li>
+                  <li><a href="timeline-friends.php">Timeline Friends</a></li>
                 </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">All Pages <span><img src="images/down-arrow.png" alt="" /></span></a>
                 <ul class="dropdown-menu page-list">
-                  <li><a href="index.html">Landing Page 1</a></li>
-                  <li><a href="index-register.html">Landing Page 2</a></li>
-                  <li><a href="newsfeed.html">Newsfeed</a></li>
-                  <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>
-                  <li><a href="newsfeed-friends.html">My friends</a></li>
-                  <li><a href="newsfeed-messages.html">Chatroom</a></li>
-                  <li><a href="newsfeed-images.html">Images</a></li>
-                  <li><a href="newsfeed-videos.html">Videos</a></li>
-                  <li><a href="timeline.html">Timeline</a></li>
-                  <li><a href="timeline-about.html">Timeline About</a></li>
-                  <li><a href="timeline-album.html">Timeline Album</a></li>
-                  <li><a href="timeline-friends.html">Timeline Friends</a></li>
-                  <li><a href="contact.html">Contact Us</a></li>
+                  <li><a href="index.php">Landing Page 1</a></li>
+                  <li><a href="index-register.php">Landing Page 2</a></li>
+                  <li><a href="newsfeed.php">Newsfeed</a></li>
+                  <li><a href="newsfeed-people-nearby.php">Poeple Nearly</a></li>
+                  <li><a href="newsfeed-friends.php">My friends</a></li>
+                  <li><a href="newsfeed-messages.php">Chatroom</a></li>
+                  <li><a href="newsfeed-images.php">Images</a></li>
+                  <li><a href="newsfeed-videos.php">Videos</a></li>
+                  <li><a href="timeline.php">Timeline</a></li>
+                  <li><a href="timeline-about.php">Timeline About</a></li>
+                  <li><a href="timeline-album.php">Timeline Album</a></li>
+                  <li><a href="timeline-friends.php">Timeline Friends</a></li>
+                  <li><a href="contact.php">Contact Us</a></li>
                 </ul>
               </li>
-              <li class="dropdown"><a href="contact.html">Contact</a></li>
+              <li class="dropdown"><a href="contact.php">Contact</a></li>
             </ul>
             <form class="navbar-form navbar-right hidden-sm">
               <div class="form-group">
@@ -246,7 +246,7 @@
                         <select class="form-control" id="country">
                           <option value="country" disabled selected>Country</option>
                           <option value="AFG">Afghanistan</option>
-                          <option value="ALA">Åland Islands</option>
+                          <option value="ALA">ï¿½land Islands</option>
                           <option value="ALB">Albania</option>
                           <option value="DZA">Algeria</option>
                           <option value="ASM">American Samoa</option>
@@ -299,10 +299,10 @@
                           <option value="COD">Congo, the Democratic Republic of the</option>
                           <option value="COK">Cook Islands</option>
                           <option value="CRI">Costa Rica</option>
-                          <option value="CIV">Côte d'Ivoire</option>
+                          <option value="CIV">Cï¿½te d'Ivoire</option>
                           <option value="HRV">Croatia</option>
                           <option value="CUB">Cuba</option>
-                          <option value="CUW">Curaçao</option>
+                          <option value="CUW">Curaï¿½ao</option>
                           <option value="CYP">Cyprus</option>
                           <option value="CZE">Czech Republic</option>
                           <option value="DNK">Denmark</option>
@@ -425,11 +425,11 @@
                           <option value="PRT">Portugal</option>
                           <option value="PRI">Puerto Rico</option>
                           <option value="QAT">Qatar</option>
-                          <option value="REU">Réunion</option>
+                          <option value="REU">Rï¿½union</option>
                           <option value="ROU">Romania</option>
                           <option value="RUS">Russian Federation</option>
                           <option value="RWA">Rwanda</option>
-                          <option value="BLM">Saint Barthélemy</option>
+                          <option value="BLM">Saint Barthï¿½lemy</option>
                           <option value="SHN">Saint Helena, Ascension and Tristan da Cunha</option>
                           <option value="KNA">Saint Kitts and Nevis</option>
                           <option value="LCA">Saint Lucia</option>
