@@ -135,23 +135,33 @@ session_start();
                     <div class="row">
                       <div class="form-group col-xs-6">
                         <label for="firstname" class="sr-only">First Name</label>
-                        <input id="firstname" class="form-control input-group-lg" type="text" name="firstname" title="Enter first name" placeholder="First name"/>
+                        <input id="firstname" class="form-control input-group-lg" type="text" name="firstname"
+                         title="Enter first name" placeholder="First name" 
+                         value="<?php if (!empty($_SESSION['firstname'])){
+									echo $_SESSION['firstname']; } ?>" onblur="checkNameCharacters(this.value,this.id)" />
                       </div>
                       <div class="form-group col-xs-6">
                         <label for="lastname" class="sr-only">Last Name</label>
-                        <input id="lastname" class="form-control input-group-lg" type="text" name="lastname" title="Enter last name" placeholder="Last name"/>
+                        <input id="lastname" class="form-control input-group-lg" type="text" name="lastname"
+                         title="Enter last name" placeholder="Last name" 
+                         value="<?php if (!empty($_SESSION['lastname'])){
+									echo $_SESSION['lastname']; } ?>" onblur="checkNameCharacters(this.value,this.id)" />
                       </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="email" class="sr-only">Email</label>
-                        <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email"/>
+                        <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email"
+								value="<?php if (!empty($_SESSION['Email'])){
+									echo $_SESSION['Email']; } ?>" onblur="checkEmail(this.value)"/>
+
                       </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="password" class="sr-only">Password</label>
-                        <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
+                        <input id="password" class="form-control input-group-lg" type="password" name="password" 
+                        title="Enter password" placeholder="Password" onblur="checkPasswordCharacters(this.value,this.id)"/>
                       </div>
                     </div>
                     <div class="row">
@@ -161,8 +171,13 @@ session_start();
                         <select class="form-control" id="day" name="day">
                           <option value="Day" disabled selected >Day</option>
                           <?php 
+                          $selectDay = '';
                           for($index=1;31>=$index;$index++) {
-                          	echo '<option>' . $index . '</option>';
+                          	if($index == $_SESSION['day']){
+                          		$selectDay = 'selected';
+                          	}
+                          	echo '<option ' . $selectDay . '>' . $index . '</option>';
+                          	$selectDay= '';
                           }
                           ?>
                         </select>
@@ -171,18 +186,18 @@ session_start();
                         <label for="month" class="sr-only"></label>
                         <select class="form-control" id="month" name="month">
                           <option value="month" disabled selected>Month</option>
-                          <option value="1">Jan</option>
-                          <option value="2">Feb</option>
-                          <option value="3">Mar</option>
-                          <option value="4">Apr</option>
-                          <option value="5">May</option>
-                          <option value="6">Jun</option>
-                          <option value="7">Jul</option>
-                          <option value="8">Aug</option>
-                          <option value="9">Sep</option>
-                          <option value="10">Oct</option>
-                          <option value="11">Nov</option>
-                          <option value="12">Dec</option>
+                          <?php
+                          $selectMonth = '';
+                          $months = array('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec',);
+                          for ($index=0;$index < count($months);$index++) {
+                          	$numberOfMonth = $index+1;
+                          	if(!empty($_SESSION['month']) && ($numberOfMonth == $_SESSION['month'])) {
+                          		$selectMonth = 'selected';
+                          	}
+                          	echo '<option ' . $selectMonth . ' value="' . $numberOfMonth . '">' . $months[$index] . '</option>';
+                          	$selectMonth = '';
+                          }
+                          ?>
                         </select>
                       </div>
                       <div class="form-group col-sm-6 col-xs-12">
@@ -190,11 +205,16 @@ session_start();
                         <select class="form-control" id="year" name="year">
                           <option value="year" disabled selected >Year</option>
                             <?php 
-                            $year = date("Y");
-                          for($index=$year-100;$year>=$index;$index++) {
-                          	echo '<option>' . $index . '</option>';
-                          }
-                          ?>
+                              $year = date("Y");
+                              $selectYear = '';
+	                          for($index=$year-100;$year>=$index;$index++) {
+	                          	if($index == $_SESSION['year']){
+	                          		$selectYear = 'selected';           
+	                          	}
+	                          	echo '<option ' . $selectYear . '>' . $index . '</option>';
+	                          	$selectYear = '';
+	                          }
+                            ?>
                         </select>
                       </div>
                     </div>
@@ -209,7 +229,10 @@ session_start();
                     <div class="row">
                       <div class="form-group col-xs-6">
                         <label for="city" class="sr-only">First Name</label>
-                        <input id="city" class="form-control input-group-lg reg_name" type="text" name="city" title="Enter city" placeholder="Your city"/>
+                        <input id="city" class="form-control input-group-lg reg_name" type="text" name="city"
+                         title="Enter city" placeholder="Your city" onblur="checkCityCharacters(this.value,this.id)"
+                          value="<?php if (!empty($_SESSION['city'])){
+									echo $_SESSION['city']; } ?>"/>
                       </div>
                       <div class="form-group col-xs-6">
                         <label for="country" class="sr-only"></label>
@@ -217,7 +240,11 @@ session_start();
                           <option value="country" disabled selected>Country</option>
                         <?php 
                 			foreach ($countries as $country) {
-                         		echo '<option value="' . $country['country'] . '">' . $country['country'] . '</option>';
+                				if(!empty($_SESSION['country']) && ($country['country'] == $_SESSION['country'])) {
+	                					$selectCountry = 'selected';
+	                				}
+                         		echo '<option ' . $selectCountry .  ' value="' . $country['country'] . '">' . $country['country'] . '</option>';
+                         		$selectCountry = '';
                          	}
                           ?>
                         </select>
@@ -231,7 +258,7 @@ session_start();
                        ?>
                        </div>
                     </div>
-                      <button class="btn btn-primary" name="submit" value="submit">Register Now</button>
+                      <button class="btn btn-primary" id="submit" name="submit" value="submit">Register Now</button>
                   </form>
                   <p><a href="#">Already have an account?</a></p>
                 
@@ -292,7 +319,7 @@ session_start();
     <script src="../view/js/jquery.appear.min.js"></script>
 	<script src="../view/js/jquery.incremental-counter.js"></script>
     <script src="../view/js/script.js"></script>
-    
+    <script src="../assets/js/registerValidation.js"></script>
 	</body>
 </html>
 <?php 

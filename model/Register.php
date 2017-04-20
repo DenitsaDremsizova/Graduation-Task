@@ -126,6 +126,4 @@ class Register implements JsonSerializable {
 	}
 }
 
-$delyan = new Register('Delyan','Kolev','delyankolevv@gmail.com','12adsda3123','02','08','1991','M','StaraZagora','Bulgaria',null);
-var_dump($delyan); 
 ?>
