@@ -1,5 +1,8 @@
 <?php 
 session_start();
+if(empty($homeController)) {
+	header('Location:../controller/HomeController.php');die();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -260,8 +263,7 @@ session_start();
                     </div>
                       <button class="btn btn-primary" id="submit" name="submit" value="submit">Register Now</button>
                   </form>
-                  <p><a href="#">Already have an account?</a></p>
-                
+                  <p><a href="#login" data-toggle="tab">Already have an account?</a></p>
                 </div><!--Registration Form Contents Ends-->
                 
                 <!--Login-->
@@ -270,7 +272,7 @@ session_start();
                   <p class="text-muted">Log into your account</p>
                   
                   <!--Login Form-->
-                  <form name="Login_form" id='Login_form'>
+                  <form name="Login_form" id='Login_form'">
                      <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="my-email" class="sr-only">Email</label>
@@ -283,9 +285,16 @@ session_start();
                         <input id="my-password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
                       </div>
                     </div>
-                  </form><!--Login Form Ends--> 
+                    <div id="loginError" style="color:red">
+               
+                    </div>
+                  </form>
+                  <button class="btn btn-primary" name="submit" id = "loginSubmit" onclick="logIn()">Login Now</button>
+                  <div id="loginError" style="color:red"></div>
+                  
+                  <!--Login Form Ends--> 
                   <p><a href="#">Forgot Password?</a></p>
-                  <button class="btn btn-primary">Login Now</button>
+         
                 </div>
               </div>
             </div>
@@ -320,6 +329,7 @@ session_start();
 	<script src="../view/js/jquery.incremental-counter.js"></script>
     <script src="../view/js/script.js"></script>
     <script src="../assets/js/registerValidation.js"></script>
+    <script src="../assets/js/login.js"></script>
 	</body>
 </html>
 <?php 
