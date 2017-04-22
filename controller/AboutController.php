@@ -3,10 +3,14 @@ session_start ();
 function __autoload($className) {
 	require_once "../model/" . $className . '.php';
 }
-
+$userId = '';
+$id='';
+if(!empty($_SESSION['userId'])) {
+	$userId = $_SESSION['userId'];
+}
 
 if(empty($_GET['id'])) {
-	$id = $_SESSION['userId'];
+	$id = $userId;
 }else {
 	$id = $_GET['id'];
 }
@@ -16,6 +20,8 @@ $userWorkExperience = DbHelper::getInstance()->getWorkExperience($id);
 $userLanguages = DbHelper::getInstance()->getUserLanguages($id);
 $allLangs = DbHelper::getInstance()->getAllNotAddedByUserLanguagess($id);
 $userInterests = DbHelper::getInstance()->getUserInterests($id);
+
+if($id === $userId) {
 	if($_SERVER ['REQUEST_METHOD'] === 'DELETE') {
 
 		$content = file_get_contents('php://input');
@@ -28,6 +34,11 @@ $userInterests = DbHelper::getInstance()->getUserInterests($id);
 		}elseif(strpos($content, 'interest=') !== false){
 			$content= str_replace('interest=', '', $content);
 			DbHelper::getInstance()->deleteUserInterest($_SESSION['userId'], $content);
+		}elseif(strpos($content, 'experience=') !== false){
+			$content= str_replace('experience=', '', $content);
+			$content = explode('#',$content);
+
+			DbHelper::getInstance()->deleteExperience($content[0], $content[1], $content[2]);
 		}
 	}
 	if($_SERVER ['REQUEST_METHOD'] === 'POST') {
@@ -37,11 +48,20 @@ $userInterests = DbHelper::getInstance()->getUserInterests($id);
 			DbHelper::getInstance()->addNewLanguage($_SESSION['userId'], $content);
 		}elseif(strpos($content, 'addInterest=') !== false){
 				$content = str_replace('addInterest=', '', $content);
-				DbHelper::getInstance()->addNewInterest($_SESSION['userId'], $content);
+				if(strlen($content) > 1){
+					DbHelper::getInstance()->addNewInterest($_SESSION['userId'], $content);
+				}
+		}elseif(strpos($content, 'info=') !== false) {
+			$content= str_replace('info=', '', $content);
+			$content = explode('#',$content);
+			if($userId === $content[0]) {
+				DbHelper::getInstance()->editUserInfo($content[1],$content[0]);
+			}
 		}
 		
 	}
 	
+}
 	
 	if($_SERVER ['REQUEST_METHOD'] === 'GET'){
 		include_once '../view/timeline-about.php';

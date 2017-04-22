@@ -25,6 +25,7 @@
 	                  	echo $userData[0]['first_name'] . " " . $userData[0]['last_name'];
 	                  }
                   ?>
+                  
                   </p>
                 </div>
               </div>
@@ -72,18 +73,43 @@
               <div class="about-profile">
                 <div class="about-content-block">
                   <h4 class="grey"><i class="ion-ios-information-outline icon-in-title"></i>Personal Information</h4>
-                  <p>
+                  
                   	<?php 
-                  	if(!empty($userData[0]['personal_info'])) {
-                  		echo $userData[0]['personal_info'];
-                  	}
+	                  	if(!empty($userData[0]['personal_info'])) {
+	                  		echo  "<p>" . $userData[0]['personal_info'];
+	                  		if($id === $userId) {
                   	?>
-                  </p>
+                	<img alt="Delete info" src="../view/images/delete-button.png" style="height:15px; width:15px;"  onmouseover="this.style.cursor='pointer'" onclick="deleteInfo(<?=$userData[0]['id']?>)" /></p>
+                	
+                	<?php 
+                  	}
+	                  	}
+                	?>
+                	<?php if($id === $userId) {?>
+                	<textarea name="" id="userInfo"  rows="1" maxlength="90"></textarea>
+                   	<img alt="Add Interest" src="../view/images/edit-button.png" style="height:15px; width:15px;" onclick="editInfo(<?=$userData[0]['id']?>)" onmouseover="this.style.cursor='pointer'")"/>
+                	<?php }?>
                 </div>
                 <div class="about-content-block">
                   <h4 class="grey"><i class="ion-ios-briefcase-outline icon-in-title"></i>Work Experiences</h4>
                    <div class="organization">
+                    <div class="work">
+                    
+                    	<?php if($id === $userId) { ?>
+                     <img src="../view/images/work.png" alt="" class="pull-left img-org" />
+                    <div class="work-info">
+                      <h5><input type="text" id="company" placeholder ="Company" /></h5>
+                      <p><input type="text" id="position" value ="Position" style="height:1.7em"/><br/>
+                      	<span class="text-grey"><input type="text" id="startDate" placeholder = "Start day (Year-month-day)"style="height:1.7em" /><br/>
+                      		<input type="text"  id="endDate" placeholder = "End day (Year-month-day)" style="height:1.7em"/>
+                      	</span>
+                      </p>
+                      <img src="../view/images/add-work.png" alt="Add work experience" style="height:20px; width:20px;" onmouseover="this.style.cursor='pointer'"/>
+                    </div>
+                    </div>
+                    
                 <?php 
+                	}
                 if(!empty($userWorkExperience)) {
                 	
                 	$count = count($userWorkExperience);
@@ -93,7 +119,10 @@
                 ?> 
                     <img src="../view/images/work.png" alt="" class="pull-left img-org" />
                     <div class="work-info">
-                      <h5><?= $userWorkExperience[$index]['company']?></h5>
+                      <h5><?= $userWorkExperience[$index]['company']?>	
+	                      <img alt="Delete Interest" id = "<?= $userWorkExperience[$index]['user_id'] . "#" .$userWorkExperience[$index]['company'] . "#" . $userWorkExperience[$index]['position'];?>" onclick='deleteWorkExperience(this.id)' 
+	                      src="../view/images/delete-button.png" style="height:15px; width:15px;"  onmouseover="this.style.cursor='pointer'"/>
+                      </h5>
                       <p><?= $userWorkExperience[$index]['position']?> <span class="text-grey"><?php echo "<br/>" . "start date" .  $userWorkExperience[$index]['start_date'] . "<br/>"																									. "  end date  " . $userWorkExperience[$index]['end_date']?></span></p>
                     </div>
                 <?php 
@@ -107,30 +136,37 @@
                   <ul class="interests list-inline">
                   	<?php 
                   	foreach ($userInterests as $userInterest => $value) {
-                  		echo "<li id='" . $value['interest'] . "' onclick='deleteInterest(this.id)'>" . $value['interest'];
+                  		echo "<li>" . $value['interest'];
+					if($id === $userId) {
                   	?>
-                  	<img alt="Delete Interest" src="../view/images/delete-button.png" style="height:15px; width:15px;"  onmouseover="this.style.cursor='pointer'"/>
+                  	<img alt="Delete Interest" id = "<?= $value['interest'] ?>" onclick='deleteInterest(this.id)' src="../view/images/delete-button.png" style="height:15px; width:15px;"  onmouseover="this.style.cursor='pointer'"/>
                   	</li>
                   	<?php
                   	}
+                  	}
                   	?>
                   </ul>
+                  <?php if($id === $userId) {?>
                   <textarea name="" id="addInterest"  rows="1" maxlength="90"></textarea>
                    <img alt="Add Interest" src="../view/images/add-button.png" style="height:15px; width:15px;" onclick="addInterest()" onmouseover="this.style.cursor='pointer'")"/>
+                  <?php }?>
                 </div>
                 <div class="about-content-block">
                   <h4 class="grey"><i class="ion-ios-chatbubble-outline icon-in-title"></i>Language</h4>
                     <ul id="languages" >
                     <?php 
                     foreach ($userLanguages as $userLanguage) {
-                    	echo "<li id='" . $userLanguage['user_id'] . "#" .$userLanguage['lang_id'] . "' onclick='deleteLanguage(this.id)'>" . $userLanguage['language'];
+                    	echo "<li>" . $userLanguage['language'];
+                    	if($id === $userId) {
                     ?>
                     
-                     <img alt="Delete Language" src="../view/images/delete-button.png" style="height:15px; width:15px;" onmouseover="this.style.cursor='pointer'")"/></li>
+                     <img alt="Delete Language" id = "<?php echo $userLanguage['user_id'] . "#" .$userLanguage['lang_id']; ?>" onclick='deleteLanguage(this.id)' src="../view/images/delete-button.png" style="height:15px; width:15px;" onmouseover="this.style.cursor='pointer'")"/></li>
                      <?php 
+                    }
                     }
                      ?>
                      </ul>
+                     <?php if($id === $userId) { ?>
                       <select id='addLang'>
                       <option value="0" disabled selected>Add Language</option>
                       <?php foreach ($allLangs as &$lData) : ?>
@@ -138,6 +174,7 @@
                       <?php endforeach; ?>
                       </select>
                          <img alt="Add Language" src="../view/images/add-button.png" style="height:15px; width:15px;" onclick="addLang()" onmouseover="this.style.cursor='pointer'")"/></li>
+                	  <?php }?>
                 </div>
               </div>
             </div>

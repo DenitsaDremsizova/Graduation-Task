@@ -64,12 +64,25 @@ class DbHelper {
 		$bindParams = array($userId,$interest);
 		$pstmt->execute ( $bindParams );
 	}
+	public function editUserInfo ($persInfo,$userId) {
+		$sql = 'UPDATE users SET personal_info = ? WHERE id= ?;';
+		$pstmt = $this->db->prepare ( $sql );
+		$bindParams = array($persInfo,$userId);
+		$pstmt->execute ( $bindParams );
+	}
 	public function addNewInterest($userId,$interest){
 		$sql = 'INSERT INTO interests VALUES (?,?)';
 		$pstmt = $this->db->prepare ( $sql );
 		$bindParams = array($interest,$userId);
 		$pstmt->execute ( $bindParams );
 		
+	}
+	
+	public function deleteExperience($userId,$company,$position) {
+		$sql = 'DELETE FROM work_experience WHERE user_id = ? and company = ? and position = ?;';
+		$pstmt = $this->db->prepare ( $sql );
+		$bindParams = array($userId,$company,$position);
+		$pstmt->execute ( $bindParams );
 	}
 	
 }

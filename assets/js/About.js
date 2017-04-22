@@ -27,7 +27,23 @@ function deleteInterest(interest) {
 	}
 }
 
-
+function editOrDeleteInfo(id,Info) {
+	var xhr = initAjax('../controller/AboutController.php', 'POST');
+	xhr.send('info=' + id + '#' + Info);
+	
+	xhr.onload =  function() {
+		if (xhr.status == 200) {
+			location.reload();
+		}
+	}
+}
+function deleteInfo(id) {
+	editOrDeleteInfo(id,'');
+}
+function editInfo (id) {
+	var info = document.getElementById('userInfo').value;
+	editOrDeleteInfo(id,info)
+}
 
 
 
@@ -53,4 +69,16 @@ function addInterest()
 		}
 	}
 }
+function deleteWorkExperience(workExperience) {
+	var xhr = initAjax('../controller/AboutController.php', 'DELETE');
+	xhr.send('experience=' + workExperience);
+	
+	xhr.onload =  function() {
+		if (xhr.status == 200) {
+			location.reload();
+		}
+	}
+}
+
+
 
