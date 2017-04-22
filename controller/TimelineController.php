@@ -1,6 +1,7 @@
 <?php
 session_start();
 $_SESSION['userId'] = 1;
+$timelineId = '';
 
 if (isset($_SESSION['userId'])) {
     $userId = $_SESSION['userId'];

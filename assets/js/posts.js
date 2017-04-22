@@ -11,6 +11,10 @@ function createPost(post) {
     content += "<h5><a href='?timelineId=" + post.authorId + "' class='profile-link'>" + post.authorName + "</a> <span class='following'></span></h5>";
     content += "<p class='text-muted'>" + post.timestamp + "</p></div></div></div>";
 
+    content += "<div class='post-text'>";
+    content += "<p>" + post.text + "</p></div>";
+    content += "<div class='line-divider'></div>";
+    
     //get photo post:
     if (post.type == 'photos') {
         content += "<img src='" + post.source + "' alt='post-image' class='img-responsive post-image' />"
@@ -29,10 +33,7 @@ function createPost(post) {
         content += "Your browser does not support the video tag.";
         content += "</video>";
     }
-
-    content += "<div class='post-text'>";
-    content += "<p>" + post.text + "</p></div>";
-    content += "<div class='line-divider'></div>";
+    
     content += "<div class='reaction'>";
     content += "<a class='btn text-green'><i class='icon ion-thumbsup'></i> 49</a>";
     content += "<a class='btn text-red'><i class='fa fa-thumbs-down'></i> 0</a></div>";
@@ -74,11 +75,6 @@ function reloadTimeline() {
 document.addEventListener('DOMContentLoaded', function () {
     reloadTimeline();
 });
-function addNewPostTEST() {
-    //var text = document.getElementById('exampleTextarea').val();
-    var text = document.getElementById("exampleTextarea").value;
-    document.getElementById("result").innerHTML = text;
-}
 
 function addNewPost() {
     var text = document.getElementById("exampleTextarea").value;
@@ -95,9 +91,6 @@ function addNewPost() {
             timelineId: timelineId,
             type: "text_posts"
         };
-//	if (editMode) {
-//		newContact.id = editcontactId;
-//	}
 
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '../controller/PostsController.php', true);
@@ -106,13 +99,10 @@ function addNewPost() {
 
         xhr.onload = function () {
             if (xhr.status == 200) {
-                //if (!editMode)
-                //document.getElementById('timeline-content').innerHTML += createPost(newPost);
-
                 document.getElementById('new-post').innerHTML = xhr.responseText;
-
                 reloadTimeline();
             }
         }
     }
 }
+
