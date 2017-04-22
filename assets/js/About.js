@@ -80,5 +80,20 @@ function deleteWorkExperience(workExperience) {
 	}
 }
 
+function addExperience(id) {
+	var company = document.getElementById('company').value;
+	var position = document.getElementById('position').value;
+	var startDate = document.getElementById('startDate').value;
+	var endDate = document.getElementById('endDate').value;
+	var content = id + "#" + company + "#" + position + "#" + startDate + "#" + endDate;
+	var xhr = initAjax('../controller/AboutController.php', 'POST');
+	xhr.send('experience=' + content);
+	xhr.onload =  function() {
+		if (xhr.status == 200) {
+			location.reload();
+		}
+	}
+}
+
 
 

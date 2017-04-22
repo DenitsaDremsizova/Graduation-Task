@@ -1,5 +1,4 @@
 <?php 
-session_start();
 if(empty($homeController)) {
 	header('Location:../controller/HomeController.php');die();
 }
@@ -82,9 +81,11 @@ if(empty($homeController)) {
                           <?php 
                           $selectDay = '';
                           for($index=1;31>=$index;$index++) {
-                          	if($index == $_SESSION['day']){
-                          		$selectDay = 'selected';
-                          	}
+                          	if(!empty($_SESSION['day'])){
+	                          	if($index == $_SESSION['day']){
+	                          		$selectDay = 'selected';
+	                          	}
+                         	 }
                           	echo '<option ' . $selectDay . '>' . $index . '</option>';
                           	$selectDay= '';
                           }
@@ -117,8 +118,10 @@ if(empty($homeController)) {
                               $year = date("Y");
                               $selectYear = '';
 	                          for($index=$year-100;$year>=$index;$index++) {
-	                          	if($index == $_SESSION['year']){
-	                          		$selectYear = 'selected';           
+	                          	if(!empty($_SESSION['year'])){
+		                          	if($index == $_SESSION['year']){
+		                          		$selectYear = 'selected';           
+		                          	}
 	                          	}
 	                          	echo '<option ' . $selectYear . '>' . $index . '</option>';
 	                          	$selectYear = '';
@@ -149,11 +152,12 @@ if(empty($homeController)) {
                           <option value="country" disabled selected>Country</option>
                         <?php 
                 			foreach ($countries as $country) {
+                				$selectCountry = '';
                 				if(!empty($_SESSION['country']) && ($country['country'] == $_SESSION['country'])) {
 	                					$selectCountry = 'selected';
 	                				}
                          		echo '<option ' . $selectCountry .  ' value="' . $country['country'] . '">' . $country['country'] . '</option>';
-                         		$selectCountry = '';
+                         		
                          	}
                           ?>
                         </select>
@@ -178,7 +182,7 @@ if(empty($homeController)) {
                   <p class="text-muted">Log into your account</p>
                   
                   <!--Login Form-->
-                  <form name="Login_form" id='Login_form'">
+                  <form name="Login_form" id='Login_form'>
                      <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="my-email" class="sr-only">Email</label>

@@ -29,21 +29,47 @@ function checkPasswordCharacters (characters,id) {
 	} 
 }
 
+//function checkEmail(email) {
+//	  var xhttp = new XMLHttpRequest();
+//	  xhttp.onreadystatechange = function() {
+//	    if (this.readyState == 4 && this.status == 200) {
+//			if(this.responseText.length > 2) {
+//			  document.getElementById("error").innerHTML = this.responseText;
+//			  document.getElementById("email").style.border = "1px solid red";
+//			  document.getElementById('submit').disabled = true;
+//			} else {
+//			  document.getElementById("email").style.border = "1px solid green";
+//			  document.getElementById('submit').disabled = false;
+//			  document.getElementById("error").innerHTML = '';
+//			}
+//	    }
+//	  };
+//	  xhttp.open("GET", "./RegisterController.php?email=" + email, true);
+//	  xhttp.send();
+//}
+
+function initAjax(url, method)
+{
+	var xhr = new XMLHttpRequest();
+	xhr.open(method, url, true);
+	
+	return xhr;
+}
+
 function checkEmail(email) {
-	  var xhttp = new XMLHttpRequest();
-	  xhttp.onreadystatechange = function() {
-	    if (this.readyState == 4 && this.status == 200) {
+	var xhr = initAjax('./RegisterController.php', 'POST');
+	xhr.send(email);
+	xhr.onload =  function() {
+		if (xhr.status == 200) {
 			if(this.responseText.length > 2) {
-			  document.getElementById("error").innerHTML = this.responseText;
-			  document.getElementById("email").style.border = "1px solid red";
-			  document.getElementById('submit').disabled = true;
-			} else {
-			  document.getElementById("email").style.border = "1px solid green";
-			  document.getElementById('submit').disabled = false;
-			  document.getElementById("error").innerHTML = '';
-			}
-	    }
-	  };
-	  xhttp.open("GET", "./RegisterController.php?email=" + email, true);
-	  xhttp.send();
+				  document.getElementById("error").innerHTML = this.responseText;
+				  document.getElementById("email").style.border = "1px solid red";
+				  document.getElementById('submit').disabled = true;
+				} else {
+				  document.getElementById("email").style.border = "1px solid green";
+				  document.getElementById('submit').disabled = false;
+				  document.getElementById("error").innerHTML = '';
+				}
+		}
+	}
 }

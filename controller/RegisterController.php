@@ -52,14 +52,15 @@ if (isset ( $_POST ['submit'] )) {
 		}
 		
 		$userObject->do();
+		header ( 'Location:AboutController.php' );die();
 	} catch ( Exception $e ) {
 		$_SESSION ['error'] = $e->getMessage ();
 	}
-	header ( 'Location:HomeController.php' );
+
 }
 
-if (($_SERVER ['REQUEST_METHOD'] == "GET") && (! empty ( $_GET ['email'] ))) {
-	$email = $_GET ['email'];
+if (($_SERVER ['REQUEST_METHOD'] === "POST") && (! empty (file_get_contents('php://input')))) {
+	$email = file_get_contents('php://input');
 	try {
 		$TestUser = new User ($email);
 		

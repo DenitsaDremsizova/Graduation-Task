@@ -57,6 +57,10 @@ if($id === $userId) {
 			if($userId === $content[0]) {
 				DbHelper::getInstance()->editUserInfo($content[1],$content[0]);
 			}
+		}elseif(strpos($content, 'experience=') !== false) {
+			$content= str_replace('experience=', '', $content);
+			$content = explode('#',$content);
+			DbHelper::getInstance()->addExperience($content[0],$content[1],$content[2], $content[3],$content[4]);
 		}
 		
 	}

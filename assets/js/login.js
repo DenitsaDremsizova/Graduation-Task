@@ -14,14 +14,13 @@ function logIn() {
 	xhr.send('user=' + JSON.stringify(loginUser));
 	
 	xhr.onload = function() {
-		console.log(this.responseText);
 		if (xhr.status == 200) {
 			
 			if (this.responseText.length > 2) {
 				document.getElementById('loginError').innerHTML = '';
 				document.getElementById('loginError').innerHTML = this.responseText;
 			}else {
-				
+				location.reload();
 			}
 		}
 	}

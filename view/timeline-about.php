@@ -32,7 +32,7 @@
               <div class="col-md-9">
                 <ul class="list-inline profile-menu">
                   <li><a href="timeline.php">Timeline</a></li>
-                  <li><a href="timeline-about.php" class="active">	About</a></li>
+                  <li><a href="AboutController.php" class="active">	About</a></li>
                   <li><a href="timeline-album.php">Album</a></li>
                   <li><a href="timeline-friends.php">Friends</a></li>
                 </ul>
@@ -96,7 +96,7 @@
                     <div class="work">
                     
                     	<?php if($id === $userId) { ?>
-                     <img src="../view/images/work.png" alt="" class="pull-left img-org" />
+                     <img src="../view/images/work.png" alt="work" class="pull-left img-org" />
                     <div class="work-info">
                       <h5><input type="text" id="company" placeholder ="Company" /></h5>
                       <p><input type="text" id="position" value ="Position" style="height:1.7em"/><br/>
@@ -104,7 +104,7 @@
                       		<input type="text"  id="endDate" placeholder = "End day (Year-month-day)" style="height:1.7em"/>
                       	</span>
                       </p>
-                      <img src="../view/images/add-work.png" alt="Add work experience" style="height:20px; width:20px;" onmouseover="this.style.cursor='pointer'"/>
+                      <img src="../view/images/add-work.png" alt="Add work experience" style="height:20px; width:20px;" id="<?= $id; ?>" onmouseover="this.style.cursor='pointer'" onclick='addExperience(this.id)'/>
                     </div>
                     </div>
                     
@@ -123,7 +123,11 @@
 	                      <img alt="Delete Interest" id = "<?= $userWorkExperience[$index]['user_id'] . "#" .$userWorkExperience[$index]['company'] . "#" . $userWorkExperience[$index]['position'];?>" onclick='deleteWorkExperience(this.id)' 
 	                      src="../view/images/delete-button.png" style="height:15px; width:15px;"  onmouseover="this.style.cursor='pointer'"/>
                       </h5>
-                      <p><?= $userWorkExperience[$index]['position']?> <span class="text-grey"><?php echo "<br/>" . "start date" .  $userWorkExperience[$index]['start_date'] . "<br/>"																									. "  end date  " . $userWorkExperience[$index]['end_date']?></span></p>
+                      <?php 
+                      if($userWorkExperience[$index]['start_date'] === '0000-00-00') { $userWorkExperience[$index]['start_date'] = '';}
+                      if($userWorkExperience[$index]['end_date'] === '0000-00-00') { $userWorkExperience[$index]['end_date'] = '';}
+                      ?>
+                      <p><?= $userWorkExperience[$index]['position']?> <span class="text-grey"><?php echo "<br/>" . "start date " .  $userWorkExperience[$index]['start_date'] . "<br/>"																									. "  end date  " . $userWorkExperience[$index]['end_date']?></span></p>
                     </div>
                 <?php 
                 	}
@@ -178,36 +182,6 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-2 static">
-              <div id="sticky-sidebar">
-                <h4 class="grey">Sarah's activity</h4>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> Commended on a Photo</p>
-                    <p class="text-muted">5 mins ago</p>
-                  </div>
-                </div>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> Has posted a photo</p>
-                    <p class="text-muted">an hour ago</p>
-                  </div>
-                </div>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> Liked her friend's post</p>
-                    <p class="text-muted">4 hours ago</p>
-                  </div>
-                </div>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> has shared an album</p>
-                    <p class="text-muted">a day ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

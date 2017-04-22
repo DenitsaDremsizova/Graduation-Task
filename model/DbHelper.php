@@ -85,4 +85,11 @@ class DbHelper {
 		$pstmt->execute ( $bindParams );
 	}
 	
+	public function addExperience($userId,$company,$position,$startDate="",$endDate="") {
+		$sql = 'INSERT INTO work_experience VALUES (?,?,?,?,?) ;';
+		$pstmt = $this->db->prepare ( $sql );
+		$bindParams = array($userId,$company,$position,$startDate,$endDate);
+		$pstmt->execute ( $bindParams );
+	}
+	
 }
