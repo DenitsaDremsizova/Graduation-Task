@@ -3,10 +3,10 @@
 class MediaPost extends Post {
     protected $source;
     
-        public function __construct($id=null, $authorId = null, $authorName = null, $type = null, 
-                $timestamp = null, $text = null, $source = null, $comments = null) {
+        public function __construct($authorId = null, $timelineId=null, $type = null, 
+                $text = null, $timestamp = null, $authorName = null, $id=null, $comments = null, $source = null) {
 
-            parent::__construct($id, $authorId, $authorName, $type, $timestamp, $text, $comments);
+            parent::__construct($authorId, $timelineId, $type, $text, $timestamp, $authorName, $id, $comments);
             $this->source = $source;                
         }       
 }

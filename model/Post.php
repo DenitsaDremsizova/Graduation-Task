@@ -8,15 +8,16 @@
                 protected $text;
                 protected $comments;
                 
-                public function __construct($id=null, $authorId = null, $authorName = null, $type = null, 
-                $timestamp = null, $text = null, $comments = null) {
+                public function __construct($authorId = null, $timelineId, $type = null, 
+                $text = null, $timestamp = null, $authorName = null, $id=null, $comments = null) {
 
-                $this->id = $id;
                 $this->authorId = $authorId;
-                $this->authorName = $authorName;
+                $this->timelineId = $timelineId;
                 $this->type = $type;
-                $this->timestamp = $timestamp;
                 $this->text = $text;
+                $this->id = $id;
+                $this->timestamp = $timestamp;
+                $this->authorName = $authorName;
                 $this->comments = $comments;
             }
 		
