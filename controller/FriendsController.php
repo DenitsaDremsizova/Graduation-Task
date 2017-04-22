@@ -4,7 +4,7 @@ function __autoload($className) {
 }
 
 session_start();
-$_SESSION ['userid'] = 2; //to be deleted;
+$_SESSION ['userid'] = 1; //to be deleted;
 
 if (isset ($_SESSION ['userid'] )) {
 	$userId = $_SESSION ['userid'];
