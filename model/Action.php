@@ -1,13 +1,9 @@
 <?php
-abstract class Action implements JsonSerializable{
+abstract class Action {
 	protected $db;
 	protected $user;
 	
 	abstract public function do ();
-	
-	public function jsonSerialize() {
-		return get_object_vars($this);
-	}
 	
 	public function __construct (User $user) {
 		$this->db = DBConnection::getDb ();
@@ -22,8 +18,9 @@ abstract class Action implements JsonSerializable{
 		}
 	}
 	
-	protected function logUser() {
-		$_SESSION['userInfo'] = $this->jsonSerialize();
+	protected function logUser($data) {
+		$_SESSION['userEmail'] = $data[0]['email'];
+		$_SESSION['userId'] = $data[0]['id'];
 	}
 	
 	protected function getLastInsertId (){

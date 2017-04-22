@@ -16,7 +16,8 @@ class DBConnection {
 				self::$db->setAttribute ( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 			}
 			catch (PDOException $e) {
-				throw new Exception("Connection to database failed", $e);
+				$_SESSION['error'] = 'Something went wrong, please try again later!';
+				header('Location: HomeController.php');
 			}
 		}
 		

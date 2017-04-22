@@ -112,6 +112,7 @@ class User {
 	}
 	
 	public function __construct($email,$password='TestPassword123',array $params=array()) {
+
 		$this->setEmail($email);
 		$this->setPassword($password);
 		

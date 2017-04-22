@@ -1,4 +1,5 @@
 <?php
+session_start();
 $homeController = true;
 function __autoload($className) {
 	require_once "../model/" . $className . '.php';

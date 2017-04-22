@@ -44,9 +44,9 @@ if (isset ( $_POST ['submit'] )) {
 		);
 		
 		$RegisterUser = new User ( $_POST ['Email'], $_POST ['password'],$params );
-		
+
 		$userObject = new Register ( $RegisterUser );
-		
+
 		if ($userObject->checkUserExist ()) {
 			throw new RegisterException ( "This user already exist!" );
 		}

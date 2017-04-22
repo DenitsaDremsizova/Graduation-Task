@@ -23,8 +23,13 @@ if (isset($_POST['submit'])) {
 		$userObject = new Login($loginUser);
 		
 		$userObject->do();
+		
+		$userData = $userObject->getLoggedUserData();
+// 		var_dump($userData);
+		
 	}
 	catch (Exception $e) {
+
 		if(!$ajax) {
 			echo $_SESSION['error'] = $e->getMessage();
 		}else {
