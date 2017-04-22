@@ -2,9 +2,9 @@
 class Register extends Action {
 	
 	const CHECK_USER_ALRADY_EXIST_SQL = "SELECT email, id FROM users WHERE email = ?;";
-	const REGISTER_NEW_TIMELINE_SQL = "INSERT into timelines VALUES (null,'users',?);";
 	const REGISTER_NEW_USER_SQL = "INSERT into users VALUES (?,?,?,?,?,?,?,?);";
 	const GET_ALL_COUNTRIES = "SELECT * FROM countries;";
+	const GET_DATA_LOGGED_USER = 'SELECT id,first_name,last_name,gender,date_of_birth,personal_info from users WHERE email = ? AND password = ?;';
 	
 	public function checkUserExist() {
 		$result = $this->exec ( self::CHECK_USER_ALRADY_EXIST_SQL, array (
@@ -19,20 +19,11 @@ class Register extends Action {
 	}
 	
 	public function do() {
-		// insert new row in timeline db
-		$date = date ( "Y-m-d H:i:s" );
-		$bindParams = array (
-				$date
-		);
-		$this->exec ( self::REGISTER_NEW_TIMELINE_SQL, $bindParams, false );
 		
-		// get last insert id in timeline
-		$timelineId = $this->db->lastInsertId ();
 		$date = $this->user->year . "-" . $this->user->month . "-" . $this->user->day;
-		
 		// insert new row in users db
 		$userBindParams = array (
-				$timelineId,
+				null,
 				$this->user->firstName,
 				$this->user->lastName,
 				$this->user->email,
@@ -44,7 +35,15 @@ class Register extends Action {
 		
 		$this->exec ( self::REGISTER_NEW_USER_SQL, $userBindParams, false );
 		$this->user->setId($this->getLastInsertId());
-		$this->logUser();
+		$this->logUser(self::getLoggedUserData());
+	}
+	public function getLoggedUserData() {
+		$result = $this->exec ( self::GET_DATA_LOGGED_USER, array (
+				$this->user->email,
+				$this->user->password
+		) );
+		
+		return $result;
 	}
 }
 ?>

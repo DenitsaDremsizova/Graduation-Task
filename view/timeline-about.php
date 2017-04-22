@@ -1,103 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="This is social network html5 template available in themeforest......" />
-		<meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
-		<meta name="robots" content="index, follow" />
-		<title>About Me | Learn Detail About Me</title>
-
-    <!-- Stylesheets
-    ================================================= -->
-		<link rel="stylesheet" href="css/bootstrap.min.css" />
-		<link rel="stylesheet" href="css/style.css" />
-		<link rel="stylesheet" href="css/ionicons.min.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
+		<?php 
+		include_once 'header.php';
+	?>
     
-    <!--Favicon-->
-    <link rel="shortcut icon" type="image/png" href="images/fav.png"/>
-	</head>
-  <body>
-
-    <!-- Header
-    ================================================= -->
-		<header id="header">
-      <nav class="navbar navbar-default navbar-fixed-top menu">
-        <div class="container">
-
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index-register.php"><img src="images/logo.png" alt="logo" /></a>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right main-menu">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span><img src="images/down-arrow.png" alt="" /></span></a>
-                  <ul class="dropdown-menu newsfeed-home">
-                    <li><a href="index.php">Landing Page 1</a></li>
-                    <li><a href="index-register.php">Landing Page 2</a></li>
-                  </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Newsfeed <span><img src="images/down-arrow.png" alt="" /></span></a>
-                  <ul class="dropdown-menu newsfeed-home">
-                    <li><a href="newsfeed.php">Newsfeed</a></li>
-                    <li><a href="newsfeed-people-nearby.php">Poeple Nearly</a></li>
-                    <li><a href="newsfeed-friends.php">My friends</a></li>
-                    <li><a href="newsfeed-messages.php">Chatroom</a></li>
-                    <li><a href="newsfeed-images.php">Images</a></li>
-                    <li><a href="newsfeed-videos.php">Videos</a></li>
-                  </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Timeline <span><img src="images/down-arrow.png" alt="" /></span></a>
-                <ul class="dropdown-menu login">
-                  <li><a href="timeline.php">Timeline</a></li>
-                  <li><a href="timeline-about.php">Timeline About</a></li>
-                  <li><a href="timeline-album.php">Timeline Album</a></li>
-                  <li><a href="timeline-friends.php">Timeline Friends</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">All Pages <span><img src="images/down-arrow.png" alt="" /></span></a>
-                <ul class="dropdown-menu page-list">
-                  <li><a href="index.php">Landing Page 1</a></li>
-                  <li><a href="index-register.php">Landing Page 2</a></li>
-                  <li><a href="newsfeed.php">Newsfeed</a></li>
-                  <li><a href="newsfeed-people-nearby.php">Poeple Nearly</a></li>
-                  <li><a href="newsfeed-friends.php">My friends</a></li>
-                  <li><a href="newsfeed-messages.php">Chatroom</a></li>
-                  <li><a href="newsfeed-images.php">Images</a></li>
-                  <li><a href="newsfeed-videos.php">Videos</a></li>
-                  <li><a href="timeline.php">Timeline</a></li>
-                  <li><a href="timeline-about.php">Timeline About</a></li>
-                  <li><a href="timeline-album.php">Timeline Album</a></li>
-                  <li><a href="timeline-friends.php">Timeline Friends</a></li>
-                  <li><a href="contact.php">Contact Us</a></li>
-                </ul>
-              </li>
-              <li class="dropdown"><a href="contact.php">Contact</a></li>
-            </ul>
-            <form class="navbar-form navbar-right hidden-sm">
-              <div class="form-group">
-                <i class="icon ion-android-search"></i>
-                <input type="text" class="form-control" placeholder="Search friends, photos, videos">
-              </div>
-            </form>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container -->
-      </nav>
-    </header>
-    <!--Header End-->
 
     <div class="container">
 
@@ -112,14 +18,20 @@
               <div class="col-md-3">
                 <div class="profile-info">
                   <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo" />
-                  <h3>Sarah Cruiz</h3>
-                  <p class="text-muted">Creative Director</p>
+                  <h3></h3>
+                  <p class="text-muted">
+                  <?php
+                  if(!((empty($userData[0]['first_name'])) && ((empty([0]['last_name']))))) {
+	                  	echo $userData[0]['first_name'] . " " . $userData[0]['last_name'];
+	                  }
+                  ?>
+                  </p>
                 </div>
               </div>
               <div class="col-md-9">
                 <ul class="list-inline profile-menu">
                   <li><a href="timeline.php">Timeline</a></li>
-                  <li><a href="timeline-about.php" class="active">About</a></li>
+                  <li><a href="timeline-about.php" class="active">	About</a></li>
                   <li><a href="timeline-album.php">Album</a></li>
                   <li><a href="timeline-friends.php">Friends</a></li>
                 </ul>
@@ -160,55 +72,72 @@
               <div class="about-profile">
                 <div class="about-content-block">
                   <h4 class="grey"><i class="ion-ios-information-outline icon-in-title"></i>Personal Information</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur</p>
+                  <p>
+                  	<?php 
+                  	if(!empty($userData[0]['personal_info'])) {
+                  		echo $userData[0]['personal_info'];
+                  	}
+                  	?>
+                  </p>
                 </div>
                 <div class="about-content-block">
                   <h4 class="grey"><i class="ion-ios-briefcase-outline icon-in-title"></i>Work Experiences</h4>
-                  <div class="organization">
-                    <img src="images/envato.png" alt="" class="pull-left img-org" />
+                   <div class="organization">
+                <?php 
+                if(!empty($userWorkExperience)) {
+                	
+                	$count = count($userWorkExperience);
+                	if($count > 3){$count = 3;}
+                	for($index=0;$index<$count;$index++) {
+                		
+                ?> 
+                    <img src="../view/images/work.png" alt="" class="pull-left img-org" />
                     <div class="work-info">
-                      <h5>Envato</h5>
-                      <p>Seller - <span class="text-grey">1 February 2013 to present</span></p>
+                      <h5><?= $userWorkExperience[$index]['company']?></h5>
+                      <p><?= $userWorkExperience[$index]['position']?> <span class="text-grey"><?php echo "<br/>" . "start date" .  $userWorkExperience[$index]['start_date'] . "<br/>"																									. "  end date  " . $userWorkExperience[$index]['end_date']?></span></p>
                     </div>
-                  </div>
-                  <div class="organization">
-                    <img src="images/envato.png" alt="" class="pull-left img-org" />
-                    <div class="work-info">
-                      <h5>Envato</h5>
-                      <p>Seller - <span class="text-grey">1 February 2013 to present</span></p>
-                    </div>
-                  </div>
-                  <div class="organization">
-                    <img src="images/envato.png" alt="" class="pull-left img-org" />
-                    <div class="work-info">
-                      <h5>Envato</h5>
-                      <p>Seller - <span class="text-grey">1 February 2013 to present</span></p>
-                    </div>
-                  </div>
+                <?php 
+                	}
+                }
+                ?>
                 </div>
-                <div class="about-content-block">
-                  <h4 class="grey"><i class="ion-ios-location-outline icon-in-title"></i>Location</h4>
-                  <p>228 Park Eve, New York</p>
-                  <div class="google-maps">
-                    <div id="map" class="map"></div>
-                  </div>
                 </div>
                 <div class="about-content-block">
                   <h4 class="grey"><i class="ion-ios-heart-outline icon-in-title"></i>Interests</h4>
                   <ul class="interests list-inline">
-                    <li><span class="int-icons" title="Bycycle riding"><i class="icon ion-android-bicycle"></i></span></li>
-                    <li><span class="int-icons" title="Photography"><i class="icon ion-ios-camera"></i></span></li>
-                    <li><span class="int-icons" title="Shopping"><i class="icon ion-android-cart"></i></span></li>
-                    <li><span class="int-icons" title="Traveling"><i class="icon ion-android-plane"></i></span></li>
-                    <li><span class="int-icons" title="Eating"><i class="icon ion-android-restaurant"></i></span></li>
+                  	<?php 
+                  	foreach ($userInterests as $userInterest => $value) {
+                  		echo "<li id='" . $value['interest'] . "' onclick='deleteInterest(this.id)'>" . $value['interest'];
+                  	?>
+                  	<img alt="Delete Interest" src="../view/images/delete-button.png" style="height:15px; width:15px;"  onmouseover="this.style.cursor='pointer'"/>
+                  	</li>
+                  	<?php
+                  	}
+                  	?>
                   </ul>
+                  <textarea name="" id="addInterest"  rows="1" maxlength="90"></textarea>
+                   <img alt="Add Interest" src="../view/images/add-button.png" style="height:15px; width:15px;" onclick="addInterest()" onmouseover="this.style.cursor='pointer'")"/>
                 </div>
                 <div class="about-content-block">
                   <h4 class="grey"><i class="ion-ios-chatbubble-outline icon-in-title"></i>Language</h4>
-                    <ul>
-                      <li><a href="">Russian</a></li>
-                      <li><a href="">English</a></li>
-                    </ul>
+                    <ul id="languages" >
+                    <?php 
+                    foreach ($userLanguages as $userLanguage) {
+                    	echo "<li id='" . $userLanguage['user_id'] . "#" .$userLanguage['lang_id'] . "' onclick='deleteLanguage(this.id)'>" . $userLanguage['language'];
+                    ?>
+                    
+                     <img alt="Delete Language" src="../view/images/delete-button.png" style="height:15px; width:15px;" onmouseover="this.style.cursor='pointer'")"/></li>
+                     <?php 
+                    }
+                     ?>
+                     </ul>
+                      <select id='addLang'>
+                      <option value="0" disabled selected>Add Language</option>
+                      <?php foreach ($allLangs as &$lData) : ?>
+                      	  <option value="<?= $lData['id']; ?>"><?= $lData['language']; ?></option>
+                      <?php endforeach; ?>
+                      </select>
+                         <img alt="Add Language" src="../view/images/add-button.png" style="height:15px; width:15px;" onclick="addLang()" onmouseover="this.style.cursor='pointer'")"/></li>
                 </div>
               </div>
             </div>
@@ -254,7 +183,7 @@
       	<div class="row">
           <div class="footer-wrapper">
             <div class="col-md-3 col-sm-3">
-              <a href=""><img src="images/logo-black.png" alt="" class="footer-logo" /></a>
+              <a href=""><img src="../view/images/logo-black.png" alt="" class="footer-logo" /></a>
               <ul class="list-inline social-icons">
               	<li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
               	<li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
@@ -318,12 +247,13 @@
 
     <!-- Scripts
     ================================================= -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTMXfmDn0VlqWIyoOxK8997L-amWbUPiQ&callback=initMap"></script>
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.sticky-kit.min.js"></script>
-    <script src="js/jquery.scrollbar.min.js"></script>
-    <script src="js/script.js"></script>
+
+    <script src="../view/js/jquery-3.1.1.min.js"></script>
+    <script src="../view/js/bootstrap.min.js"></script>
+    <script src="../view/js/jquery.sticky-kit.min.js"></script>
+    <script src="../view/js/jquery.scrollbar.min.js"></script>
+    <script src="../view/js/script.js"></script>
+    <script src="../assets/js/about.js"></script>
     
   </body>
 </html>
