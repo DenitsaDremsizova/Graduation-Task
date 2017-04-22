@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2017 at 06:41 PM
+-- Generation Time: Apr 22, 2017 at 06:22 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.9
 
@@ -23,28 +23,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `albums`
---
-
-CREATE TABLE `albums` (
-  `id` int(11) NOT NULL,
-  `title` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `comments`
 --
 
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `text` varchar(1000) NOT NULL,
-  `datetime` datetime NOT NULL,
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `author_id` int(11) NOT NULL,
   `commented_post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `text`, `timestamp`, `author_id`, `commented_post_id`) VALUES
+(1, 'bla-bla', '2017-04-19 23:04:02', 3, 2),
+(2, 'dyra-byra', '2017-04-19 23:04:03', 4, 3),
+(3, 'new comment', '2017-04-19 23:12:31', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -360,34 +357,10 @@ CREATE TABLE `friend_requests` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `groups`
---
-
-CREATE TABLE `groups` (
-  `id` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `group_requests`
---
-
-CREATE TABLE `group_requests` (
-  `group_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `interests`
 --
 
 CREATE TABLE `interests` (
-  `id` int(11) NOT NULL,
   `interest` varchar(100) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -601,10 +574,16 @@ INSERT INTO `languages` (`id`, `language`) VALUES
 
 CREATE TABLE `photos` (
   `id` int(11) NOT NULL,
-  `text` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
-  `file` varchar(200) CHARACTER SET utf8 NOT NULL,
-  `album_id` int(11) NOT NULL
+  `text` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `file` varchar(200) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `photos`
+--
+
+INSERT INTO `photos` (`id`, `text`, `file`) VALUES
+(9, 'at the beach', '../uploads/1/photos/19-04-2017-11-55-37.jpg');
 
 -- --------------------------------------------------------
 
@@ -632,7 +611,12 @@ INSERT INTO `posts` (`id`, `author_id`, `type`, `date_time`, `timeline_id`) VALU
 (5, 1, 'text_posts', '2017-04-19 15:36:35', 2),
 (6, 3, 'text_posts', '2016-04-19 15:36:35', 1),
 (7, 2, 'text_posts', '2017-04-19 17:25:32', 2),
-(8, 1, 'video_posts', '2017-04-19 18:09:25', 1);
+(8, 1, 'video_posts', '2017-04-19 18:09:25', 1),
+(9, 1, 'photos', '2017-04-19 23:55:37', 1),
+(10, 2, 'uploaded_videos', '2017-04-21 08:41:19', 1),
+(11, 3, 'text_posts', '2017-04-22 16:43:28', 1),
+(12, 3, 'text_posts', '2017-04-22 16:44:56', 1),
+(28, 1, 'text_posts', '2017-04-22 19:12:03', 1);
 
 -- --------------------------------------------------------
 
@@ -663,34 +647,14 @@ CREATE TABLE `text_posts` (
 INSERT INTO `text_posts` (`id`, `text`) VALUES
 (1, 'post 1'),
 (2, 'post 2'),
-(3, 'post 3'),
+(3, 'The co-author of a new book detailing Hillary Clinton''s loss in the 2016 presidential election says the Democratic candidate and her top aides could see the wave of populism building in places like Britain, but refused to prepare for its arrival in the United States.'),
 (4, 'post 4'),
 (5, 'post 5'),
 (6, 'post 6'),
-(7, 'post 7');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `timelines`
---
-
-CREATE TABLE `timelines` (
-  `id` int(11) NOT NULL,
-  `type` varchar(45) NOT NULL,
-  `date_started` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `timelines`
---
-
-INSERT INTO `timelines` (`id`, `type`, `date_started`) VALUES
-(1, 'users', '2017-19-04'),
-(2, 'users', '2017-19-04'),
-(3, 'users', '2017-19-04'),
-(4, 'users', '2017-19-04'),
-(5, 'users', '2017-19-04');
+(7, 'New information suggests that a US aircraft carrier group, which Pres. Trump described as an armada, was actually headed away from -- when the administration said it was headed toward -- North Korea.'),
+(11, 'Hey there :) Long time no see...'),
+(12, 'check this out: http://ittalents.bg/home?gclid=COOu6e6ZuNMCFQUq0wodf3UAZQ'),
+(28, 'ÐµÐ¼ Ð½Ð° ÐºÐ¸Ñ€Ð¸Ð»Ð¸Ñ†Ð°, ÐµÐ¼ Ñ AJAX =)');
 
 -- --------------------------------------------------------
 
@@ -700,10 +664,16 @@ INSERT INTO `timelines` (`id`, `type`, `date_started`) VALUES
 
 CREATE TABLE `uploaded_videos` (
   `id` int(11) NOT NULL,
-  `text` varchar(1000) CHARACTER SET utf8 DEFAULT NULL,
-  `file` varchar(200) CHARACTER SET utf8 NOT NULL,
-  `album_id` int(11) NOT NULL
+  `text` varchar(1000) CHARACTER SET utf8 NOT NULL,
+  `file` varchar(200) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `uploaded_videos`
+--
+
+INSERT INTO `uploaded_videos` (`id`, `text`, `file`) VALUES
+(10, ' ', '../uploads/1/videos/21-04-2017-08-41-19.mp4');
 
 -- --------------------------------------------------------
 
@@ -736,18 +706,6 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `gend
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users_groups`
---
-
-CREATE TABLE `users_groups` (
-  `users_id` int(11) NOT NULL,
-  `groups_id` int(11) NOT NULL,
-  `is_owner` tinyint(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users_languages`
 --
 
@@ -763,7 +721,6 @@ CREATE TABLE `users_languages` (
 --
 
 CREATE TABLE `user_address` (
-  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `country_id` int(11) NOT NULL,
   `city` varchar(100) DEFAULT NULL,
@@ -779,7 +736,7 @@ CREATE TABLE `user_address` (
 CREATE TABLE `video_posts` (
   `id` int(11) NOT NULL,
   `link` varchar(500) CHARACTER SET utf8 NOT NULL,
-  `text` varchar(500) CHARACTER SET utf8 DEFAULT NULL
+  `text` varchar(500) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -796,10 +753,9 @@ INSERT INTO `video_posts` (`id`, `link`, `text`) VALUES
 --
 
 CREATE TABLE `work_experience` (
-  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `company` varchar(100) NOT NULL,
-  `position` varchar(100) DEFAULT NULL,
+  `position` varchar(100) NOT NULL,
   `start_date` datetime DEFAULT NULL,
   `end_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -809,19 +765,12 @@ CREATE TABLE `work_experience` (
 --
 
 --
--- Indexes for table `albums`
---
-ALTER TABLE `albums`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_albums_users1_idx` (`user_id`);
-
---
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_comments_users_idx` (`author_id`),
-  ADD KEY `FK_comments_posts_idx` (`commented_post_id`);
+  ADD KEY `FK_comments_posts_idx` (`commented_post_id`),
+  ADD KEY `FK_comments_users_idx` (`author_id`);
 
 --
 -- Indexes for table `comments_likes`
@@ -841,8 +790,8 @@ ALTER TABLE `countries`
 --
 ALTER TABLE `friendships`
   ADD PRIMARY KEY (`user_id`,`friend_id`),
-  ADD KEY `FK_friendships_users2_idx` (`friend_id`),
-  ADD KEY `FK_friendships_users1_idx` (`user_id`);
+  ADD KEY `FK_friendships_users1_idx` (`user_id`),
+  ADD KEY `FK_friendships_users2_idx` (`friend_id`);
 
 --
 -- Indexes for table `friend_requests`
@@ -850,28 +799,13 @@ ALTER TABLE `friendships`
 ALTER TABLE `friend_requests`
   ADD PRIMARY KEY (`sender_id`,`reciever_id`),
   ADD KEY `fk_friend_requests_users1_idx` (`sender_id`),
-  ADD KEY `fk_friend_requests_users2_idx` (`reciever_id`);
-
---
--- Indexes for table `groups`
---
-ALTER TABLE `groups`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `group_requests`
---
-ALTER TABLE `group_requests`
-  ADD PRIMARY KEY (`group_id`,`user_id`),
-  ADD KEY `fk_group_requests_groups1_idx` (`group_id`),
-  ADD KEY `fk_group_requests_users1_idx` (`user_id`);
+  ADD KEY `FK_friend_requests_users2_idx` (`reciever_id`);
 
 --
 -- Indexes for table `interests`
 --
 ALTER TABLE `interests`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_interests_users_idx` (`user_id`);
+  ADD PRIMARY KEY (`user_id`,`interest`);
 
 --
 -- Indexes for table `languages`
@@ -883,17 +817,15 @@ ALTER TABLE `languages`
 -- Indexes for table `photos`
 --
 ALTER TABLE `photos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_photos_albums_idx` (`album_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_posts_users_idx` (`author_id`),
   ADD KEY `FK_posts_timelines_idx` (`type`),
-  ADD KEY `FK_posts_timelines_idx1` (`timeline_id`);
+  ADD KEY `FK_posts_users_idx` (`author_id`);
 
 --
 -- Indexes for table `posts_likes`
@@ -909,17 +841,10 @@ ALTER TABLE `text_posts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `timelines`
---
-ALTER TABLE `timelines`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `uploaded_videos`
 --
 ALTER TABLE `uploaded_videos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_uploaded_videos_albums_idx` (`album_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -927,13 +852,6 @@ ALTER TABLE `uploaded_videos`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email_UNIQUE` (`email`);
-
---
--- Indexes for table `users_groups`
---
-ALTER TABLE `users_groups`
-  ADD PRIMARY KEY (`users_id`,`groups_id`),
-  ADD KEY `FK_users_groups_groups_idx` (`groups_id`);
 
 --
 -- Indexes for table `users_languages`
@@ -946,8 +864,7 @@ ALTER TABLE `users_languages`
 -- Indexes for table `user_address`
 --
 ALTER TABLE `user_address`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_user_address_users1_idx` (`user_id`),
+  ADD PRIMARY KEY (`user_id`),
   ADD KEY `FK_user_address_countries_idx` (`country_id`);
 
 --
@@ -960,33 +877,23 @@ ALTER TABLE `video_posts`
 -- Indexes for table `work_experience`
 --
 ALTER TABLE `work_experience`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_work_experience_users1_idx` (`user_id`);
+  ADD PRIMARY KEY (`user_id`,`company`,`position`),
+  ADD KEY `FK_work_experience_users_idx` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `albums`
---
-ALTER TABLE `albums`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=250;
---
--- AUTO_INCREMENT for table `interests`
---
-ALTER TABLE `interests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `languages`
 --
@@ -996,31 +903,15 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
--- AUTO_INCREMENT for table `timelines`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `timelines`
+ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `user_address`
---
-ALTER TABLE `user_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `work_experience`
---
-ALTER TABLE `work_experience`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `albums`
---
-ALTER TABLE `albums`
-  ADD CONSTRAINT `fk_albums_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `comments`
@@ -1051,36 +942,21 @@ ALTER TABLE `friend_requests`
   ADD CONSTRAINT `FK_friend_requests_users2` FOREIGN KEY (`reciever_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `groups`
---
-ALTER TABLE `groups`
-  ADD CONSTRAINT `FK_groups_timelines` FOREIGN KEY (`id`) REFERENCES `timelines` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `group_requests`
---
-ALTER TABLE `group_requests`
-  ADD CONSTRAINT `FK_group_requests_groups` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_group_requests_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `interests`
 --
 ALTER TABLE `interests`
-  ADD CONSTRAINT `fk_interests_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_interests_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `photos`
 --
 ALTER TABLE `photos`
-  ADD CONSTRAINT `FK_photos_albums` FOREIGN KEY (`album_id`) REFERENCES `albums` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `FK_photos_posts` FOREIGN KEY (`id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `FK_posts_timelines` FOREIGN KEY (`timeline_id`) REFERENCES `timelines` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_posts_users` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -1100,35 +976,21 @@ ALTER TABLE `text_posts`
 -- Constraints for table `uploaded_videos`
 --
 ALTER TABLE `uploaded_videos`
-  ADD CONSTRAINT `FK_uploaded_videos_albums` FOREIGN KEY (`album_id`) REFERENCES `albums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_uploaded_videos_posts` FOREIGN KEY (`id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `FK_users_timelines` FOREIGN KEY (`id`) REFERENCES `timelines` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `users_groups`
---
-ALTER TABLE `users_groups`
-  ADD CONSTRAINT `FK_users_groups_groups` FOREIGN KEY (`groups_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_users_groups_users` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `users_languages`
 --
 ALTER TABLE `users_languages`
-  ADD CONSTRAINT `FK_users_languages_languages` FOREIGN KEY (`lang_id`) REFERENCES `languages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_users_languages_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_users_languages` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_users_languages_languages` FOREIGN KEY (`lang_id`) REFERENCES `languages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user_address`
 --
 ALTER TABLE `user_address`
   ADD CONSTRAINT `FK_user_address_countries` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_user_address_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_user_address_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `video_posts`
@@ -1140,7 +1002,7 @@ ALTER TABLE `video_posts`
 -- Constraints for table `work_experience`
 --
 ALTER TABLE `work_experience`
-  ADD CONSTRAINT `fk_work_experience_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `FK_work_experience_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

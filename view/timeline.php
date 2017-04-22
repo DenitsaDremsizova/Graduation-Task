@@ -10,11 +10,11 @@
 
         <!-- Stylesheets
         ================================================= -->
-        <link rel="stylesheet" href="css/bootstrap.min.css" />
-        <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="css/ionicons.min.css" />
-        <link rel="stylesheet" href="css/font-awesome.min.css" />
-        <link href="css/emoji.css" rel="stylesheet">
+        <link rel="stylesheet" href="../view/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../view/css/style.css" />
+        <link rel="stylesheet" href="../view/css/ionicons.min.css" />
+        <link rel="stylesheet" href="../view/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="../view/css/emoji.css"/>
 
         <!--Favicon-->
         <link rel="shortcut icon" type="image/png" href="images/fav.png"/>
@@ -99,7 +99,7 @@
             </nav>
         </header>
         <!--Header End-->
-
+       
         <div class="container">
 
             <!-- Timeline
@@ -159,11 +159,14 @@
                             <!-- Post Create Box
                             ================================================= -->
                             <div class="create-post">
+<!--                                <form id="posts-form">-->
                                 <div class="row">
                                     <div class="col-md-7 col-sm-7">
                                         <div class="form-group">
                                             <img src="http://placehold.it/300x300" alt="" class="profile-photo-md" />
                                             <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Write what you wish"></textarea>
+                                            <input type="hidden" value="<?php echo $userId; ?>" id="authorId"/>
+                                            <input type="hidden" value="<?php echo $timelineId; ?>" id="timelineId"/>
                                         </div>
                                     </div>
                                     <div class="col-md-5 col-sm-5">
@@ -174,16 +177,18 @@
                                                 <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
                                                 <li><a href="#"><i class="ion-map"></i></a></li>
                                             </ul>
-                                            <button class="btn btn-primary pull-right">Publish</button>
+                                            <button class="btn btn-primary pull-right" onclick="addNewPost()">Publish</button>
                                         </div>
                                     </div>
                                 </div>
+<!--                                </form>-->
                             </div><!-- Post Create Box End-->
 
 
 
                             <!-- Post Content
                             ================================================= -->
+                            <div id="new-post"></div>
                             <div id="timeline-content">                               
                             </div>
 
@@ -263,11 +268,11 @@
 
                 <!-- Scripts
                 ================================================= -->
-                <script src="js/jquery-3.1.1.min.js"></script>
-                <script src="js/bootstrap.min.js"></script>
-                <script src="js/jquery.sticky-kit.min.js"></script>
-                <script src="js/jquery.scrollbar.min.js"></script>
-                <script src="js/script.js"></script>
+                <script src="../view/js/jquery-3.1.1.min.js"></script>
+                <script src="../view/js/bootstrap.min.js"></script>
+                <script src="../view/js/jquery.sticky-kit.min.js"></script>
+                <script src="../view/js/jquery.scrollbar.min.js"></script>
+                <script src="../view/js/script.js"></script>
                 <script src="../assets/js/posts.js" type="text/javascript"></script>
 
                 </body>
