@@ -37,10 +37,11 @@
               </div>
               <div class="col-md-9">
                 <ul class="list-inline profile-menu">
-                  <li><a href="timeline.php">Timeline</a></li>
+                  <li><a href="TimelineController.php">Timeline</a></li>
                   <li><a href="AboutController.php" class="active">	About</a></li>
-                  <li><a href="timeline-album.php">Album</a></li>
-                  <li><a href="timeline-friends.php">Friends</a></li>
+                  <li><a href="GalleryController.php">Gallery</a></li>
+                  <li><a href="VideosController.php">Videos</a></li>
+                  <li><a href="FriendsController.php">Friends</a></li>
                 </ul>
                 <ul class="follow-me list-inline">
                   <li>1,299 people following her</li>
@@ -63,10 +64,11 @@
             </div>
             <div class="mobile-menu">
               <ul class="list-inline">
-                <li><a href="timline.php">Timeline</a></li>
-                <li><a href="timeline-about.php" class="active">About</a></li>
-                <li><a href="timeline-album.php">Album</a></li>
-                <li><a href="timeline-friends.php">Friends</a></li>
+                 <li><a href="TimelineController.php">Timeline</a></li>
+                  <li><a href="AboutController.php" class="active">	About</a></li>
+                  <li><a href="GalleryController.php">Gallery</a></li>
+                  <li><a href="VideosController.php">Videos</a></li>
+                  <li><a href="FriendsController.php">Friends</a></li>
               </ul>
               <button class="btn-primary">Add Friend</button>
             </div>

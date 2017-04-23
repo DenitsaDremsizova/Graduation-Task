@@ -2,7 +2,6 @@
 
 session_start();
 
-$_SESSION['userId'] = 1; // to delete
 //unset($_SESSION['error-msg']);
 
 
