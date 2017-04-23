@@ -6,8 +6,9 @@ if (isset($_SESSION['userId'])) {
     $userId = $_SESSION['userId'];
     $_SESSION['timelineId'] = $_SESSION['userId']; 
     if (isset($_GET['timelineId'])) {
-        $_SESSION['timelineId'] = $timelineId = $_GET['timelineId'];
+        $_SESSION['timelineId'] = $_GET['timelineId'];
     }
+    $timelineId =  $_SESSION['timelineId'];
     //TO DO: if not mine or friend's timeline show limited info
     include '../view/timeline.php';
 } else {

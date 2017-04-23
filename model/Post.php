@@ -8,8 +8,8 @@
                 protected $text;
                 protected $comments;
                 
-                public function __construct($authorId = null, $timelineId, $type = null, 
-                $text = null, $timestamp = null, $authorName = null, $id=null, $comments = null) {
+                public function __construct($authorId, $timelineId, $type, 
+                $text=null, $timestamp = null, $authorName = null, $id=null, $comments = null) {
 
                 $this->authorId = $authorId;
                 $this->timelineId = $timelineId;

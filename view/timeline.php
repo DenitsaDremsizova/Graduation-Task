@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="../view/css/ionicons.min.css" />
         <link rel="stylesheet" href="../view/css/font-awesome.min.css" />
         <link rel="stylesheet" href="../view/css/emoji.css"/>
+        <link rel="stylesheet" href="../view/css/timeline.css" />
 
         <!--Favicon-->
         <link rel="shortcut icon" type="image/png" href="images/fav.png"/>
@@ -99,7 +100,7 @@
             </nav>
         </header>
         <!--Header End-->
-       
+
         <div class="container">
 
             <!-- Timeline
@@ -159,12 +160,33 @@
                             <!-- Post Create Box
                             ================================================= -->
                             <div class="create-post">
-<!--                                <form id="posts-form">-->
                                 <div class="row">
                                     <div class="col-md-7 col-sm-7">
                                         <div class="form-group">
+
+                                            <!-- The Modal -->
+                                            <div id="img-form" class="hidden-form">
+                                                <form enctype="multipart/form-data" action="../controller/PostsController.php" method="post" class="hidden-form-content">
+                                                    <span class="close">&times;</span>
+                                                    <fieldset class="input-field">
+                                                        <input type="hidden" name="MAX_FILE_SIZE" value="80000000">
+                                                        <label for="uploaded-photo" class="form-label"> Select Picture to Upload: </label></br>
+                                                        <input type="file" accept="img/*" name="uploaded-photo" id="uploaded-photo" class="inputfile" required>
+                                                        </br>
+                                                    </fieldset>
+                                                    <fieldset class="input-field">
+                                                        <textarea name="uploaded-photo-text" id="uploaded-photo-text" cols="30" rows="2" class="form-control" placeholder="Say something about your photo..."></textarea>
+                                                        <input type="hidden" value="<?php echo $userId; ?>" id="uploaded-photo-authorId" name="uploaded-photo-authorId"/>
+                                                        <input type="hidden" value="<?php echo $timelineId; ?>" id="uploaded-photo-timelineId" name="uploaded-photo-timelineId"/>
+                                                    </fieldset>
+                                                    </br>
+                                                    <input type="submit" name="upload-photo" value="Upload" class="btn-primary" id="upload-photo-btn">
+                                                </form>
+                                            </div>
+                                            <!-- End of Modal -->
+
                                             <img src="http://placehold.it/300x300" alt="" class="profile-photo-md" />
-                                            <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Write what you wish"></textarea>
+                                            <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Write what you wish" required></textarea>
                                             <input type="hidden" value="<?php echo $userId; ?>" id="authorId"/>
                                             <input type="hidden" value="<?php echo $timelineId; ?>" id="timelineId"/>
                                         </div>
@@ -172,19 +194,17 @@
                                     <div class="col-md-5 col-sm-5">
                                         <div class="tools">
                                             <ul class="publishing-tools list-inline">
-                                                <li><a href="#"><i class="ion-compose"></i></a></li>
-                                                <li><a href="#"><i class="ion-images"></i></a></li>
+<!--                                                <li><a href="#"><i class="ion-compose"></i></a></li>-->
+                                                <li><a href="#" ><i class="ion-images" id="add-img-btn" title="Upload Picture"></i></a></li>
                                                 <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
-                                                <li><a href="#"><i class="ion-map"></i></a></li>
+                                                <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
+<!--                                                <li><a href="#"><i class="ion-map"></i></a></li>-->
                                             </ul>
                                             <button class="btn btn-primary pull-right" onclick="addNewPost()">Publish</button>
                                         </div>
                                     </div>
                                 </div>
-<!--                                </form>-->
                             </div><!-- Post Create Box End-->
-
-
 
                             <!-- Post Content
                             ================================================= -->
@@ -261,10 +281,10 @@
                     </div>
                 </footer>
 
-<!--                preloader
-                <div id="spinner-wrapper">
-                    <div class="spinner"></div>
-                </div>-->
+                <!--                preloader
+                                <div id="spinner-wrapper">
+                                    <div class="spinner"></div>
+                                </div>-->
 
                 <!-- Scripts
                 ================================================= -->
@@ -274,6 +294,7 @@
                 <script src="../view/js/jquery.scrollbar.min.js"></script>
                 <script src="../view/js/script.js"></script>
                 <script src="../assets/js/posts.js" type="text/javascript"></script>
+                <script src="../assets/js/timeline-modal-form.js" type="text/javascript"></script>
 
                 </body>
                 </html>
