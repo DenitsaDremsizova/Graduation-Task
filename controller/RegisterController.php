@@ -5,31 +5,19 @@ function __autoload($className) {
 }
 
 if (isset ( $_POST ['submit'] )) {
-	if ($_POST ['firstname']) {
-		$_SESSION ['firstname'] = $_POST ['firstname'];
+	function checkEmptyField($field) {
+		if(empty($_POST ["$field"])) { $_POST ["$field"] = '';} else {$_SESSION ["$field"] = $_POST ["$field"];}
 	}
-	if ($_POST ['lastname']) {
-		$_SESSION ['lastname'] = $_POST ['lastname'];
-	}
-	if ($_POST ['Email']) {
-		$_SESSION ['Email'] = $_POST ['Email'];
-	}
-	if ($_POST ['year']) {
-		$_SESSION ['year'] = $_POST ['year'];
-	}
-	if ($_POST ['day']) {
-		$_SESSION ['day'] = $_POST ['day'];
-	}
-	if ($_POST ['month']) {
-		$_SESSION ['month'] = $_POST ['month'];
-	}
-	if ($_POST ['country']) {
-		$_SESSION ['country'] = $_POST ['country'];
-	}
-	if ($_POST ['city']) {
-		$_SESSION ['city'] = $_POST ['city'];
-	}
-	
+	checkEmptyField('Email');
+	checkEmptyField('firstname');
+	checkEmptyField('lastname');
+	checkEmptyField('day');
+	checkEmptyField('month');
+	checkEmptyField('year');
+	checkEmptyField('gender');
+	checkEmptyField('city');
+	checkEmptyField('country');
+
 	try {
 		$params = array(
 		'id' => null,
@@ -52,9 +40,12 @@ if (isset ( $_POST ['submit'] )) {
 		}
 		
 		$userObject->do();
+		$userData = $userObject->getLoggedUserData();
 		header ( 'Location:AboutController.php' );die();
 	} catch ( Exception $e ) {
 		$_SESSION ['error'] = $e->getMessage ();
+// 		$this->db->rollBack();
+		header ( 'Location:HomeController.php' );die();
 	}
 
 }

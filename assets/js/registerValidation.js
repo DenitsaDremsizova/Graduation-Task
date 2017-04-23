@@ -1,20 +1,29 @@
 
 function checkCharacters (characters,id,minLength=null,maxLength=null) {
-	if((characters.length < 1) || (characters.length > 30)) {
+	var error = false;
+	if(characters.length < minLength){
 		document.getElementById('submit').disabled = true;
 		document.getElementById('error').innerHTML = 'Some fields are empty!';
 		document.getElementById(id).style.border = "1px solid red";
-	}else {
+		error = true;
+	}
+	if(characters.length > maxLength) {
+		document.getElementById('submit').disabled = true;
+		document.getElementById('error').innerHTML = 'Please use between 1 and 30 characters.';
+		document.getElementById(id).style.border = "1px solid red";
+		error = true;
+	}
+	if(!error) {
 		document.getElementById('submit').disabled = false;
 		document.getElementById('error').innerHTML = '';
 		document.getElementById(id).style.border = "1px solid green";
 	} 
 }
 function checkCityCharacters (characters,id) {
-	checkCharacters(characters,id,0,30);
+	checkCharacters(characters,id,1,30);
 }
 function checkNameCharacters (characters,id) {
-	checkCharacters(characters,id,0,30);
+	checkCharacters(characters,id,1,30);
 }
 
 function checkPasswordCharacters (characters,id) {

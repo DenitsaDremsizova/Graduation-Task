@@ -11,15 +11,24 @@ class User {
 	private $gender;
 	private $bornCity;
 	private $country;
-	
+	const MAX_NAME_LENGTH = 20;
+	const MIN_NAME_LENGTH = 1;
+	const MIN_COUNTRY_NUMBER = 1;
+	const MAX_COUNTRY_NUMBER = 249;
+	const MIN_PASSWORD_CHARACTERS = 8;
+	const MAX_CITY_LENGTH = 20;
 	
 	public function setName ($name) {
+		if(empty($name)) {
+			throw new RegisterException("Some fields are empty!");
+		}
 		$name= htmlentities(trim($name));
+		
 		if(!preg_match("/^[a-zA-Z'-]+$/", $name)){
 			throw new RegisterException("Name is not valid! It must not contain numbers or special characters.");
 		}
-		if((strlen($name)) < 1 || (strlen($name)) > 30) {
-			throw new RegisterException("Please use between 1 and 30 characters.");
+		if((strlen($name) < 1) || (strlen($name) > 20)) {
+			throw new RegisterException("Please use between 1 and 20 characters.");
 		}
 		return($name);
 	}
@@ -35,16 +44,35 @@ class User {
 	}
 	
 	public function setDay($day) {
-		$day += 0;
-		$this->day = $day;
+		if(empty($day)){
+			throw new RegisterException("Some fields are empty!");
+		}
+		$day+= 0;
+		if((!is_int($day)) && ($day<1) && ($day>31)) {
+			throw new RegisterException("Invalid data");
+		}
+		$this->day= $day;
 	}
+	
 	public function setMonth($month) {
+		if(empty($month)){
+			throw new RegisterException("Some fields are empty!");
+		}
 		$month+= 0;
+		if((!is_int($month)) && ($month<1) && ($month>12)) {
+			throw new RegisterException("Invalid data");
+		}
 		$this->month = $month;
 	}
 	public function setYear($year) {
+		if(empty($year)) {
+			throw new RegisterException("Some fields are empty!");
+		}
 		$year+= 0;
-		$this->year = $year;
+		if((!is_int($year)) && ($year < date("Y") - 100) && ($year>date("Y"))) {
+			throw new RegisterException("Invalid data!");
+		}
+		$this->year= $year;
 	}
 	
 	public function setGender($gender) {
@@ -59,22 +87,25 @@ class User {
 	}
 	
 	public function setBornCity($city) {
-		$city= htmlentities(trim($city));
-		if(!preg_match("/^[a-zA-Z ]*$/", $city)){
-			throw new RegisterException("Invalid character in city");
+		if(empty($city)) {
+			throw new RegisterException("Some fields are empty!");
 		}
-		if((strlen($city)) > 30) {
-			throw new RegisterException("City must be under 30 characters long.");
+		$city= htmlentities(trim($city));
+	
+		if((strlen($city)) > 20) {
+			throw new RegisterException("City must be under 20 characters long.");
 		}
 		$this->bornCity = $city;
 	}
 	public function setCountry($country) {
+		$country += 0;
 		$country= htmlentities(trim($country));
-// 		if(!preg_match("/^[a-zA-Z'-]+$/", $country)){
-// 			throw new RegisterException("Invalid characters in country");
-// 		}
-		if((strlen($country)) > 30) {
-			throw new RegisterException("Country must be under 30 characters long.");
+		if(empty($country)) {
+			throw new RegisterException("Some fields are empty!");
+		}
+
+		if((is_int($country) && ($countr >= 1) && ($country <= 249))) {
+			throw new RegisterException("Invalid country.");
 		}
 		$this->country=$country;
 	}

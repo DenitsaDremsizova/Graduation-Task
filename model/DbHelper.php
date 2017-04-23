@@ -5,7 +5,8 @@ class DbHelper {
 	const GET_USER_DATA_SQL = 'SELECT id,first_name,last_name,email,gender,date_of_birth,personal_info from users where id = ? ;';
 	const GET_USER_WORK_EXPERIENCE = 'SELECT * FROM work_experience WHERE user_id = ? ORDER BY end_date desc limit 3 ;';
 	const GET_USER_LANGUAGES = 'SELECT l.language,u.id as user_id,l.id as lang_id from users u join users_languages ul on (u.id = ul.user_id) join languages l on (ul.lang_id = l.id) where u.id = ? ';
-	const GET_USER_INTERESTS = 'SELECT interest FROM interests WHERE user_id = ?;';
+	const GET_USER_INTERESTS = 'SELECT interest,user_id FROM interests WHERE user_id = ?;';
+	const GET_USER_ADDRESS = 'SELECT c.country,ua.city FROM countries c JOIN user_address ua ON (c.id = ua.country_id) WHERE ua.user_id = ? ;';
 	
 	private function __construct (){
 		$this->db = DBConnection::getDb();
@@ -25,6 +26,9 @@ class DbHelper {
 	
 	public function getUserData ($id) {
 		return $this->exec(self::GET_USER_DATA_SQL,array($id));
+	}
+	public function getUserAddress($id) {
+		return $this->exec(self::GET_USER_ADDRESS,array($id));
 	}
 	
 	public function getUserLanguages ($id) {

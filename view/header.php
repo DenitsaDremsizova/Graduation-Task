@@ -40,7 +40,9 @@
               <li class="dropdown">
               <?php if(empty($_SESSION['userId'])) {?>
                 <a href="../controller/HomeController.php" role="button">Register/Login</a>
-               <?php }?>
+               <?php } else { ?>
+               <a href="../controller/HomeController.php?logout=true" role="button">Logout</a>
+               <?php } ?>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Newsfeed <span><img src="../view/images/down-arrow.png" alt="" /></span></a>

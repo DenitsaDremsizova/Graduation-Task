@@ -47,22 +47,22 @@ function editInfo (id) {
 
 
 
-function addLang()
+function addLang(id)
 {
 	var langId = document.getElementById('addLang').value;
 	var xhr = initAjax('../controller/AboutController.php', 'POST');
-	xhr.send('addLang=' + langId);
+	xhr.send('addLang=' + id + '#' + langId);
 	xhr.onload =  function() {
 		if (xhr.status == 200) {
 			location.reload();
 		}
 	}
 }
-function addInterest()
+function addInterest(id)
 {
 	var interest = document.getElementById('addInterest').value;
 	var xhr = initAjax('../controller/AboutController.php', 'POST');
-	xhr.send('addInterest=' + interest);
+	xhr.send('addInterest='+ id + '#' + interest);
 	xhr.onload =  function() {
 		if (xhr.status == 200) {
 			location.reload();

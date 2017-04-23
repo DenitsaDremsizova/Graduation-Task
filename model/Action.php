@@ -19,8 +19,12 @@ abstract class Action {
 	}
 	
 	protected function logUser($data) {
-		$_SESSION['userEmail'] = $data[0]['email'];
 		$_SESSION['userId'] = $data[0]['id'];
+		$_SESSION['first_name'] = $data[0]['first_name'];
+		$_SESSION['last_name'] = $data[0]['last_name'];
+		$_SESSION['date_of_birth'] = $data[0]['date_of_birth'];
+		$_SESSION['country'] = $data[0]['country'];
+		$_SESSION['city'] = $data[0]['city'];
 	}
 	
 	protected function getLastInsertId (){

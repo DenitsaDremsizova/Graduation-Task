@@ -16,9 +16,8 @@ if(empty($homeController)) {
         <div class="row">
         	<div class="col-sm-5">
             <div class="intro-texts">
-            	<h1 class="text-white">Make Cool Friends !!!</h1>
-            	<p>Friend Finder is a social network template that can be used to connect people. The template offers Landing pages, News Feed, Image/Video Feed, Chat Box, Timeline and lot more. <br /> <br />Why are you waiting for? Buy it now.</p>
-              <button class="btn btn-primary">Learn More</button>
+            	<h1 class="text-white">Welcome to Get Together!!</h1>
+            	<p> <br /> <br /></p>
             </div>
           </div>
         	<div class="col-sm-6 col-sm-offset-1">
@@ -46,7 +45,7 @@ if(empty($homeController)) {
                         <input id="firstname" class="form-control input-group-lg" type="text" name="firstname"
                          title="Enter first name" placeholder="First name" 
                          value="<?php if (!empty($_SESSION['firstname'])){
-									echo $_SESSION['firstname']; } ?>" onblur="checkNameCharacters(this.value,this.id)" />
+									echo $_SESSION['firstname'];}?>" onblur="checkNameCharacters(this.value,this.id)" />
                       </div>
                       <div class="form-group col-xs-6">
                         <label for="lastname" class="sr-only">Last Name</label>
@@ -148,7 +147,7 @@ if(empty($homeController)) {
                       </div>
                       <div class="form-group col-xs-6">
                         <label for="country" class="sr-only"></label>
-                        <select class="form-control" id="country" name="country" onclick="GetCountries()">
+                        <select class="form-control" id="country" name="country">
                           <option value="country" disabled selected>Country</option>
                         <?php 
                 			foreach ($countries as $country) {
@@ -156,7 +155,7 @@ if(empty($homeController)) {
                 				if(!empty($_SESSION['country']) && ($country['country'] == $_SESSION['country'])) {
 	                					$selectCountry = 'selected';
 	                				}
-                         		echo '<option ' . $selectCountry .  ' value="' . $country['country'] . '">' . $country['country'] . '</option>';
+                         		echo '<option ' . $selectCountry .  ' value="' . $country['id'] . '">' . $country['country'] . '</option>';
                          		
                          	}
                           ?>
