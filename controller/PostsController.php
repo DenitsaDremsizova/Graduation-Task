@@ -5,7 +5,7 @@ function __autoload($className) {
 }
 
 session_start();
-$_SESSION ['userId'] = 1; //to be deleted
+
 
 
 if (isset($_SESSION ['userId']) && isset($_SESSION ['timelineId'])) {

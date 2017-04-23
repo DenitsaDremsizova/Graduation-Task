@@ -95,5 +95,11 @@ class DbHelper {
 		$bindParams = array($userId,$company,$position,$startDate,$endDate);
 		$pstmt->execute ( $bindParams );
 	}
+	public function changePassword($userId,$newPassword) {
+		$sql = 'UPDATE users SET password = ? WHERE id= ?;';
+		$pstmt = $this->db->prepare ( $sql );
+		$bindParams = array($newPassword,$userId);
+		$pstmt->execute ( $bindParams );
+	}
 	
 }

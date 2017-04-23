@@ -105,8 +105,27 @@ $age = floor((time() - strtotime($userData[0]['date_of_birth'])) / 31556926);
 				}
 				
 			}
-		}
-		
+		}elseif(strpos($content, 'changePassword=') !== false){
+			$content= str_replace('changePassword=', '', $content);
+			$content = explode('#',$content);
+			
+			if($userId === $content[0]) {
+				$error = false;
+				
+				if((strlen($content[1])) <= 8) {
+					$_SESSION['changePasswordError'] = "Your Password Must Contain At Least 8 Characters!";
+					$error = true;
+				}elseif(!preg_match("#[0-9]+#",$content[1])) {
+					$_SESSION['changePasswordError'] = "Your Password Must Contain At Least 1 Number!";
+					$error = true;
+				}
+				if(!$error) {
+					$content[1] = hash('sha256',$content[1]);
+					DbHelper::getInstance()->changePassword($content[0], $content[1]);
+					$_SESSION['changePasswordSuccess'] = "Your password has been changed successfully! ";
+				}
+			}
+	}
 	}
 	
 

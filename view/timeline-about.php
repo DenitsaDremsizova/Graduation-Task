@@ -82,6 +82,17 @@
 
               <!-- About
               ================================================= -->
+              <?php if($id === $userId) {?>
+              <div class="about-profile">
+                <div class="about-content-block">
+                  <h4 class="grey"><i class="ion-ios-information-outline icon-in-title"></i>Change Password</h4>
+                  <input type="password" id="newPassword" placeholder ="Enter your new passwords" />
+                  <img alt="Change Password" id="new" src="../view/images/change-button.png" style="height:23px; width:23px;"  onmouseover="this.style.cursor='pointer'" onclick="changePassword(<?=$userData[0]['id']?>)" />
+              	  <div id="changePasswordError" style="color:red"><?php if(!empty($_SESSION['changePasswordError'])) { echo $_SESSION['changePasswordError']; }?></div>
+              	   <div id="changePasswordSuccess" style="color:green"><?php if(!empty($_SESSION['changePasswordSuccess'])) { echo $_SESSION['changePasswordSuccess']; }?></div>
+              	 </div>
+               </div>
+              <?php }?>
               <div class="about-profile">
                 <div class="about-content-block">
                   <h4 class="grey"><i class="ion-ios-information-outline icon-in-title"></i>Personal Information</h4>
@@ -99,7 +110,7 @@
                 	?>
                 	<?php if($id === $userId) {?>
                 	<textarea name="" id="userInfo"  rows="1" maxlength="90"></textarea>
-                   	<img alt="Add Interest" src="../view/images/edit-button.png" style="height:15px; width:15px;" onclick="editInfo(<?=$userData[0]['id']?>)" onmouseover="this.style.cursor='pointer'")"/>
+                   	<img alt="Add Interest" src="../view/images/edit-button.png" style="height:15px; width:15px;" onclick="editInfo(<?=$userData[0]['id']?>)" onmouseover="this.style.cursor='pointer'"/>
                 	<?php }?>
                <div id="personalError" style="color:red"><?php if(!empty($_SESSION['personalError'])) { echo $_SESSION['personalError']; }?></div>
                 </div>
@@ -292,4 +303,7 @@ $_SESSION['personalError'] = '';
 $_SESSION['workError'] = '';
 $_SESSION['languagesError'] = '';
 $_SESSION['interestsError'] = '';
+$_SESSION['changePasswordError'] = '';
+$_SESSION['changePasswordSuccess'] = '';
+
 ?>

@@ -6,6 +6,16 @@ function initAjax(url, method)
 	return xhr;
 }
 
+function changePassword(id){
+	var newPassword = document.getElementById('newPassword').value;
+	var xhr = initAjax('../controller/AboutController.php', 'POST');
+	xhr.send('changePassword=' + id + '#' + newPassword);
+	xhr.onload =  function() {
+		if (xhr.status == 200) {
+			location.reload();
+		}
+	}
+}
 function deleteLanguage(id) {
 	var xhr = initAjax('../controller/AboutController.php', 'DELETE');
 	xhr.send('LangId='+id);
