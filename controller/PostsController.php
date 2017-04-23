@@ -7,6 +7,7 @@ function __autoload($className) {
 session_start();
 $_SESSION ['userId'] = 1; //to be deleted
 
+
 if (isset ($_SESSION ['userId']) && isset ($_SESSION ['timelineId'] )) {
 	$timelineId = $_SESSION ['timelineId'];
 	
@@ -31,7 +32,8 @@ if (isset ($_SESSION ['userId']) && isset ($_SESSION ['timelineId'] )) {
                     $newPost->extension = $extension;
                     $dao->addPost($newPost);
                     
-                    //upload photo to server:
+                    //upload photo to server: OKOK
+                    try {
                     if(isset($_SESSION['fileName'])) {
                         if (is_uploaded_file($uploadedPicName)) {
                             if (move_uploaded_file($uploadedPicName, $_SESSION['fileName'])) {
@@ -44,14 +46,16 @@ if (isset ($_SESSION ['userId']) && isset ($_SESSION ['timelineId'] )) {
                             //TO DO: delete post from DB
                             throw new Exception('uploading file failed');
                         }
-                    }
-                    
-                    
+                    } 
+                } catch (Exception $e) {
+                    $_SESSION['error-msg'] = $e->getMessage();
+                } finally {
                     //go to timeline:
                     header('Location:./TimelineController.php?timelineId=' . $timelineId, true, 302);
+                }
                 } //else: error msg - missing file
             } else {
-            // add new post
+            // add new text post
             $textPost = json_decode ($_POST['data']);
 
             $newPost = new Post($textPost->authorId, $textPost->timelineId, $textPost->type, htmlentities(trim($textPost->text)));		

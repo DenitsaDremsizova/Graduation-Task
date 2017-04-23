@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2017 at 01:28 AM
+-- Generation Time: Apr 23, 2017 at 03:02 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.9
 
@@ -584,7 +584,7 @@ CREATE TABLE `photos` (
 
 INSERT INTO `photos` (`id`, `text`, `file`) VALUES
 (9, 'at the beach', '../uploads/1/photos/19-04-2017-11-55-37.jpg'),
-(46, 'ÐŸÐ¾Ð¿Ð¾Ð²Ð¾ ÐµÐ·ÐµÑ€Ð¾, ÐŸÐ¸Ñ€Ð¸Ð½', '../uploads/1/photos/23-04-2017-02-24-09.jpg');
+(71, '', '../uploads/1/photos/23-04-2017-03-59-37.jpg');
 
 -- --------------------------------------------------------
 
@@ -618,7 +618,7 @@ INSERT INTO `posts` (`id`, `author_id`, `type`, `date_time`, `timeline_id`) VALU
 (11, 3, 'text_posts', '2017-04-22 16:43:28', 1),
 (12, 3, 'text_posts', '2017-04-22 16:44:56', 1),
 (28, 1, 'text_posts', '2017-04-22 19:12:03', 1),
-(46, 1, 'photos', '2017-04-23 02:24:09', 1);
+(71, 1, 'photos', '2017-04-23 03:59:37', 1);
 
 -- --------------------------------------------------------
 
@@ -905,7 +905,7 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 --
 -- AUTO_INCREMENT for table `users`
 --

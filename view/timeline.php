@@ -169,7 +169,7 @@
                                                 <form enctype="multipart/form-data" action="../controller/PostsController.php" method="post" class="hidden-form-content">
                                                     <span class="close">&times;</span>
                                                     <fieldset class="input-field">
-                                                        <input type="hidden" name="MAX_FILE_SIZE" value="8000000">
+                                                        <input type="hidden" name="MAX_FILE_SIZE" value="80000000">
                                                         <label for="uploaded-photo" class="form-label"> Select Picture to Upload: </label></br>
                                                         <input type="file" accept="img/*" name="uploaded-photo" id="uploaded-photo" class="inputfile" required>
                                                         </br>
@@ -205,8 +205,6 @@
                                     </div>
                                 </div>
                             </div><!-- Post Create Box End-->
-
-
 
                             <!-- Post Content
                             ================================================= -->
