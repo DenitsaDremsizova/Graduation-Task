@@ -11,7 +11,8 @@
 		<link rel="stylesheet" href="../view/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="../view/css/style.css" />
 		<link rel="stylesheet" href="../view/css/ionicons.min.css" />
-    <link rel="stylesheet" href="../view/css/font-awesome.min.css" />
+                <link rel="stylesheet" href="../view/css/font-awesome.min.css" />
+                <link rel="stylesheet" href="../view/css/timeline.css" />
     
     <!--Favicon-->
     <link rel="shortcut icon" type="image/png" href="../view/images/fav.png"/>
