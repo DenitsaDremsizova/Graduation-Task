@@ -26,18 +26,28 @@ if (!isset($_SESSION['userId'])) {
     
     //create html form for uploading:
     function createUploadForm($uploadType, $userId, $timelineId) {
-        if ($uploadType === 'photo')
-            $acceptParam = 'img';
-        if ($uploadType === 'video')
-            $acceptParam = 'video';
+        
+        if ($uploadType === 'photo' || $uploadType === 'video') {
+            $acceptParam = ($uploadType === 'photo') ? 'img' : 'video';
+            $formType = "enctype='multipart/form-data'";
+            $fileSizeLimit = "<input type='hidden' name='MAX_FILE_SIZE' value='100000000'>";
+            $inputFieldLabel = "Select " . $uploadType . " to upload: ";
+            $inputField = "<input type='file' accept='" . $acceptParam . "/*' name='uploaded-" . $uploadType . "' id='uploaded-" . $uploadType . "' class='inputfile' required>";
+        } elseif ($uploadType === 'video-link') {
+            $formType = "";
+            $fileSizeLimit = "";
+            $inputField = "<input type='text' name='uploaded-" . $uploadType . "' id='uploaded-" . $uploadType . "' class='inputfile' required><br/>";
+            $inputFieldLabel = "Upload video link: ";
+            
+        }
 
         $uploadFormHtml = "<div id='" . $uploadType . "-form' class='hidden-form'>"
-                . "<form enctype='multipart/form-data' action='../controller/PostsController.php' method='post' class='hidden-form-content'>"
+                . "<form " . $formType . " action='../controller/PostsController.php' method='post' class='hidden-form-content'>"
                 . "<span class='close-" . $uploadType . "-form'>&times;</span>"
                 . "<fieldset class='input-field'>"
-                . "<input type='hidden' name='MAX_FILE_SIZE' value='100000000'>"
-                . "<label for='uploaded-" . $uploadType . "' class='form-label'> Select " . $uploadType . " to upload: </label></br>"
-                . "<input type='file' accept='" . $acceptParam . "/*' name='uploaded-" . $uploadType . "' id='uploaded-" . $uploadType . "' class='inputfile' required>"
+                . $fileSizeLimit
+                . "<label for='uploaded-" . $uploadType . "' class='form-label'>" . $inputFieldLabel . "</label></br>"
+                . $inputField
                 . "</br></fieldset>"
                 . "<fieldset class='input-field'>"
                 . "<textarea name='uploaded-" . $uploadType . "-text' id='uploaded" . $uploadType . "text' cols='30' rows='2' "
