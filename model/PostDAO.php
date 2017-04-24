@@ -8,11 +8,12 @@ class PostDAO {
     const ADD_NEW_POST_INTO_TEXT_POSTS_SQL = 'INSERT INTO text_posts VALUES(?,?);';
     const ADD_NEW_POST_INTO_PHOTOS_SQL = 'INSERT INTO photos VALUES(?,?,?);';
     const ADD_NEW_POST_INTO_UPLOADED_VIDEOS_SQL = 'INSERT INTO uploaded_videos VALUES(?,?,?);';
+    const ADD_NEW_POST_INTO_VIDEO_POSTS_SQL = 'INSERT INTO video_posts VALUES(?,?,?);';
     const GET_MAX_ID_FROM_POSTS_SQL = 'SELECT MAX(id) FROM posts;';
     const GET_TIMESTAMP_FROM_POSTS_SQL = "SELECT DATE_FORMAT(date_time, '%d-%m-%Y-%h-%i-%s') FROM posts WHERE id = ?";
     const GET_ALL_POSTS_SQL = "SELECT p.id, p.author_id, p.type, p.timeline_id, DATE_FORMAT(p.date_time,'Posted on %d-%b-%Y at %h:%i:%s') AS 'date_time', "
             . "p.timeline_id, tp.text AS 'tp-text', "
-            . "REPLACE(REPLACE(vp.link, 'www.youtube.com/watch?v=', 'www.youtube.com/embed/'), 'www.vbox7.com/play:', 'https://www.vbox7.com/emb/external.php?vid=') AS 'link', "
+            . "REPLACE(REPLACE(vp.link, 'www.youtube.com/watch?v=', 'www.youtube.com/embed/'), 'www.vbox7.com/play:', 'www.vbox7.com/emb/external.php?vid=') AS 'link', "
             . "vp.text AS 'vp-text', uv.text AS 'uv-text', uv.file AS 'uv-file', ph.text AS 'ph-text', "
             . "ph.file AS 'ph-file', concat(u.first_name, ' ', u.last_name) AS 'author_name' "
             . "FROM posts p LEFT JOIN text_posts tp ON p.id = tp.id "
@@ -52,6 +53,8 @@ class PostDAO {
                 }
                 $pstmt = $this->db->prepare(self::ADD_NEW_POST_INTO_TEXT_POSTS_SQL);
                 $pstmt->execute(array($maxId, $post->text));
+            
+            //add post to photos/uploaded_videos table:     
             } elseif ($post->type == "photos" || $post->type == "uploaded_videos") {
 
                 //get timestamp from posts table:
@@ -69,13 +72,18 @@ class PostDAO {
                 }
 
                 $fileName = "../uploads/" . $post->authorId . "/" . $subFolder . "/" . $timestamp . "." . $post->extension;
-
-                //add file to photos/uploaded_videos table:
+                
+                //add to table
                 $pstmt = $this->db->prepare($sqlStatement);
                 $pstmt->execute(array($maxId, $post->text, $fileName));
 
                 //add fileName to session:
                 $_SESSION['fileName'] = $fileName;
+            
+            //add post to video_posts table:
+            } elseif ($post->type == "video_posts") {
+                $pstmt = $this->db->prepare(self::ADD_NEW_POST_INTO_VIDEO_POSTS_SQL);
+                $pstmt->execute(array($maxId, $post->link, $post->text));
             }
 
             $this->db->commit();

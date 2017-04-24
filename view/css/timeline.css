@@ -1,4 +1,4 @@
-#photo-form, #video-form {
+#photo-form, #video-form, #video-link-form {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -24,7 +24,7 @@
 }
 
 /* The Close Button */
-.close-photo-form, .close-video-form {
+.close-photo-form, .close-video-form, .close-video-link-form {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
@@ -34,7 +34,9 @@
 .close-photo-form:hover,
 .close-photo-form:focus,
 .close-video-form:hover,
-.close-video-form:focus{
+.close-video-form:focus,
+.close-video-link-form:hover,
+.close-video-link-form:focus{
     color: #000;
     text-decoration: none;
     cursor: pointer;
@@ -51,6 +53,11 @@
     padding: 1% 3%;
     border-radius: 10px;
     margin-bottom: 3%;
-    color: crimson;
+    color: red;
     font-size: 1.2em;
+}
+
+#uploaded-video-link {
+    border-radius: 3px;
+    width: 100%;
 }
