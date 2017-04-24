@@ -27,10 +27,12 @@
                   <li><a href="AboutController.php" >About</a></li>
                   <li><a href="GalleryController.php">Gallery</a></li>
                   <li><a href="VideosController.php">Videos</a></li>
-                  <li><a href="FriendsController.php"class="active">Friends</a></li>
+                  <li><a href="Timeline-friendsController.php"class="active">Friends</a></li>
                 </ul>
                 <ul class="follow-me list-inline">
-                  <li>1,299 people following her</li>
+                  <li><?php if(!empty($userFollowers)) {
+                  	echo $userFollowers[0]['count'];
+                  }?> Friends</li>
                   <li><button class="btn-primary">Add Friend</button></li>
                 </ul>
               </div>
@@ -50,7 +52,7 @@
                   <li><a href="AboutController.php">About</a></li>
                   <li><a href="GalleryController.php">Gallery</a></li>
                   <li><a href="VideosController.php">Videos</a></li>
-                  <li><a href="FriendsController.php" class="active" >Friends</a></li>
+                  <li><a href="Timeline-friendsController.php" class="active" >Friends</a></li>
               </ul>
               <button class="btn-primary">Add Friend</button>
             </div>
@@ -74,39 +76,12 @@
             
             <!-- Side Article -->
             <div class="col-md-2 static">
-              <div id="sticky-sidebar">
-                <h4 class="grey">Sarah's activity</h4>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> Commended on a Photo</p>
-                    <p class="text-muted">5 mins ago</p>
+              <div id="sticky-sidebar">               
                   </div>
-                </div>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> Has posted a photo</p>
-                    <p class="text-muted">an hour ago</p>
-                  </div>
-                </div>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> Liked her friend's post</p>
-                    <p class="text-muted">4 hours ago</p>
-                  </div>
-                </div>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> has shared an album</p>
-                    <p class="text-muted">a day ago</p>
+                  <div class="live-activity">          
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
 
     <!-- Footer
     ================================================= -->
@@ -115,7 +90,7 @@
       	<div class="row">
           <div class="footer-wrapper">
             <div class="col-md-3 col-sm-3">
-              <a href=""><img src="images/logo-black.png" alt="" class="footer-logo" /></a>
+              <a href=""><img src="../view/images/logo-black.png" alt="" class="footer-logo" /></a>
               <ul class="list-inline social-icons">
               	<li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
               	<li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
@@ -174,12 +149,13 @@
 
     <!-- Scripts
     ================================================= -->
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.sticky-kit.min.js"></script>
-    <script src="js/jquery.scrollbar.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="../view/js/jquery-3.1.1.min.js"></script>
+    <script src="../view/js/bootstrap.min.js"></script>
+    <script src="../view/js/jquery.sticky-kit.min.js"></script>
+    <script src="../view/js/jquery.scrollbar.min.js"></script>
+    <script src="../view/js/script.js"></script>
     
     <script src="../assets/js/friends.js"></script>
+    <script src="../assets/js/search.js"></script>
   </body>
 </html>

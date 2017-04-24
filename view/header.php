@@ -60,10 +60,10 @@
               </li>     
               <li class="dropdown"><a href="ContactController.php">Contact</a></li>
             </ul>
-            <form class="navbar-form navbar-right hidden-sm">
+            <form class="navbar-form navbar-right hidden-sm" method="GET" action="Timeline-friendsController.php">
               <div class="form-group">
                 <i class="icon ion-android-search"></i>
-                <input type="text" class="form-control" placeholder="Search friends, photos, videos">
+                <input value="<?php if(!empty($search)) { echo $search; }?>" id="searchBar" name="search" type="text" class="form-control" placeholder="Search friends by Email" onkeyup="reloadSearchedTable(),uncheckTimeline()">
               </div>
             </form>
           </div><!-- /.navbar-collapse -->

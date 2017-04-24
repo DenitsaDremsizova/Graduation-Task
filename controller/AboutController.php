@@ -25,7 +25,7 @@ $userLanguages = DbHelper::getInstance()->getUserLanguages($id);
 $allLangs = DbHelper::getInstance()->getAllNotAddedByUserLanguagess($id);
 $userInterests = DbHelper::getInstance()->getUserInterests($id);
 $userAddress = DbHelper::getInstance()->getUserAddress($id);
-
+$userFollowers = DbHelper::getInstance()->countUserFollowers($id);
 $age = floor((time() - strtotime($userData[0]['date_of_birth'])) / 31556926);
 
 	//DELETE REQUESTS

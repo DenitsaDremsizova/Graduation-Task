@@ -7,6 +7,7 @@ class DbHelper {
 	const GET_USER_LANGUAGES = 'SELECT l.language,u.id as user_id,l.id as lang_id from users u join users_languages ul on (u.id = ul.user_id) join languages l on (ul.lang_id = l.id) where u.id = ? ';
 	const GET_USER_INTERESTS = 'SELECT interest,user_id FROM interests WHERE user_id = ?;';
 	const GET_USER_ADDRESS = 'SELECT c.country,ua.city FROM countries c JOIN user_address ua ON (c.id = ua.country_id) WHERE ua.user_id = ? ;';
+	const GET_USER_FOLLOWERS = 'SELECT COUNT(*) as \'count\' FROM friendships where friend_id = ? OR user_id = ?;';
 	
 	private function __construct (){
 		$this->db = DBConnection::getDb();
@@ -101,5 +102,12 @@ class DbHelper {
 		$bindParams = array($newPassword,$userId);
 		$pstmt->execute ( $bindParams );
 	}
+	
+	public function countUserFollowers($userId) {
+		$bindParams = array($userId,$userId);
+		
+		return $this->exec(self::GET_USER_FOLLOWERS, $bindParams);
+	}
+	
 	
 }

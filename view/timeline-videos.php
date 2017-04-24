@@ -122,7 +122,7 @@
                   <li><a href="AboutController.php">	About</a></li>
                   <li><a href="GalleryController.php">Gallery</a></li>
                   <li><a href="VideosController.php" class="active" >Videos</a></li>
-                  <li><a href="FriendsController.php">Friends</a></li>
+                  <li><a href="Timeline-friendsController.php">Friends</a></li>
                 </ul>
                 <ul class="follow-me list-inline">
                   <li>1,299 people following her</li>
@@ -145,7 +145,7 @@
                   <li><a href="AboutController.php" >About</a></li>
                   <li><a href="GalleryController.php" >Gallery</a></li>
                   <li><a href="VideosController.php"class="active">Videos</a></li>
-                  <li><a href="FriendsController.php">Friends</a></li>
+                  <li><a href="Timeline-friendsController.php">Friends</a></li>
               </ul>
               <button class="btn-primary">Add Friend</button>
             </div>

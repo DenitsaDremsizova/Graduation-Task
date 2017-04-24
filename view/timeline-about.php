@@ -41,10 +41,12 @@
                   <li><a href="AboutController.php" class="active">	About</a></li>
                   <li><a href="GalleryController.php">Gallery</a></li>
                   <li><a href="VideosController.php">Videos</a></li>
-                  <li><a href="FriendsController.php">Friends</a></li>
+                  <li><a href="Timeline-friendsController.php">Friends</a></li>
                 </ul>
                 <ul class="follow-me list-inline">
-                  <li>1,299 people following her</li>
+                  <li><?php if(!empty($userFollowers)) {
+                  	echo $userFollowers[0]['count'];
+                  }?> Friends</li>
                   <li><button class="btn-primary">Add Friend</button></li>
                 </ul>
               </div>
@@ -68,7 +70,7 @@
                   <li><a href="AboutController.php" class="active">	About</a></li>
                   <li><a href="GalleryController.php">Gallery</a></li>
                   <li><a href="VideosController.php">Videos</a></li>
-                  <li><a href="FriendsController.php">Friends</a></li>
+                  <li><a href="Timeline-friendsController.php">Friends</a></li>
               </ul>
               <button class="btn-primary">Add Friend</button>
             </div>

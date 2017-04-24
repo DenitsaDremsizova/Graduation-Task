@@ -4,10 +4,9 @@ function __autoload($className) {
 }
 
 session_start();
-$_SESSION ['userid'] = 1; //to be deleted;
 
-if (isset ($_SESSION ['userid'] )) {
-	$userId = $_SESSION ['userid'];
+if (isset ($_SESSION ['userId'] )) {
+	$userId = $_SESSION ['userId'];
 	
 	$dao = new FriendDAO();
 	echo json_encode($dao->listAllFriends($userId));

@@ -4,8 +4,8 @@ function createRow(friend) {
         content += "<div class='card-info'>";
         content += "<img src='http://placehold.it/300x300' alt='user' class='profile-photo-lg'/>";
         content += "<div class='friend-info'>";
-        content += "<a href='#' class='pull-right text-green'>My Friend</a>";
-        content += "<h5><a href='timeline.html' class='profile-link'>" + friend.firstName + " " + friend.lastName + "</a></h5>";
+        content += "<p class='pull-right text-green'>"+ friend.country +"</p>";
+        content += "<h5><a href='AboutController.php?id=" + friend.id + "'class='profile-link'>" + friend.firstName + " " + friend.lastName + "</a></h5>";
 	content += "<p>" + friend.email + "</p>";
 	content += "</div></div></div></div>";
 	
@@ -70,6 +70,8 @@ function createRow(friend) {
 //	}
 //}
 
+
+
 function reloadTable() {
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', '../controller/FriendsController.php', true);
@@ -89,5 +91,8 @@ function reloadTable() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-	reloadTable();
+	var email = document.getElementById('searchBar').value;
+	if(email.length < 1) {
+		reloadTable();
+	}
 });
