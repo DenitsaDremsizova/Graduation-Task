@@ -3,12 +3,26 @@ function __autoload($className) {
 	require_once "../model/" . $className . '.php';
 }
 session_start();
-// $_SESSION ['userId'] = 1;
-if (!isset ($_SESSION ['userId'] )) {
-	header('Location:../HomeController.php', true, 302);
+$userId = '';
+$id='';
+if(!empty($_SESSION['userId'])) {
+	$userId = $_SESSION['userId'];
 }
-$id = $_SESSION['userId'];
+
+if(empty($_GET['id'])) {
+	$id = $userId;
+}else {
+	$id = $_GET['id'];
+	$getId=$id;
+}
+if (empty($id)) {
+	header('Location:HomeController.php');die();
+}
+
 $userFollowers = DbHelper::getInstance()->countUserFollowers($id);
+$userData = DbHelper::getInstance()->getUserData($id);
+$userAddress = DbHelper::getInstance()->getUserAddress($id);
+$age = floor((time() - strtotime($userData[0]['date_of_birth'])) / 31556926);
 // var_dump($userFollowers);die();
 if(isset($_GET['search'])) {
 	$search = $_GET['search'];

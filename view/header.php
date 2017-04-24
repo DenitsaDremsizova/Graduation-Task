@@ -63,7 +63,7 @@
             <form class="navbar-form navbar-right hidden-sm" method="GET" action="Timeline-friendsController.php">
               <div class="form-group">
                 <i class="icon ion-android-search"></i>
-                <input value="<?php if(!empty($search)) { echo $search; }?>" id="searchBar" name="search" type="text" class="form-control" placeholder="Search friends by Email" onkeyup="reloadSearchedTable(),uncheckTimeline()">
+                <input value="<?php if(!empty($search)) { echo $search; }?>" id="searchBar" name="search" type="text" class="form-control" placeholder="Search friends by Email" onkeyup="reloadSearchedTable()">
               </div>
             </form>
           </div><!-- /.navbar-collapse -->

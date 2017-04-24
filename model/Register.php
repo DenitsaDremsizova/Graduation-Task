@@ -19,7 +19,7 @@ class Register extends Action {
 		}
 	}
 	
-	public function do() {
+	public function doIt() {
 		$this->db->beginTransaction();
 		$date = $this->user->year . "-" . $this->user->month . "-" . $this->user->day;
 		// insert new row in users db

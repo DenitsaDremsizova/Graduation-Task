@@ -6,7 +6,7 @@ abstract class Action {
 	protected $db;
 	protected $user;
 	
-	abstract public function do ();
+	abstract public function doIt();
 	
 	public function __construct (User $user) {
 		$this->db = DBConnection::getDb ();

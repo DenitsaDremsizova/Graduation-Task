@@ -33,7 +33,10 @@ function reloadSearchedTable() {
 }
 
 
-
-//document.addEventListener('DOMContentLoaded', function() {
-//	reloadSearchedTable();
-//});
+window.onload = function () {
+	var email = document.getElementById('searchBar').value;
+	if(email.length > 0) {
+		reloadSearchedTable();
+	
+	}
+}

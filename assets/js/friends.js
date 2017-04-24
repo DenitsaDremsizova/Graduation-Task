@@ -74,7 +74,18 @@ function createRow(friend) {
 
 function reloadTable() {
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET', '../controller/FriendsController.php', true);
+	var url = window.location.href;
+	var position = url.search("id=");
+	
+	if(position >= 0) {
+		url = url.split("?id=");
+		url = url[url.length - 1];
+		url = '../controller/FriendsController.php?id=' + url;
+	}else {
+	url = '../controller/FriendsController.php';
+	}
+	
+	xhr.open('GET', url , true);
 
 	xhr.onload = function() {
 		if (xhr.status == 200) {

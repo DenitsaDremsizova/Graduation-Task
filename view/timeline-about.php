@@ -41,7 +41,7 @@
                   <li><a href="AboutController.php" class="active">	About</a></li>
                   <li><a href="GalleryController.php">Gallery</a></li>
                   <li><a href="VideosController.php">Videos</a></li>
-                  <li><a href="Timeline-friendsController.php">Friends</a></li>
+                  <li><a href="Timeline-friendsController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Friends</a></li>
                 </ul>
                 <ul class="follow-me list-inline">
                   <li><?php if(!empty($userFollowers)) {

@@ -14,6 +14,7 @@ if(empty($_GET['id'])) {
 	$id = $userId;
 }else {
 	$id = $_GET['id'];
+	$getId=$id;
 }
 if (empty($id)) {
 	header('Location:HomeController.php');die();

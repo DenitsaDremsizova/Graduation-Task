@@ -4,7 +4,7 @@ class Login extends Action {
 	const CHECK_EMAIL_PASSWORD = "SELECT email, id FROM users WHERE email = ? and password= ?;";
 	const CHECK_EMAIL_EXIST = "SELECT email, id FROM users WHERE email = ?;";
 	const RESET_PASSWORD = "UPDATE users SET password = ? WHERE email = ?;";
-	public function doIt() {
+	public function pravi() {
 	
 		$result = $this->exec ( self::CHECK_EMAIL_PASSWORD, array (
 				$this->user->email,

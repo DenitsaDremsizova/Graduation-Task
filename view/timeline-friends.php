@@ -17,8 +17,19 @@
               <div class="col-md-3">
                 <div class="profile-info">
                   <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo" />
-                  <h3>Sarah Cruiz</h3>
-                  <p class="text-muted">Creative Director</p>
+                  <h4>
+                  <?php
+                  if(!((empty($userData[0]['first_name'])) && ((empty([0]['last_name']))))) {
+	                  	echo $userData[0]['first_name'] . " " . $userData[0]['last_name'];
+		              echo "</h4>";
+		              echo "<p>"  . 'Age: <strong>' . $age . "</strong></p>";
+		              if(!empty($userAddress[0]['country']) && !empty($userAddress[0]['country'])) {
+		             	 echo "<p>Country: <strong>"  . $userAddress[0]['country']. "</strong></br> " . 
+		             	 "City: <strong>" . $userAddress[0]['city']. "</strong></p>";
+		              }
+                  }
+                  ?>
+                  
                 </div>
               </div>
               <div class="col-md-9">
@@ -27,7 +38,7 @@
                   <li><a href="AboutController.php" >About</a></li>
                   <li><a href="GalleryController.php">Gallery</a></li>
                   <li><a href="VideosController.php">Videos</a></li>
-                  <li><a href="Timeline-friendsController.php"class="active">Friends</a></li>
+                  <li><a href="Timeline-friendsController.php"class="<?php if(empty($search)) { echo 'active'; }?>">Friends</a></li>
                 </ul>
                 <ul class="follow-me list-inline">
                   <li><?php if(!empty($userFollowers)) {
@@ -52,7 +63,7 @@
                   <li><a href="AboutController.php">About</a></li>
                   <li><a href="GalleryController.php">Gallery</a></li>
                   <li><a href="VideosController.php">Videos</a></li>
-                  <li><a href="Timeline-friendsController.php" class="active" >Friends</a></li>
+                  <li><a href="Timeline-friendsController.php" class="<?php if(empty($search)) { echo 'active'; }?>" >Friends</a></li>
               </ul>
               <button class="btn-primary">Add Friend</button>
             </div>
@@ -90,14 +101,6 @@
       	<div class="row">
           <div class="footer-wrapper">
             <div class="col-md-3 col-sm-3">
-              <a href=""><img src="../view/images/logo-black.png" alt="" class="footer-logo" /></a>
-              <ul class="list-inline social-icons">
-              	<li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
-              	<li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
-              	<li><a href="#"><i class="icon ion-social-googleplus"></i></a></li>
-              	<li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>
-              	<li><a href="#"><i class="icon ion-social-linkedin"></i></a></li>
-              </ul>
             </div>
             <div class="col-md-2 col-sm-2">
               <h6>For individuals</h6>

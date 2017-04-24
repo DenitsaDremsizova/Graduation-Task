@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
 	
 		$userObject = new Login($loginUser);
 		
-		$userObject->do();
+		$userObject->doIt();
 		
 		$userData = $userObject->getLoggedUserData();
 		if(!$ajax) {

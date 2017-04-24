@@ -6,7 +6,7 @@ function __autoload($className) {
 
 if (isset ( $_POST ['submit'] )) {
 	function checkEmptyField($field) {
-		if(empty($_POST ["$field"])) { $_POST ["$field"] = '';} else {$_SESSION ["$field"] = $_POST ["$field"];}
+		if(empty($_POST [$field])) { $_POST [$field] = '';} else {$_SESSION [$field] = $_POST [$field];}
 	}
 	checkEmptyField('Email');
 	checkEmptyField('firstname');
@@ -39,7 +39,7 @@ if (isset ( $_POST ['submit'] )) {
 			throw new RegisterException ( "This user already exist!" );
 		}
 		
-		$userObject->do();
+		$userObject->doIt();
 		$userData = $userObject->getLoggedUserData();
 	// mk dir for uploading
 		$mkdirId = '../uploads/' . $userData[0]['id'];
@@ -53,7 +53,6 @@ if (isset ( $_POST ['submit'] )) {
 		header ( 'Location:AboutController.php' );die();
 	} catch ( Exception $e ) {
 		$_SESSION ['error'] = $e->getMessage ();
-		$this->db->rollBack();
 		header ( 'Location:HomeController.php' );die();
 	}
 
