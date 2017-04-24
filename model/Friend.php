@@ -33,12 +33,12 @@
 			return $this->$prop;
 		}
                 
-                public function __set($prop, $value) {
-			if (empty($value)) {
-				throw new FriendException('Invalid value for contact');
-			}
-			
-			$this->$prop = $value;
-		}
+//                public function __set($prop, $value) {
+//			if (empty($value)) {
+//				throw new Exception('Invalid value for contact');
+//			}
+//			
+//			$this->$prop = $value;
+//		}
 	}
 ?>
