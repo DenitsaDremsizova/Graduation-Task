@@ -11,15 +11,15 @@
 //                private $workExperience; // @var workExperience[]
 //                private $interests;
 
-		public function __construct($firstName, $lastName, $email, $id=null, $gender=null, $dateOfBirth=null, $personalInfo=null) {
+		public function __construct($id, $firstName=null, $lastName=null, $country = null, $city = null, 
+                        $email=null, $gender=null, $dateOfBirth=null, $personalInfo=null) {
 			
-			if (empty($firstName) || empty($lastName) || empty($email))
-				throw new FriendException("Invalid data"); //to review
-			
+                        $this->id = $id;
 			$this->firstName = $firstName;
 			$this->lastName = $lastName;
-			$this->email = $email;
-                        $this->id = $id;
+                        $this->country = $country;
+			$this->city = $city;
+			$this->email = $email;                      
 			$this->gender = $gender;
                         $this->dateOfBirth = $dateOfBirth;
                         $this->personalInfo = $personalInfo;

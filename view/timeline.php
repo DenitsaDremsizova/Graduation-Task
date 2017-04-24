@@ -15,8 +15,8 @@
                             <div class="col-md-3">
                                 <div class="profile-info">
                                     <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo" />
-                                    <h3>Sarah Cruiz</h3>
-                                    <p class="text-muted">Creative Director</p>
+                                    <h3><?= $timelineName ?></h3>
+                                    <p class="text-muted"><?=$timelineAddress?></p>
                                 </div>
                             </div>
                             <div class="col-md-9">
@@ -25,7 +25,7 @@
 					                  <li><a href="AboutController.php">About</a></li>
 					                  <li><a href="GalleryController.php">Gallery</a></li>
 					                  <li><a href="VideosController.php">Videos</a></li>
-					                  <li><a href="FriendsController.php">Friends</a></li>
+					                  <li><a href="Timeline-friendsController.php">Friends</a></li>
                                 </ul>
                                 <ul class="follow-me list-inline">
                                     <li>1,299 people following her</li>
@@ -39,8 +39,8 @@
                     <div class="navbar-mobile hidden-lg hidden-md">
                         <div class="profile-info">
                             <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo" />
-                            <h4>Sarah Cruiz</h4>
-                            <p class="text-muted">Creative Director</p>
+                            <h4><?= $timelineName ?></h4>
+                            <p class="text-muted"><?=$timelineAddress?>r</p>
                         </div>
                         <div class="mobile-menu">
                             <ul class="list-inline">
@@ -60,7 +60,7 @@
                         <div class="col-md-3"></div>
                         <div class="col-md-7">
 
-
+                            
                             <!-- Upload Forms
                            ================================================= -->                
                             <?php
@@ -97,7 +97,7 @@
                             </div>
                             
                             <!-- Post Create Box End-->
-
+                            
                             <!-- Error Message
                             ================================================= -->
                             <div id="tl-error-msg-box">
