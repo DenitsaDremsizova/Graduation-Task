@@ -58,3 +58,29 @@ window.onclick = function (event) {
         modalV.style.display = "none";
     }
 }
+
+// Get the modal
+var modalVideoLink = document.getElementById('video-link-form');
+
+// Get the button that opens the modal
+var btnVideoLink = document.getElementById("add-video-link-btn");
+
+// Get the <span> element that closes the modal
+var spanVideoLink = document.getElementsByClassName("close-video-link-form")[0];
+
+// When the user clicks the button, open the modal 
+btnVideoLink.onclick = function () {
+    modalVideoLink.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+spanVideoLink.onclick = function () {
+    modalVideoLink.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target === modalVideoLink) {
+        modaVideoLink.style.display = "none";
+    }
+}

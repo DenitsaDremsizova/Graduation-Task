@@ -66,6 +66,7 @@
                             <?php
                             createUploadForm("photo", $userId, $timelineId);
                             createUploadForm("video", $userId, $timelineId);
+                            createUploadForm("video-link", $userId, $timelineId);
                             ?> 
 
                             <!-- Post Create Box
@@ -87,7 +88,7 @@
 <!--                                                <li><a href="#"><i class="ion-compose"></i></a></li>-->
                                                 <li><a href="#" ><i class="ion-images" id="add-photo-btn" title="Upload Picture"></i></a></li>
                                                 <li><a href="#"><i class="ion-ios-videocam" id="add-video-btn" title="Upload Video"></i></a></li>
-                                                <li><a href="#"><i class="ion-social-youtube-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-social-youtube-outline" id="add-video-link-btn" title="Upload Video Link"></i></a></li>
 <!--                                                <li><a href="#"><i class="ion-map"></i></a></li>-->
                                             </ul>
                                             <button class="btn btn-primary pull-right" onclick="addNewPost()">Publish</button>
