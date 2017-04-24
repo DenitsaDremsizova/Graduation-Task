@@ -38,6 +38,7 @@ if (isset($_POST['submit'])) {
 		if(!$ajax) {
 			header('Location:AboutController.php');die();
 		}
+		
 	}
 	catch (Exception $e) {
 

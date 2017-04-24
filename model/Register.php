@@ -4,7 +4,7 @@ class Register extends Action {
 	const CHECK_USER_ALRADY_EXIST_SQL = "SELECT email, id FROM users WHERE email = ?;";
 	const REGISTER_NEW_USER_SQL = "INSERT into users VALUES (?,?,?,?,?,?,?,?);";
 	const GET_ALL_COUNTRIES = "SELECT * FROM countries;";
-	const GET_DATA_LOGGED_USER = 'SELECT id,first_name,last_name,gender,date_of_birth,personal_info from users WHERE email = ? AND password = ?;';
+	
 	const ADD_USER_ADDRESS = 'INSERT INTO user_address VALUES (?,?,?);';
 	
 	public function checkUserExist() {
@@ -36,9 +36,7 @@ class Register extends Action {
 		$this->exec ( self::REGISTER_NEW_USER_SQL, $userBindParams, false );
 		$this->user->setId($this->getLastInsertId());
 
-		
-		
-// 		var_dump($this->user->bornCity);die();
+		// insert new row with user address
 		$userBindParams = array (
 				$this->user->id,
 				$this->user->country,
@@ -51,7 +49,7 @@ class Register extends Action {
 		$this->logUser(self::getLoggedUserData());
 	}
 	public function getLoggedUserData() {
-		$result = $this->exec ( self::GET_DATA_LOGGED_USER, array (
+		$result = $this->exec ( Action::GET_DATA_LOGGED_USER, array (
 				$this->user->email,
 				$this->user->password
 		) );

@@ -199,10 +199,17 @@ if(empty($homeController)) {
                     </div>
                   </form>
                   <button class="btn btn-primary" name="submit" id = "loginSubmit" onclick="logIn()">Login Now</button>
+                  <p id="menu" onclick="toggleMenu()"><a href="#login" data-toggle="tab">Forgot your password?</a></p>
+						<ul id="menu-box" style="display: none">
+						  <input id="newPassEmail"class="form-control input-group-lg" type="text" placeholder="Enter your email!"/>
+						  <button class="btn btn-primary" name="submit" id = "newPasswordButton" onclick="sendNewPassword()">Send new password</button>
+						</ul>
+						<div id="newPasswordError" style="color:red">
+            
+                       </div>
                   <div id="loginError" style="color:red"></div>
                   
                   <!--Login Form Ends--> 
-                  <p><a href="#">Forgot Password?</a></p>
          
                 </div>
               </div>
@@ -214,11 +221,11 @@ if(empty($homeController)) {
           
             <!--Social Icons-->
             <ul class="list-inline social-icons">
-              <li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
-              <li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
-              <li><a href="#"><i class="icon ion-social-googleplus"></i></a></li>
-              <li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>
-              <li><a href="#"><i class="icon ion-social-linkedin"></i></a></li>
+              <li><a href="https://www.facebook.com/"><i class="icon ion-social-facebook"></i></a></li>
+              <li><a href="https://twitter.com/"><i class="icon ion-social-twitter"></i></a></li>
+              <li><a href="https://plus.google.com/"><i class="icon ion-social-googleplus"></i></a></li>
+              <li><a href="https://www.pinterest.com/"><i class="icon ion-social-pinterest"></i></a></li>
+              <li><a href="https://www.linkedin.com/"><i class="icon ion-social-linkedin"></i></a></li>
             </ul>
           </div>
         </div>

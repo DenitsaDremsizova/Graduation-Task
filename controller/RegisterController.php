@@ -41,10 +41,19 @@ if (isset ( $_POST ['submit'] )) {
 		
 		$userObject->do();
 		$userData = $userObject->getLoggedUserData();
+	// mk dir for uploading
+		$mkdirId = '../uploads/' . $userData[0]['id'];
+		$mkdirVideo = $mkdirId . '/videos';
+		$mkdirPhotos = $mkdirId . '/photos';
+		
+		mkdir($mkdirId);
+		mkdir($mkdirVideo);
+		mkdir($mkdirPhotos);
+		
 		header ( 'Location:AboutController.php' );die();
 	} catch ( Exception $e ) {
 		$_SESSION ['error'] = $e->getMessage ();
-// 		$this->db->rollBack();
+		$this->db->rollBack();
 		header ( 'Location:HomeController.php' );die();
 	}
 

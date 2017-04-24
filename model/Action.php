@@ -1,5 +1,8 @@
 <?php
 abstract class Action {
+	const GET_DATA_LOGGED_USER = 'SELECT u.id,u.first_name,u.last_name,u.gender,u.date_of_birth,u.personal_info,c.country,ua.city FROM users u
+	JOIN user_address ua ON (ua.user_id = u.id) JOIN countries c ON (ua.country_id = c.id)
+	WHERE u.email = ? AND u.password = ?;';
 	protected $db;
 	protected $user;
 	
