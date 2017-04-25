@@ -6,7 +6,7 @@ class PostDAO {
 
     const ADD_NEW_POST_INTO_POSTS_SQL = 'INSERT INTO posts (author_id, type, timeline_id) VALUES(?,?,?);';
     const ADD_NEW_POST_INTO_TEXT_POSTS_SQL = 'INSERT INTO text_posts VALUES(?,?);';
-    const ADD_NEW_POST_INTO_PHOTOS_SQL = 'INSERT INTO photos VALUES(?,?,?);';
+    const ADD_NEW_POST_INTO_PHOTOS_SQL = "INSERT INTO photos VALUES(?,?,?,'0','0');";
     const ADD_NEW_POST_INTO_UPLOADED_VIDEOS_SQL = 'INSERT INTO uploaded_videos VALUES(?,?,?);';
     const ADD_NEW_POST_INTO_VIDEO_POSTS_SQL = 'INSERT INTO video_posts VALUES(?,?,?);';
     const GET_MAX_ID_FROM_POSTS_SQL = 'SELECT MAX(id) FROM posts;';
