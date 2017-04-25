@@ -1,5 +1,6 @@
 <?php
 
+
 define ( 'DB_HOST', 'localhost' );
 define ( 'DB_NAME', 'gettogether' );
 define ( 'DB_USER', 'root' );
@@ -9,7 +10,6 @@ define ( 'DB_PASS', '' );
 // define ( 'DB_NAME', 'j7cheers_gettogether' );
 // define ( 'DB_USER', 'j7cheers_root' );
 // define ( 'DB_PASS', 'C2Fn?_FHT=,)' );
-
 
 class DBConnection {
 	private static $db = null;
