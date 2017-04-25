@@ -16,6 +16,7 @@ if (!isset($_SESSION['userId'])) {
     if (isset($_GET['timelineId'])) {
         $_SESSION['timelineId'] = $_GET['timelineId'];
     }
+    
     $timelineId = $_SESSION['timelineId'];
     $userName = $_SESSION['first_name'] . " " . $_SESSION['last_name'];
     

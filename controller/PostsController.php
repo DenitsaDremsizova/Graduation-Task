@@ -121,7 +121,7 @@ if (isset($_SESSION['userId']) && isset($_SESSION['timelineId'])) {
             }
             header('Location:./TimelineController.php?timelineId=' . $timelineId, true, 302); //to remove after refactoring
         // add new text post
-        } else {            
+        } else {
             $textPost = json_decode($_POST['data']);
 
             $newPost = new Post($textPost->authorId, $textPost->timelineId, $textPost->type, htmlentities(trim($textPost->text)));

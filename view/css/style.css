@@ -1683,8 +1683,8 @@ ul.album-photos{
   padding: 0;
   margin: 0 auto 20px;;
   display: block;
-  font-size: 0;
-  text-align: center;
+/*  font-size: 0;*/
+  text-align: center;  
 }
 
 ul.album-photos li{
@@ -1698,6 +1698,85 @@ ul.album-photos li img{
   max-width: 100%;
 }
 
+.gallery-icon {
+    display: block;
+    float: right;
+    font-size: 3em;
+    border: solid 1px #27aae1;
+    border-radius: 100%;
+    margin-left: 3%;
+    margin-top: 3%;
+    padding: 1.5%;
+    background-color: white;    
+}
+
+.prof-pic{
+  margin-right: 45%;  
+}
+
+.gallery-icon:hover {
+    color: #8DC63F;
+    border: solid 2px #8DC63F;
+}
+
+/*.img-wrapper {
+    position: relative;
+    display: inline-block; 
+    overflow: hidden; 
+}
+
+.img-wrapper img:hover {
+    opacity: 0.5
+}
+
+.img-wrapper:hover a {
+    opacity: 1; 
+    top: 0;
+    z-index: 500;
+}
+
+.img-wrapper:hover a i.ion-image {
+    font-size: 1.5em;
+    top: 10%;
+    position: absolute;
+    left: 65%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 1.25em;
+}
+
+.img-wrapper:hover a i.ion-ios-person {
+    font-size: 1.5em;
+    top: 10%;
+    position: absolute;
+    left: 90%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.img-wrapper .prof-pic {
+    display: block;
+    position: absolute;
+    top: -100%;
+    opacity: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+}
+
+.img-wrapper .cov-pic {
+    display: block;
+    position: absolute;
+    top: -50%;
+    opacity: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+}*/
 
 /*==================================================
   Contact Us
