@@ -55,7 +55,6 @@ if (isset ( $_POST ['submit'] )) {
 		$_SESSION ['error'] = $e->getMessage ();
 		header ( 'Location:HomeController.php' );die();
 	}
-
 }
 
 if (($_SERVER ['REQUEST_METHOD'] === "POST") && (! empty (file_get_contents('php://input')))) {

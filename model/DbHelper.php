@@ -8,6 +8,7 @@ class DbHelper {
 	const GET_USER_INTERESTS = 'SELECT interest,user_id FROM interests WHERE user_id = ?;';
 	const GET_USER_ADDRESS = 'SELECT c.country,ua.city FROM countries c JOIN user_address ua ON (c.id = ua.country_id) WHERE ua.user_id = ? ;';
 	const GET_USER_FOLLOWERS = 'SELECT COUNT(*) as \'count\' FROM friendships where friend_id = ? OR user_id = ?;';
+	const GET_USER_REQUESTS = 'SELECT COUNT(*) as "count" FROM friend_requests WHERE reciever_id = ?;';
 	
 	private function __construct (){
 		$this->db = DBConnection::getDb();
@@ -107,6 +108,11 @@ class DbHelper {
 		$bindParams = array($userId,$userId);
 		
 		return $this->exec(self::GET_USER_FOLLOWERS, $bindParams);
+	}
+	
+	public function countUserRequests($userId) {
+		$bindParams = array($userId);
+		return $this->exec(self::GET_USER_REQUESTS, $bindParams);
 	}
 	
 	

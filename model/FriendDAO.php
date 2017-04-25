@@ -19,6 +19,16 @@ class FriendDAO {
              JOIN user_address ua ON (u.id=ua.user_id)
              JOIN countries c ON (ua.country_id = c.id)
 			WHERE u.email LIKE ? ORDER BY u.first_name;';
+	const GET_USER_FRIEND_REQUESTS = 'SELECT u. id, u.first_name, u.last_name,c.country,ua.city, u.email, u.gender, u.date_of_birth, u.personal_info
+             FROM users u JOIN friend_requests f ON (f.sender_id = u.id) JOIN user_address ua ON (u.id = ua.user_id)
+             JOIN countries c ON (ua.country_id = c.id)
+             WHERE f.reciever_id = ?;';
+	const CHECK_IF_IN_FRIENDS_REQUEST_LIST_SQL = "SELECT u. id, u.first_name, u.last_name,c.country,ua.city, u.email, u.gender, u.date_of_birth, u.personal_info
+             FROM users u JOIN friend_requests f ON (f.sender_id = u.id) JOIN user_address ua ON (u.id = ua.user_id)
+             JOIN countries c ON (ua.country_id = c.id) 
+             WHERE f.reciever_id = ? AND f.sender_id = ?;";
+					
+					
 					
 					public function __construct() {
 						$this->db = DBConnection::getDb();
@@ -75,7 +85,58 @@ class FriendDAO {
 						}
 						return false;
 					}
+					public function listUserFriendRequests($userId) {
+						$pstmt = $this->db->prepare(self::GET_USER_FRIEND_REQUESTS);
+						$pstmt->execute(array($userId));
+						
+						$friends = $pstmt->fetchAll(PDO::FETCH_ASSOC);
+						$result = array();
+						
+						foreach ($friends as $friend) {
+							$result[] = new Friend($friend['id'], $friend['first_name'], $friend['last_name'],
+									$friend['country'],$friend['city'],$friend['email'], $friend['gender'], $friend['date_of_birth'], $friend['personal_info']);
+						}
+						
+						return $result;
+					}
 					
+					public function checkIfInFriendRequestList($userId,$friendId) {
+						$pstmt = $this->db->prepare(self::CHECK_IF_IN_FRIENDS_REQUEST_LIST_SQL);
+						$pstmt->execute(array($userId, $friendId));
+						
+						$friends = $pstmt->fetchAll(PDO::FETCH_ASSOC);
+						
+						if (count($friends) > 0) {
+							return true;
+						}
+						return false;
+					}
+					public function deleteFriendRequest ($senderId,$recieverid) {
+						$sql = 'DELETE FROM friend_requests WHERE sender_id = ? AND reciever_id = ? ;';
+						$pstmt = $this->db->prepare ( $sql );
+						$bindParams = array($senderId,$recieverid);
+						$pstmt->execute ( $bindParams );
+					}
+					
+					public function acceptFriendRequest ($userId,$friendId,$date) {
+						$sql = SELF::ADD_NEW_FRIEND_SQL;
+						$pstmt = $this->db->prepare ( $sql );
+						$bindParams = array($userId,$friendId,$date);
+						$pstmt->execute ( $bindParams );
+					}
+					
+					public function addNewFriend ($senderId,$recieverid,$userId,$friendId,$date) {
+						try {
+							$this->db->beginTransaction();
+							$this->deleteFriendRequest($senderId, $recieverid);
+							$this->acceptFriendRequest($userId, $friendId, $date);
+							$this->db->commit();
+						}
+						catch (Exception $e) {
+							echo $e->getMessage();
+							$this->db->rollBack();
+						}
+					}
 }
 
 ?>

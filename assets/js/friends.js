@@ -1,3 +1,11 @@
+function initAjax(url, method)
+{
+	var xhr = new XMLHttpRequest();
+	xhr.open(method, url, true);
+	
+	return xhr;
+}
+
 function createRow(friend) {
 	var content = "<div class='col-md-6 col-sm-6'> <div class='friend-card'>";
 	content += "<img src='http://placehold.it/1030x360' alt='profile-cover' class='img-responsive cover' />";
@@ -12,65 +20,69 @@ function createRow(friend) {
 	return content;
 }
 
-//var editMode = false;
-//var editcontactId;
-//
-//function editContact(id, name, phone, email) {
-//	document.getElementById('name').value = name;
-//	document.getElementById('phone').value  = phone;
-//	document.getElementById('mail').value  = email;
-//	
-//	document.getElementById('editOrSave').value = 'Update Contact';
-//	editMode = true;
-//	editcontactId = id;
-//}
+function createRequestRow (friend) {
+	var content = "<div class='col-md-6 col-sm-6'> <div class='friend-card'>";
+	content += "<img src='http://placehold.it/1030x360' alt='profile-cover' class='img-responsive cover' />";
+        content += "<div class='card-info'>";
+        content += "<img src='http://placehold.it/300x300' alt='user' class='profile-photo-lg'/>";
+        content += "<div class='friend-info'>";
+        content += "<p class='pull-right text-green'>"+ friend.country +"</p>";
+        content += "<h5><a href='AboutController.php?id=" + friend.id + "'class='profile-link'>" + friend.firstName + " " + friend.lastName + "</a></h5>";
+	content += "<p>" + friend.email + "</p>";
+	content += "<span style='color:green' onclick=\"addNewFrined(" + friend.id + ")\" onmouseover=\"this.style.cursor='pointer'\">Confirm </span>" +
+			"<br/><span onmouseover=\"this.style.cursor='pointer'\" style='color:red' onclick=\"deleteFriendRequest(" + friend.id + ")\"> Delete Request</span>";
+	content += "</div></div></div></div>";
+	
+	return content;
+}
 
-//function deleteContact(id) {
-//	var xhr = new XMLHttpRequest();
-//	xhr.open('DELETE', '../controller/ContactsController.php', true);
-//	xhr.send('id='+id);
-//	
-//	xhr.onload =  function() {
-//		if (xhr.status == 200) {
-//			reloadTable();
-//		}
-//	}
-//}
+function deleteFriendRequest (id) {
+	var xhr = initAjax('../controller/AcceptFriendRequestController.php', 'POST');
+	xhr.send(id);
+	xhr.onload =  function() {
+		if (xhr.status == 200) {
+			location.reload();
+		}
+	}
+}
+function addNewFrined (id) {
+	var xhr = initAjax('../controller/AcceptFriendRequestController.php', 'POST');
+	xhr.send(id);
+	xhr.onload =  function() {
+		if (xhr.status == 200) {
+			location.reload();
+		}
+	}
+}
 
-//function addNewContact() {
-//	var name = document.getElementById('name').value;
-//	var phone = document.getElementById('phone').value;
-//	var email = document.getElementById('mail').value;
-//
-//	// .... validation ...
-//
-//	var newContact = {
-//		name: name,
-//		phone: phone,
-//		email: email
-//	};
-//	
-//	if (editMode) {
-//		newContact.id = editcontactId;
-//	}
-//	
-//	var xhr = new XMLHttpRequest();
-//	xhr.open('POST', '../controller/ContactsController.php', true);
-//	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//	xhr.send('data='+JSON.stringify(newContact));
-//	
-//	xhr.onload =  function() {
-//		if (xhr.status == 200) {
-//			if (!editMode)
-//				document.getElementById('table').innerHTML += createRow(newContact);
-//			
-//			document.getElementById('result').innerHTML = xhr.responseText;
-//			reloadTable();
-//		}
-//	}
-//}
+function reloadRequestTable() {
+	var xhr = new XMLHttpRequest();
+	var url = window.location.href;
+	var position = url.search("id=");
+	
+	if(position >= 0) {
+		url = url.split("?id=");
+		url = url[url.length - 1];
+		url = '../controller/FriendsRequestsController.php?id=' + url;
+	}else {
+	url = '../controller/FriendsRequestsController.php';
+	}
+	
+	xhr.open('GET', url , true);
 
-
+	xhr.onload = function() {
+		if (xhr.status == 200) {
+			var data = JSON.parse(xhr.responseText);
+			var content = '';
+			for (var i = 0; i < data.length; i++) {
+				content += createRequestRow(data[i]);
+			}
+			document.getElementById('friends-table').innerHTML = '';
+			document.getElementById('friends-request-table').innerHTML = content;
+		}
+	}
+	xhr.send(null);
+}
 
 function reloadTable() {
 	var xhr = new XMLHttpRequest();
@@ -107,3 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		reloadTable();
 	}
 });
+
+
+
+

@@ -22,7 +22,10 @@ if (empty($id)) {
 $userFollowers = DbHelper::getInstance()->countUserFollowers($id);
 $userData = DbHelper::getInstance()->getUserData($id);
 $userAddress = DbHelper::getInstance()->getUserAddress($id);
+$userFriendsRequests = DbHelper::getInstance()->countUserRequests($id);
+// var_dump($userFriendsRequests);die();
 $age = floor((time() - strtotime($userData[0]['date_of_birth'])) / 31556926);
+
 // var_dump($userFollowers);die();
 if(isset($_GET['search'])) {
 	$search = $_GET['search'];

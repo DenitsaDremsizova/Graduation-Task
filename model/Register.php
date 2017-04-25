@@ -20,6 +20,7 @@ class Register extends Action {
 	}
 	
 	public function doIt() {
+		try {
 		$this->db->beginTransaction();
 		$date = $this->user->year . "-" . $this->user->month . "-" . $this->user->day;
 		// insert new row in users db
@@ -47,6 +48,10 @@ class Register extends Action {
 		
 		$this->db->commit();
 		$this->logUser(self::getLoggedUserData());
+		}
+		catch (Exception $e) {
+			$this->db->rollBack();
+		}
 	}
 	public function getLoggedUserData() {
 		$result = $this->exec ( Action::GET_DATA_LOGGED_USER, array (

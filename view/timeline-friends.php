@@ -39,6 +39,7 @@
                   <li><a href="GalleryController.php">Gallery</a></li>
                   <li><a href="VideosController.php">Videos</a></li>
                   <li><a href="Timeline-friendsController.php"class="<?php if(empty($search)) { echo 'active'; }?>">Friends</a></li>
+                  <li><a onmouseover="this.style.cursor='pointer'" onclick="this.className = 'active',reloadRequestTable()">Friends Requests <span style="color:red"><?php echo $userFriendsRequests[0]['count']; ?></span></a></li>
                 </ul>
                 <ul class="follow-me list-inline">
                   <li><?php if(!empty($userFollowers)) {
@@ -77,6 +78,12 @@
 
               <!-- Friend List
               ================================================= -->
+              <div class="friend-list">
+                <div class="row" id="friends-request-table">                                  
+                  <!-- data derived from friends.js -->
+                                        
+                </div>
+              </div>   
               <div class="friend-list">
                 <div class="row" id="friends-table">                                  
                   <!-- data derived from friends.js -->
