@@ -8,7 +8,7 @@ $id='';
 if(!empty($_SESSION['userId'])) {
 	$userId = $_SESSION['userId'];
 }
-
+$getId = $_SESSION['userId'];
 if(empty($_GET['id'])) {
 	$id = $userId;
 }else {
@@ -18,6 +18,14 @@ if(empty($_GET['id'])) {
 if (empty($id)) {
 	header('Location:HomeController.php');die();
 }
+
+	$dao = new FriendDAO();
+echo $getId;
+	$checkIfInFriendsList = $dao->checkIfInFriendsList($userId,$getId);
+	var_dump($checkIfInFriendsList);
+	$checkIfInFriendRequestList = $dao->checkIfInFriendRequestList($userId,$getId);
+	var_dump($checkIfInFriendRequestList);
+	
 
 $userFollowers = DbHelper::getInstance()->countUserFollowers($id);
 $userData = DbHelper::getInstance()->getUserData($id);

@@ -8,7 +8,7 @@ if(empty($_SESSION['userId'])) {
 	header ( 'Location:Timeline-friendsController.php' );die();
 }
 $id = $_SESSION['userId'];
-if($_SERVER ['REQUEST_METHOD'] === 'POST') {
+if($_SERVER ['REQUEST_METHOD'] === 'DELETE') {
 	$friendId= file_get_contents('php://input');
 	try {
 	
@@ -20,8 +20,7 @@ if($_SERVER ['REQUEST_METHOD'] === 'POST') {
 
 	if($checkIfInFriendRequestList && !$checkIfInFriendsList) {
 
-		$date = date("Y-m-d");
-		$dao->addNewFriend($friendId,$id,$id,$friendId,$date);
+		$dao->deleteFriendRequest ($friendId,$id);
 
 	}
 	} catch ( Exception $e ) {

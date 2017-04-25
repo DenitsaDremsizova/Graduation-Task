@@ -39,13 +39,25 @@
                   <li><a href="GalleryController.php">Gallery</a></li>
                   <li><a href="VideosController.php">Videos</a></li>
                   <li><a href="Timeline-friendsController.php"class="<?php if(empty($search)) { echo 'active'; }?>">Friends</a></li>
+                  <?php if ($userId === $getId){?>
                   <li><a onmouseover="this.style.cursor='pointer'" onclick="this.className = 'active',reloadRequestTable()">Friends Requests <span style="color:red"><?php echo $userFriendsRequests[0]['count']; ?></span></a></li>
+                  <?php } ?>
                 </ul>
                 <ul class="follow-me list-inline">
                   <li><?php if(!empty($userFollowers)) {
                   	echo $userFollowers[0]['count'];
                   }?> Friends</li>
-                  <li><button class="btn-primary">Add Friend</button></li>
+                  <?php 
+                  if ($getId !== $userId) {
+                  	if(!$checkIfInFriendRequestList && !$checkIfInFriendsList) {
+                  ?>
+                  <li><button class="btn-primary" onclick='sendFriendRequest(<?= $getId ?>)'>Add Friend</button></li>
+        			<?php }
+        			if($checkIfInFriendsList) {
+        			?>
+                   <li><button class="btn-primary" style="background-color:red" onclick='deleteFriend(<?= $getId ?>)'>Delete Friend</button></li>
+          			<?php }}
+          			?>
                 </ul>
               </div>
             </div>
@@ -65,8 +77,19 @@
                   <li><a href="GalleryController.php">Gallery</a></li>
                   <li><a href="VideosController.php">Videos</a></li>
                   <li><a href="Timeline-friendsController.php" class="<?php if(empty($search)) { echo 'active'; }?>" >Friends</a></li>
-              </ul>
-              <button class="btn-primary">Add Friend</button>
+             
+               <?php 
+                  if ($getId !== $userId) {
+                  	if(!$checkIfInFriendRequestList && !$checkIfInFriendsList) {
+                  ?>
+                  <li><button class="btn-primary" onclick='sendFriendRequest(<?= $getId ?>)'>Add Friend</button></li>
+        			<?php }
+        			if($checkIfInFriendsList) {
+        			?>
+                   <li><button class="btn-primary" style="background-color:red" onclick='deleteFriend(<?= $getId ?>)'>Delete Friend</button></li>
+          			<?php }}
+          			?>
+          			 </ul>
             </div>
           </div><!--Timeline Menu for Small Screens End-->
 

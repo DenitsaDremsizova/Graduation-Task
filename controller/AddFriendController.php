@@ -7,7 +7,7 @@ session_start ();
 if(empty($_SESSION['userId'])) {
 	header ( 'Location:Timeline-friendsController.php' );die();
 }
-$id = $_SESSION['userId'];
+$userId = $_SESSION['userId'];
 if($_SERVER ['REQUEST_METHOD'] === 'POST') {
 	$friendId= file_get_contents('php://input');
 	try {
@@ -15,13 +15,12 @@ if($_SERVER ['REQUEST_METHOD'] === 'POST') {
 	$dao = new FriendDAO();
 
 	
-	$checkIfInFriendsList = $dao->checkIfInFriendsList($id,$friendId);
-	$checkIfInFriendRequestList = $dao->checkIfInFriendRequestList($id,$friendId);
+	$checkIfInFriendsList = $dao->checkIfInFriendsList($userId,$friendId);
+	$checkIfInFriendRequestList = $dao->checkIfInFriendRequestList($userId,$friendId);
 
-	if($checkIfInFriendRequestList && !$checkIfInFriendsList) {
+	if(!$checkIfInFriendRequestList && !$checkIfInFriendsList) {
 
-		$date = date("Y-m-d");
-		$dao->addNewFriend($friendId,$id,$id,$friendId,$date);
+		$dao->sendFriendRequest($userId,$friendId);
 
 	}
 	} catch ( Exception $e ) {

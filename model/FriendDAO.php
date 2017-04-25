@@ -26,8 +26,8 @@ class FriendDAO {
 	const CHECK_IF_IN_FRIENDS_REQUEST_LIST_SQL = "SELECT u. id, u.first_name, u.last_name,c.country,ua.city, u.email, u.gender, u.date_of_birth, u.personal_info
              FROM users u JOIN friend_requests f ON (f.sender_id = u.id) JOIN user_address ua ON (u.id = ua.user_id)
              JOIN countries c ON (ua.country_id = c.id) 
-             WHERE f.reciever_id = ? AND f.sender_id = ?;";
-					
+             WHERE (f.reciever_id = ? AND f.sender_id = ?) OR (f.reciever_id = ? AND f.sender_id = ?);";
+	const SEND_FRIEND_REQUEST_SQL = 'INSERT INTO friend_requests VALUES (?,?);';
 					
 					
 					public function __construct() {
@@ -102,7 +102,7 @@ class FriendDAO {
 					
 					public function checkIfInFriendRequestList($userId,$friendId) {
 						$pstmt = $this->db->prepare(self::CHECK_IF_IN_FRIENDS_REQUEST_LIST_SQL);
-						$pstmt->execute(array($userId, $friendId));
+						$pstmt->execute(array($userId, $friendId,$friendId,$userId));
 						
 						$friends = $pstmt->fetchAll(PDO::FETCH_ASSOC);
 						
@@ -111,6 +111,19 @@ class FriendDAO {
 						}
 						return false;
 					}
+					public function deleteFriend ($userId,$id) {
+						$sql = 'DELETE FROM friendships WHERE (user_id = ? AND friend_id = ?) OR (user_id = ? AND friend_id = ?) ;';
+						$pstmt = $this->db->prepare ( $sql );
+						$bindParams = array($userId,$id,$id,$userId);
+						$pstmt->execute ( $bindParams );
+					}
+					public function sendFriendRequest ($userId,$friendId) {
+						$sql = SELF::SEND_FRIEND_REQUEST_SQL;
+						$pstmt = $this->db->prepare ( $sql );
+						$bindParams = array($userId,$friendId);
+						$pstmt->execute ( $bindParams );
+					}
+					
 					public function deleteFriendRequest ($senderId,$recieverid) {
 						$sql = 'DELETE FROM friend_requests WHERE sender_id = ? AND reciever_id = ? ;';
 						$pstmt = $this->db->prepare ( $sql );

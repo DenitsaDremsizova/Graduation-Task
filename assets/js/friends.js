@@ -37,6 +37,28 @@ function createRequestRow (friend) {
 }
 
 function deleteFriendRequest (id) {
+	var xhr = initAjax('../controller/DeleteFriendRequestController.php', 'DELETE');
+	xhr.send(id);
+	
+	xhr.onload =  function() {
+		if (xhr.status == 200) {
+			location.reload();
+		}
+	}
+}
+
+function deleteFriend (id) {
+	var xhr = initAjax('../controller/DeleteFriendController.php', 'DELETE');
+	xhr.send(id);
+	
+	xhr.onload =  function() {
+		if (xhr.status == 200) {
+			location.reload();
+		}
+	}
+}
+
+function addNewFrined (id) {
 	var xhr = initAjax('../controller/AcceptFriendRequestController.php', 'POST');
 	xhr.send(id);
 	xhr.onload =  function() {
@@ -45,8 +67,8 @@ function deleteFriendRequest (id) {
 		}
 	}
 }
-function addNewFrined (id) {
-	var xhr = initAjax('../controller/AcceptFriendRequestController.php', 'POST');
+function sendFriendRequest (id) {
+	var xhr = initAjax('../controller/AddFriendController.php', 'POST');
 	xhr.send(id);
 	xhr.onload =  function() {
 		if (xhr.status == 200) {
