@@ -16,7 +16,9 @@
             <div class="row">
               <div class="col-md-3">
                 <div class="profile-info">
-                  <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo" />
+                   <div id="profile-photo-large-scr"> 
+                        <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo" />
+                   </div>
                   <h4>
                   <?php
                   if(!((empty($userData[0]['first_name'])) && ((empty([0]['last_name']))))) {
@@ -66,7 +68,9 @@
           <!--Timeline Menu for Small Screens-->
           <div class="navbar-mobile hidden-lg hidden-md">
             <div class="profile-info">
-              <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo" />
+                <div id="profile-photo-small-scr">
+                    <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo" />
+                </div>
               <h4>Sarah Cruiz</h4>
               <p class="text-muted">Creative Director</p>
             </div>
@@ -186,9 +190,9 @@
     <script src="../view/js/bootstrap.min.js"></script>
     <script src="../view/js/jquery.sticky-kit.min.js"></script>
     <script src="../view/js/jquery.scrollbar.min.js"></script>
-    <script src="../view/js/script.js"></script>
-    
+    <script src="../view/js/script.js"></script>    
     <script src="../assets/js/friends.js"></script>
     <script src="../assets/js/search.js"></script>
+    <script src="../assets/js/profile-pic.js" type="text/javascript"></script>
   </body>
 </html>

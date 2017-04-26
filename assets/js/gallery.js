@@ -6,14 +6,11 @@ function createPhoto(photo) {
     photoHTML += "<div class='modal fade photo-" + photo.numberInGallery + "' tabindex='-1' role='dialog' aria-hidden='true'>";
     photoHTML += "<div class='modal-dialog modal-lg'>";
     photoHTML += "<div class='modal-content'>";
-    photoHTML += "<img src='" + photo.file + "' alt='photo' /></div>";
-    photoHTML += "<a class='gallery-icon prof-pic' href='#' id='prof-pic-9'><i class='ion-ios-person' id='photo-id-" + photo.id + "' title='Set as profile pic'></i></a>";
-    photoHTML += "<form id='form-prof-pic-" + photo.id + "' method='post' action='../controller/GalleryController.php'>";
-    photoHTML += "<input type='hidden' name='new-prof-pic' id='new-prof-pic-" + photo.id + "' value='" + photo.id + "'></form>";
-    photoHTML += "<a class='gallery-icon cov-pic' href='#' id='prof-pic-'" + photo.id + "><i class='ion-image' id='cov-pic-" + photo.id + "' title='Set as cover pic'></i></a>";
-    photoHTML += "<form id='form-prof-pic-" + photo.id + "' method='post' action='../controller/GalleryController.php'>";
-    photoHTML += "<input type='hidden' name='new-prof-pic' id='new-prof-pic-" + photo.id + "' value='" + photo.id + "'></form>";     
-    photoHTML += "</div></div>";
+    photoHTML += "<img src='" + photo.file + "' alt='photo' />";
+    photoHTML += "<a class='gallery-icon prof-pic' href='#' id='prof-pic-" + photo.id + "' onclick='setProfilePic(" + photo.id + ")'><i class='ion-ios-person' id='photo-id-" + photo.id + "' title='Set as profile pic'></i></a>";
+    photoHTML += "<a class='gallery-icon cov-pic' href='#' id='prof-pic-" + photo.id + "' onclick='setCoverPic(" + photo.id + ")'><i class='ion-image' id='cov-pic-" + photo.id + "' title='Set as cover pic'></i></a>";    
+    photoHTML += "</div></div></div>";
+    
     return photoHTML;
 }
 
@@ -40,6 +37,30 @@ document.addEventListener('DOMContentLoaded', function () {
     reloadGallery();
 });
 
+function setProfilePic(picId) {
+//    var text = document.getElementById("exampleTextarea").value;
+//    var authorId = document.getElementById("authorId").value;
+//    var timelineId = document.getElementById("timelineId").value;
+//    document.getElementById("exampleTextarea").value = "";
 
+    
+
+    var newProfPic = {
+            id: picId
+        };
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '../controller/PhotoListController.php', true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send('data=' + JSON.stringify(newProfPic));
+
+        xhr.onload = function () {
+            if (xhr.status == 200) {
+//                document.getElementById('testId').innerHTML = newProfPic.id; 
+                location.reload();
+            }
+        }
+    
+}
 
 

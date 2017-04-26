@@ -63,7 +63,8 @@
           <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-7">
-
+               
+                <p class="novclas" id="testId"></p>
               <!-- Photo Album
               ================================================= -->
               <ul class="album-photos" id="album-photos">

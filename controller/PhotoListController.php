@@ -7,14 +7,18 @@ function __autoload($className) {
 session_start();
 
 if (isset($_SESSION['userId'])) {
-    $userId = $_SESSION['userId']+0;
+    $userId = $_SESSION['userId'];
     
     $dao = new PhotoDAO();
     
-    //if ($_SERVER ['REQUEST_METHOD'] === 'GET') {
-        
+    if ($_SERVER ['REQUEST_METHOD'] === 'GET') {        
         // list all photos
         echo json_encode($dao->listAllPhotos($userId));
-    //}
+    } elseif ($_SERVER ['REQUEST_METHOD'] === 'POST') {
+        $data = json_decode($_POST['data']);
+        $newProfPicId = $data->id;
+        $dao->updateProfilePic($userId, $newProfPicId);
+        $newProfilePicture = $dao->getProfilePic($userId);
+    }
 }
 
