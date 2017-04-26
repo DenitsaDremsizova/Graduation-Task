@@ -4,7 +4,6 @@
 
         <div class="container">
             <input type="hidden" name="getId" id="getId" value="<?= $getId ?>">
-			<?php echo $getId;?>
             <!-- Timeline
             ================================================= -->
             <div class="timeline">
