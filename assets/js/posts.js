@@ -5,10 +5,10 @@ function createPost(post) {
     content += "<div class='post-date hidden-xs hidden-sm'>";
     content += "<h5> </h5><p class='text-grey'></p> </div>";
     content += "<div class='post-container'>";
-    content += "<img src='http://placehold.it/300x300' alt='user' class='profile-photo-md pull-left' />";
+    content += "<img src='" + post.profilePicture + "' alt='user' class='profile-photo-md pull-left' />";
     content += "<div class='post-detail'>";
     content += "<div class='user-info'>";
-    content += "<h5><a href='?timelineId=" + post.authorId + "' class='profile-link'>" + post.authorName + "</a> <span class='following'></span></h5>";
+    content += "<h5><a href='?id=" + post.authorId + "' class='profile-link'>" + post.authorName + "</a> <span class='following'></span></h5>";
     content += "<p class='text-muted'>" + post.timestamp + "</p></div></div></div>";
 
     content += "<div class='post-text'>";
@@ -43,7 +43,7 @@ function createPost(post) {
     for (var i = 0; i < post.comments.length; i++) {
         content += "<div class='post-comment'>";
         content += "<img src='http://placehold.it/300x300' alt='' class='profile-photo-sm' />";
-        content += "<p><a href='?timelineId=" + post.comments[i].author_id + "' class='profile-link'>" + post.comments[i].commentor_name + "</a><br/>" + post.comments[i].text + "</p></div>";
+        content += "<p><a href='?id=" + post.comments[i].author_id + "' class='profile-link'>" + post.comments[i].commentor_name + "</a><br/>" + post.comments[i].text + "</p></div>";
         content += "<a class='btn text-green'><i class='icon ion-thumbsup'></i> 49</a>";
         content += "<a class='btn text-red'><i class='fa fa-thumbs-down'></i> 0</a></div>";
     }
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function addNewPost() {
     var text = document.getElementById("exampleTextarea").value;
     var authorId = document.getElementById("authorId").value;
-    var timelineId = document.getElementById("timelineId").value;
+    var getId = document.getElementById("getId").value;
     document.getElementById("exampleTextarea").value = "";
 
     if (text.length < 1) {
@@ -88,7 +88,7 @@ function addNewPost() {
         var newPost = {
             text: text,
             authorId: authorId,
-            timelineId: timelineId,
+            getId: getId,
             type: "text_posts"
         };
 
