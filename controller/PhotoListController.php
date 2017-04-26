@@ -18,9 +18,15 @@ if (isset($_SESSION['userId'])) {
         echo json_encode($dao->listAllPhotos($getId));
     } elseif ($_SERVER ['REQUEST_METHOD'] === 'POST') {
         $data = json_decode($_POST['data']);
-        $newProfPicId = $data->id;
-        $dao->updateProfilePic($userId, $newProfPicId);
-        $newProfilePicture = $dao->getProfilePic($userId);
+        if ($data->type == "profilePic") {
+            $newProfPicId = $data->id;
+            $dao->updateProfilePic($userId, $newProfPicId);
+            $newProfilePicture = $dao->getProfilePic($userId);
+        } elseif ($data->type == "coverPic") {
+            $newCovPicId = $data->id;
+            $dao->updateCoverPic($userId, $newCovPicId);
+            $newCoverPicture = $dao->getCoverPic($userId);
+        }
     }
 }
 } catch (PDOException $e) {
