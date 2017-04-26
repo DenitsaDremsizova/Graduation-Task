@@ -11,7 +11,7 @@
       ================================================= -->
       <div class="timeline">
         <input type="hidden" name="getId" id="getId" value="<?= $getId ?>">
-        <div class="timeline-cover">
+        <div class="timeline-cover" id="timeline-cover">
 
           <!--Timeline Menu for Large Screens-->
           <div class="timeline-nav-bar hidden-sm hidden-xs">

@@ -8,7 +8,7 @@
             <!-- Timeline
             ================================================= -->
             <div class="timeline">
-                <div class="timeline-cover">
+                <div class="timeline-cover" id="timeline-cover">
 
                     <!--Timeline Menu for Large Screens-->
                     <div class="timeline-nav-bar hidden-sm hidden-xs">
