@@ -101,13 +101,17 @@ class PostDAO {
         $result = array();
 
         foreach ($posts as $post) {
+            $photoDAO = new PhotoDAO();
+            $profPicObject = $photoDAO->getProfilePic($post['author_id']);
+            $profilePictureFile = $profPicObject->file;
+                        
             $pstmt2 = $this->db->prepare(self::GET_ALL_COMMENTS_OF_POST_SQL);
             $pstmt2->execute(array($post['id']));
-
-            $post['comments'] = $pstmt2->fetchAll(PDO::FETCH_ASSOC);
+                       
+            $post['comments'] = $pstmt2->fetchAll(PDO::FETCH_ASSOC);                                           
 
             if ($post['type'] === 'text_posts') {
-                $result[] = new Post($post['author_id'], $post['timeline_id'], $post['type'], $post["tp-text"], $post['date_time'], $post['author_name'], $post['id'], $post['comments']);
+                $result[] = new Post($post['author_id'], $post['timeline_id'], $post['type'], $post["tp-text"], $post['date_time'], $post['author_name'], $post['id'], $post['comments'], $profilePictureFile);
             } else {
                 if ($post['type'] === 'video_posts') {
                     $source = $post['link'];
@@ -119,7 +123,7 @@ class PostDAO {
                     $source = $post['uv-file'];
                     $text = $post['uv-text'];
                 }
-                $result[] = new MediaPost($post['author_id'], $post['timeline_id'], $post['type'], $text, $post['date_time'], $post['author_name'], $post['id'], $post['comments'], $source);
+                $result[] = new MediaPost($post['author_id'], $post['timeline_id'], $post['type'], $text, $post['date_time'], $post['author_name'], $post['id'], $post['comments'], $profilePictureFile, $source);
             }
         }
         return $result;

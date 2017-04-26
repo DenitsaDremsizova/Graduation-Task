@@ -6,18 +6,22 @@ function __autoload($className) {
 
 session_start();
 
-if (isset($_SESSION['userId']) && isset($_SESSION['timelineId'])) {
+if (isset($_SESSION['userId'])) {
     $userId = $_SESSION['userId'];
-    $timelineId = $_SESSION['timelineId'];
+    if(isset($_GET['id'])) {
+        $getId = $_GET['id'];
+    } else {
+        $getId = $userId;
+    }
 
     $dao = new PostDAO();
 
     if ($_SERVER ['REQUEST_METHOD'] === 'POST') {
 
         //validate if user is allowed to post on timeline:
-        if ($userId !== $timelineId) {
+        if ($userId !== $getId) {
             $daoFriend = new FriendDAO;
-            if (!($daoFriend->checkIfInFriendsList($userId, $timelineId))) {
+            if (!($daoFriend->checkIfInFriendsList($userId, $getId))) {
                 throw new Exception('You are not alllowed to post on the timeline of people outside your friends list.');
             }
         }
@@ -32,7 +36,7 @@ if (isset($_SESSION['userId']) && isset($_SESSION['timelineId'])) {
                 $fileOriginalName = $_FILES['uploaded-photo']['name'];
                 $requiredMIMEtype = 'image';
                 $authorId = $_POST['uploaded-photo-authorId'];
-                $timelineId = $_POST['uploaded-photo-timelineId'];
+                $getId = $_POST['uploaded-photo-getId'];
                 $type = 'photos';
                 $text = htmlentities(trim($_POST['uploaded-photo-text']));
             } elseif ($fileType === 'video') {
@@ -40,7 +44,7 @@ if (isset($_SESSION['userId']) && isset($_SESSION['timelineId'])) {
                 $fileOriginalName = $_FILES['uploaded-video']['name'];
                 $requiredMIMEtype = 'video';
                 $authorId = $_POST['uploaded-video-authorId'];
-                $timelineId = $_POST['uploaded-video-timelineId'];
+                $getId = $_POST['uploaded-video-getId'];
                 $type = 'uploaded_videos';
                 $text = htmlentities(trim($_POST['uploaded-video-text']));
             }
@@ -59,7 +63,7 @@ if (isset($_SESSION['userId']) && isset($_SESSION['timelineId'])) {
 
                         //send data to PostDAO.php to add post to DB:
 
-                        $newPost = new Post($authorId, $timelineId, $type, $text);
+                        $newPost = new Post($authorId, $getId, $type, $text);
                         $newPost->extension = $extension;
                         $newDAO = new PostDAO();
                         $newDAO->addPost($newPost);
@@ -89,7 +93,7 @@ if (isset($_SESSION['userId']) && isset($_SESSION['timelineId'])) {
                 $_SESSION['error-msg'] = $e->getMessage();
             } finally {
                 //go to timeline:
-                header('Location:./TimelineController.php?timelineId=' . $timelineId, true, 302);
+                header('Location:./TimelineController.php?getId=' . $getId, true, 302);
             }
         }
 
@@ -102,14 +106,14 @@ if (isset($_SESSION['userId']) && isset($_SESSION['timelineId'])) {
         //upload video link:    
         } elseif (isset($_POST['upload-video-link'])) {
             $authorId = $_POST['uploaded-video-link-authorId'];
-            $timelineId = $_POST['uploaded-video-link-timelineId'];
+            $getId = $_POST['uploaded-video-link-getId'];
             $type = 'video_posts';
             $text = htmlentities(trim($_POST['uploaded-video-link-text']));
             $link = htmlentities(trim($_POST['uploaded-video-link']));
             
             if ($link !== "" && $link !== null) {
                 if (substr($link, 0, 24) === 'https://www.youtube.com/' || substr($link, 0, 22) === 'https://www.vbox7.com/') {
-                    $newPost = new Post($authorId, $timelineId, $type, $text);
+                    $newPost = new Post($authorId, $getId, $type, $text);
                     $newPost->link = $link;
                     $newDAO = new PostDAO();
                     $newDAO->addPost($newPost);
@@ -119,18 +123,18 @@ if (isset($_SESSION['userId']) && isset($_SESSION['timelineId'])) {
             } else {
                 throw new Exception("You haven't added a link.");
             }
-            header('Location:./TimelineController.php?timelineId=' . $timelineId, true, 302); //to remove after refactoring
+            header('Location:./TimelineController.php?getId=' . $getId, true, 302); //to remove after refactoring
         // add new text post
         } else {
             $textPost = json_decode($_POST['data']);
 
-            $newPost = new Post($textPost->authorId, $textPost->timelineId, $textPost->type, htmlentities(trim($textPost->text)));
+            $newPost = new Post($textPost->authorId, $textPost->getId, $textPost->type, htmlentities(trim($textPost->text)));
             $dao->addPost($newPost);
         }
     } elseif ($_SERVER ['REQUEST_METHOD'] === 'GET') {
         unset($_SESSION['error-msg']);
         // list all contacts
-        echo json_encode($dao->listAllPosts($timelineId));
+        echo json_encode($dao->listAllPosts($getId));
     }
 } else {
     http_response_code(401);

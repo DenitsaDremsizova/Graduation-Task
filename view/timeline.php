@@ -3,6 +3,7 @@
     <?php include_once 'header.php'; ?>
 
         <div class="container">
+            <input type="hidden" name="getId" id="getId" value="<?= $getId ?>">
 
             <!-- Timeline
             ================================================= -->
@@ -23,15 +24,15 @@
                             </div>
                             <div class="col-md-9">
                                 <ul class="list-inline profile-menu">
-                                      <li><a href="TimelineController.php" class="active">Timeline</a></li>
-					                  <li><a href="AboutController.php">About</a></li>
-					                  <li><a href="GalleryController.php">Gallery</a></li>
-					                  <li><a href="VideosController.php">Videos</a></li>
-					                  <li><a href="Timeline-friendsController.php">Friends</a></li>
+                                    <li><a href="TimelineController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Timeline</a></li>
+                                    <li><a href="AboutController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>" class="active"> About</a></li>
+                                    <li><a href="GalleryController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Gallery</a></li>
+                                    <li><a href="VideosController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Videos</a></li>
+                                    <li><a href="Timeline-friendsController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Friends</a></li>
                                 </ul>
                                 <ul class="follow-me list-inline">
-                                    <li>1,299 people following her</li>
-                                    <li><button class="btn-primary">Add Friend</button></li>
+                                    <li></li>
+                                    <li></li>
                                 </ul>
                             </div>
                         </div>
@@ -44,17 +45,17 @@
                                 <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo" />
                             </div>
                             <h4><?= $timelineName ?></h4>
-                            <p class="text-muted"><?=$timelineAddress?>r</p>
+                            <p class="text-muted"><?=$timelineAddress?></p>
                         </div>
                         <div class="mobile-menu">
                             <ul class="list-inline">
-                                      <li><a href="TimelineController.php" class="active">Timeline</a></li>
-					                  <li><a href="AboutController.php" >About</a></li>
-					                  <li><a href="GalleryController.php">Gallery</a></li>
-					                  <li><a href="VideosController.php">Videos</a></li>
-					                  <li><a href="FriendsController.php">Friends</a></li>
+                                <li><a href="TimelineController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Timeline</a></li>
+                                <li><a href="AboutController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>" class="active"> About</a></li>
+                                <li><a href="GalleryController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Gallery</a></li>
+                                <li><a href="VideosController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Videos</a></li>
+                                <li><a href="Timeline-friendsController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Friends</a></li>
                             </ul>
-                            <button class="btn-primary">Add Friend</button>
+                            
                         </div>
                     </div><!--Timeline Menu for Small Screens End-->
 
@@ -68,9 +69,9 @@
                             <!-- Upload Forms
                            ================================================= -->                
                             <?php
-                            createUploadForm("photo", $userId, $timelineId);
-                            createUploadForm("video", $userId, $timelineId);
-                            createUploadForm("video-link", $userId, $timelineId);
+                            createUploadForm("photo", $userId, $getId);
+                            createUploadForm("video", $userId, $getId);
+                            createUploadForm("video-link", $userId, $getId);
                             ?> 
 
                             <!-- Post Create Box
@@ -83,7 +84,7 @@
                                             <img src="http://placehold.it/300x300" alt="" class="profile-photo-md" />
                                             <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Write what you wish" required></textarea>
                                             <input type="hidden" value="<?php echo $userId; ?>" id="authorId"/>
-                                            <input type="hidden" value="<?php echo $timelineId; ?>" id="timelineId"/>
+                                            <input type="hidden" value="<?php echo $getId; ?>" id="getId"/>
                                         </div>
                                     </div>
                                     <div class="col-md-5 col-sm-5">

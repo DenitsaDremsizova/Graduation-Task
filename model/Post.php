@@ -7,9 +7,11 @@
                 protected $timestamp;
                 protected $text;
                 protected $comments;
-                
+                protected $profilePicture;
+
+
                 public function __construct($authorId, $timelineId, $type, 
-                $text=null, $timestamp = null, $authorName = null, $id=null, $comments = null) {
+                $text=null, $timestamp = null, $authorName = null, $id=null, $comments = null, $profilePicture=null) {
 
                 $this->authorId = $authorId;
                 $this->timelineId = $timelineId;
@@ -19,6 +21,7 @@
                 $this->timestamp = $timestamp;
                 $this->authorName = $authorName;
                 $this->comments = $comments;
+                $this->profilePicture = $profilePicture;
             }
 		
 		public function jsonSerialize() {

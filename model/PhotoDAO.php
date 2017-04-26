@@ -2,7 +2,7 @@
 
 class PhotoDAO {
 
-    private $db;
+    public $db;
     
     const GET_ALL_PHOTOS_OF_USER_SQL = "SELECT p.id, p.author_id, p.date_time, ph.file, ph.profile_pic, ph.cover_pic "
             . "FROM posts p JOIN photos ph ON p.id = ph.id "
@@ -79,7 +79,12 @@ class PhotoDAO {
         $pstmt = $this->db->prepare(self::GET_PROFILE_PIC_SQL);
         $pstmt->execute(array($userId));
         $result = $pstmt->fetchAll(PDO::FETCH_ASSOC);
-        $profPicArray = $result[0];
+        
+        if(count($result) == 0) {
+            $profPicArray = array("userId" => $userId, "id" => "x", "date_time" => "x", "file" => "../uploads/default.jpg");
+        } else {
+            $profPicArray = $result[0];
+        }
         
         $profilePicture = new Photo($userId, $profPicArray['id'], $profPicArray['date_time'], $profPicArray['file']);
         

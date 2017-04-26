@@ -23,15 +23,15 @@
               </div>
               <div class="col-md-9">
                 <ul class="list-inline profile-menu">
-                 <li><a href="TimelineController.php">Timeline</a></li>
-                  <li><a href="AboutController.php">About</a></li>
-                  <li><a href="GalleryController.php" class="active" >Gallery</a></li>
-                  <li><a href="VideosController.php">Videos</a></li>
-                  <li><a href="Timeline-friendsController.php">Friends</a></li>
+                   <li><a href="TimelineController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Timeline</a></li>
+                   <li><a href="AboutController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>" class="active"> About</a></li>
+                   <li><a href="GalleryController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Gallery</a></li>
+                   <li><a href="VideosController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Videos</a></li>
+                   <li><a href="Timeline-friendsController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Friends</a></li>
                 </ul>
                 <ul class="follow-me list-inline">
-                  <li>1,299 people following her</li>
-                  <li><button class="btn-primary">Add Friend</button></li>
+                  
+                  <li></li>
                 </ul>
               </div>
             </div>
@@ -48,13 +48,13 @@
             </div>
             <div class="mobile-menu">
               <ul class="list-inline">
-                  <li><a href="TimelineController.php">Timeline</a></li>
-                  <li><a href="AboutController.php" >About</a></li>
-                  <li><a href="GalleryController.php" class="active" >Gallery</a></li>
-                  <li><a href="VideosController.php">Videos</a></li>
-                  <li><a href="Timeline-friendsController.php">Friends</a></li>
+                <li><a href="TimelineController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Timeline</a></li>
+                <li><a href="AboutController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>" class="active"> About</a></li>
+                <li><a href="GalleryController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Gallery</a></li>
+                <li><a href="VideosController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Videos</a></li>
+                <li><a href="Timeline-friendsController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Friends</a></li>
               </ul>
-              <button class="btn-primary">Add Friend</button>
+              
             </div>
           </div><!--Timeline Menu for Small Screens End-->
 

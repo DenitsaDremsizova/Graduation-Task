@@ -69,7 +69,6 @@ class FriendDAO {
 						
 						$friends = $pstmt->fetchAll(PDO::FETCH_ASSOC);
 						$result = array();
-						var_dump($friends);
 						$friend = new Friend($friendId, $friends[0]['first_name'], $friends[0]['last_name'], $friends[0]['country'], $friends[0]['city']);
 						return $friend;
 					}

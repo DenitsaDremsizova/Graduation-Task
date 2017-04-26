@@ -10,23 +10,23 @@ if (!isset($_SESSION['userId'])) {
     header('Location:../view/index-register.php', true, 302);
 } else {
     $userId = $_SESSION['userId'];
-    $_SESSION['timelineId'] = $_SESSION['userId'];
     $errorMsg = (isset($_SESSION['error-msg'])) ? $_SESSION['error-msg'] : null;
 
-    if (isset($_GET['timelineId'])) {
-        $_SESSION['timelineId'] = $_GET['timelineId'];
+    if (isset($_GET['id'])) {
+        $getId = $_GET['id'];
+    } else {
+        $getId = $userId;
     }
     
-    $timelineId = $_SESSION['timelineId'];
     $userName = $_SESSION['first_name'] . " " . $_SESSION['last_name'];
     
     $dao = new FriendDAO();
-    $timeline = $dao->getOneFriend($timelineId);
+    $timeline = $dao->getOneFriend($getId);
     $timelineName = $timeline->firstName . " " . $timeline->lastName;
     $timelineAddress = $timeline->city . ", " . $timeline->country;
     
     //create html form for uploading:
-    function createUploadForm($uploadType, $userId, $timelineId) {
+    function createUploadForm($uploadType, $userId, $getId) {
         
         if ($uploadType === 'photo' || $uploadType === 'video') {
             $acceptParam = ($uploadType === 'photo') ? 'img' : 'video';
@@ -54,7 +54,7 @@ if (!isset($_SESSION['userId'])) {
                 . "<textarea name='uploaded-" . $uploadType . "-text' id='uploaded" . $uploadType . "text' cols='30' rows='2' "
                 . "class='form-control' placeholder='Say something about your " . $uploadType . "...'></textarea>"
                 . "<input type='hidden' value='" . $userId . "' id='uploaded-" . $uploadType . "-authorId' name='uploaded-" . $uploadType . "-authorId'/>"
-                . "<input type='hidden' value='" . $timelineId . "' id='uploaded-" . $uploadType . "-timelineId' name='uploaded-" . $uploadType . "-timelineId'/>"
+                . "<input type='hidden' value='" . $getId . "' id='uploaded-" . $uploadType . "-getId' name='uploaded-" . $uploadType . "-getId'/>"
                 . "</fieldset></br>"
                 . "<input type='submit' name='upload-" . $uploadType . "' value='Upload' class='btn-primary' id='upload-" . $uploadType . "-btn'>"
                 . "</form></div>";
