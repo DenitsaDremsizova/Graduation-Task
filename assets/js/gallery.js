@@ -15,9 +15,10 @@ function createPhoto(photo) {
 }
 
 
-function reloadGallery() {
+function reloadGallery(getId) {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '../controller/PhotoListController.php', true);
+    var url = '../controller/PhotoListController.php' + '?id=' + getId;
+    xhr.open('GET', url, true);
 
     xhr.onload = function () {
         if (xhr.status == 200) {
@@ -34,7 +35,8 @@ function reloadGallery() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    reloadGallery();
+    var getId = document.getElementById('getId').value;
+    reloadGallery(getId);
 });
 
 function setProfilePic(picId) {

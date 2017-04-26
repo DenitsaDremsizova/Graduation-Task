@@ -9,11 +9,13 @@ session_start();
 if (isset($_SESSION['userId'])) {
     $userId = $_SESSION['userId'];
     
+    $getId = (isset($_GET['id'])) ? $_GET['id'] : $userId;
+    
     $dao = new PhotoDAO();
     
     if ($_SERVER ['REQUEST_METHOD'] === 'GET') {        
         // list all photos
-        echo json_encode($dao->listAllPhotos($userId));
+        echo json_encode($dao->listAllPhotos($getId));
     } elseif ($_SERVER ['REQUEST_METHOD'] === 'POST') {
         $data = json_decode($_POST['data']);
         $newProfPicId = $data->id;

@@ -11,11 +11,13 @@ if (isset($_SESSION['userId'])) {
     
     $userId = $_SESSION['userId'];
     
-    if(!isset($_GET['id'])) {
-        $getId = $userId;
-    } else {
-        $getId = $_GET['id'];
-    }
+    $getId = (isset($_GET['id'])) ? $_GET['id'] : $userId;
+    
+    //get Gallery Owner Name and Address:
+    $dao = new FriendDAO();
+    $galleryOwner = $dao->getOneFriend($getId);
+    $galleryOwnerName = $galleryOwner->firstName . " " . $galleryOwner->lastName;
+    $galleryOwnerAddress = $galleryOwner->city . ", " . $galleryOwner->country;
     
     $profPic = "";
     if ($_SERVER ['REQUEST_METHOD'] === 'POST') {

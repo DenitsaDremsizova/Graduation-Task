@@ -18,8 +18,8 @@
                     <div id="profile-photo-large-scr">
                   <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo"/>
                     </div>
-                  <h3>Sarah Cruiz</h3>
-                  <p class="text-muted">Creative Director</p>
+                  <h3><?=$galleryOwnerName?></h3>
+                  <p class="text-muted"><?=$galleryOwnerAddress?></p>
                 </div>
               </div>
               <div class="col-md-9">
@@ -45,8 +45,8 @@
                 <div id="profile-photo-small-scr">
               <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo"/>
                 </div>
-              <h4>Sarah Cruiz</h4>
-              <p class="text-muted">Creative Director</p>
+              <h4><?=$galleryOwnerName?></h4>
+              <p class="text-muted"><?=$galleryOwnerAddress?></p>
             </div>
             <div class="mobile-menu">
               <ul class="list-inline">

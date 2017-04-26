@@ -74,7 +74,7 @@ function reloadTimeline(getId) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-     var getId = document.getElementById('getId').value;
+    var getId = document.getElementById('getId').value;
     reloadTimeline(getId);
 });
 
