@@ -128,7 +128,12 @@ function reloadTable() {
 			for (var i = 0; i < data.length; i++) {
 				content += createRow(data[i]);
 			}
-
+			var link = window.location.href;
+			link = link.toLowerCase();
+			var search = link.search("timelinecontroller");
+			if(search.length >= 0) {
+				content = '';
+			}
 			document.getElementById('friends-table').innerHTML = content;
 		}
 	}

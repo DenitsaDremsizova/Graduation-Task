@@ -5,6 +5,27 @@ function __autoload($className) {
 }
 
 session_start();
+try {
+if (isset($_SESSION['userId'])) {
+	$userId = $_SESSION['userId'];
+	if(isset($_GET['id'])) {
+		$getId = $_GET['id'];
+	} else {
+		$getId = $userId;
+	}
+	//validate if user is allowed to post on timeline:
+	if ($userId !== $getId) {
+		$daoFriend = new FriendDAO;
+		if (!($daoFriend->checkIfInFriendsList($userId, $getId))) {
+			throw new Exception('You are not alllowed to post on the timeline of people outside your friends list.');
+		}
+	}
+	
+}else {
+	http_response_code(401);
+	echo '{"error": "not logged in"}';
+}
+
 
 if (isset($_SESSION['userId'])) {
     $userId = $_SESSION['userId'];
@@ -139,6 +160,9 @@ if (isset($_SESSION['userId'])) {
 } else {
     http_response_code(401);
     echo '{"error": "not logged in"}';
+}
+} catch (Exception $e) {
+	
 }
 } catch (PDOException $e) {
 	$_SESSION['error'] = 'Something went wrong, please try again later!';

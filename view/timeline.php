@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <?php include_once 'header.php'; ?>
-
+<div id ="friends-table" style="display:none"></div>
         <div class="container">
             <input type="hidden" name="getId" id="getId" value="<?= $getId ?>">
 
@@ -102,11 +102,11 @@
                                 <div class="row">
                                     <div class="col-md-7 col-sm-7">
                                         <div class="form-group">                                                       
-
+										<?php if($checkIfInFriendsList || $_SESSION['userId'] === $getId) {?>
                                             <img src="http://placehold.it/300x300" alt="" class="profile-photo-md" />
                                             <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Write what you wish" required></textarea>
                                             <input type="hidden" value="<?php echo $userId; ?>" id="authorId"/>
-                                            <input type="hidden" value="<?php echo $getId; ?>" id="getId"/>
+                                            <input type="hidden" value="<?php echo $getId; ?>" id="getId"/>  
                                         </div>
                                     </div>
                                     <div class="col-md-5 col-sm-5">
@@ -119,6 +119,7 @@
 <!--                                                <li><a href="#"><i class="ion-map"></i></a></li>-->
                                             </ul>
                                             <button class="btn btn-primary pull-right" onclick="addNewPost()">Publish</button>
+                                            <?php }?>
                                         </div>
                                     </div>
                                 </div>
