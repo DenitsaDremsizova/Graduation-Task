@@ -3,7 +3,7 @@
     <?php include_once 'header.php'; ?>
 
     <div class="container">
-
+<div id ="friends-table" style="display:none"></div>
       <!-- Timeline
       ================================================= -->
       <div class="timeline">

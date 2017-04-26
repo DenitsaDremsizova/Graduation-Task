@@ -34,6 +34,8 @@ if (isset($_SESSION['userId'])) {
     $userAddress = $galleryOwner->city . ", " . $galleryOwner->country;
     $userFriendsRequests = DbHelper::getInstance()->countUserRequests($_SESSION['userId']);
     include_once '../view/timeline-gallery.php';
+} else {
+	header('Location:HomeController.php');die();
 }
 } catch (PDOException $e) {
 	$_SESSION['error'] = 'Something went wrong, please try again later!';

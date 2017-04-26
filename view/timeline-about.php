@@ -6,7 +6,7 @@
     
 
     <div class="container">
-
+<div id ="friends-table" style="display:none"></div>
       <!-- Timeline
       ================================================= -->
       <div class="timeline">
