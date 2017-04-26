@@ -9,6 +9,7 @@
       <!-- Timeline
       ================================================= -->
       <div class="timeline">
+        <input type="hidden" name="getId" id="getId" value="<?=$getId?>">
         <div class="timeline-cover">
 
           <!--Timeline Menu for Large Screens-->

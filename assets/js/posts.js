@@ -54,9 +54,10 @@ function createPost(post) {
 }
 
 
-function reloadTimeline() {
+function reloadTimeline(getId) {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '../controller/PostsController.php', true);
+    var url = '../controller/PostsController.php' + '?id=' + getId;
+    xhr.open('GET', url, true);
 
     xhr.onload = function () {
         if (xhr.status == 200) {
@@ -73,7 +74,8 @@ function reloadTimeline() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    reloadTimeline();
+     var getId = document.getElementById('getId').value;
+    reloadTimeline(getId);
 });
 
 function addNewPost() {

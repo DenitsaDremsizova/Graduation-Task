@@ -30,6 +30,6 @@
       	</div>
       </div>
       <div class="copyright">
-        <p>Get Together Team© 2017. All rights reserved</p>
+        <p>Get Together Team 2017. All rights reserved</p>
       </div>
 		</footer>
