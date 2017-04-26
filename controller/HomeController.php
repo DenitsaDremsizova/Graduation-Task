@@ -1,4 +1,5 @@
 <?php
+try {
 if (version_compare(PHP_VERSION, "5.4.0") >= 0) {
 	$sess = session_status();
 	if ($sess == PHP_SESSION_NONE) {
@@ -25,3 +26,7 @@ $countries = $system->getAllCountries();
 
 $path = "../view/index-register.php";
 include $path;
+} catch (PDOException $e) {
+	$_SESSION['error'] = 'Something went wrong, please try again later!';
+	header ( 'Location:DBerrorController.php' );die();
+}
