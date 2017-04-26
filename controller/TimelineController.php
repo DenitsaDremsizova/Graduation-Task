@@ -1,5 +1,6 @@
 <?php
-
+$controller = 'controller';
+try {
 function __autoload($className) {
     require_once "../model/" . $className . '.php';
 }
@@ -19,7 +20,7 @@ if (!isset($_SESSION['userId'])) {
     }
     
     $userName = $_SESSION['first_name'] . " " . $_SESSION['last_name'];
-    
+    $userFriendsRequests = DbHelper::getInstance()->countUserRequests($_SESSION['userId']);
     $dao = new FriendDAO();
     $timeline = $dao->getOneFriend($getId);
     $timelineName = $timeline->firstName . " " . $timeline->lastName;
@@ -64,5 +65,9 @@ if (!isset($_SESSION['userId'])) {
     
     //TO DO: if not mine or friend's timeline show limited info
     include '../view/timeline.php';
+}
+} catch (PDOException $e) {
+	$_SESSION['error'] = 'Something went wrong, please try again later!';
+	header ( 'Location:DBerrorController.php' );die();
 }
 ?>

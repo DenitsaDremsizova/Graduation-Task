@@ -1,4 +1,5 @@
 <?php
+$controller = 'controller';
 try {
 if (version_compare(PHP_VERSION, "5.4.0") >= 0) {
 	$sess = session_status();

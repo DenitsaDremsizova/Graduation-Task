@@ -1,4 +1,5 @@
 <?php
+try {
 function __autoload($className) {
 	require_once "../model/" . $className . '.php';
 }
@@ -25,5 +26,8 @@ if(!empty($_SESSION['userId'])) {
 	$dao = new FriendDAO();
 	echo json_encode($dao->listUserFriendRequests($userId));
 
-
+} catch (PDOException $e) {
+	$_SESSION['error'] = 'Something went wrong, please try again later!';
+	header ( 'Location:DBerrorController.php' );die();
+}
 ?>

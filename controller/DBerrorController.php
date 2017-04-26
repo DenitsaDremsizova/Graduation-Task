@@ -1,4 +1,5 @@
 <?php
+$controller = 'controller';
 session_start();
 // if(empty($_SESSION['error'])) {
 // 	header ( 'Location:HomeController.php' );die();

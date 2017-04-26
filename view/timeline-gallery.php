@@ -28,7 +28,8 @@
                    <li><a href="AboutController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>" > About</a></li>
                    <li><a href="GalleryController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>" class="active">Gallery</a></li>
                    <li><a href="VideosController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Videos</a></li>
-                   <li><a href="Timeline-friendsController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Friends</a></li>
+                   <li><a href="Timeline-friendsController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Friends  <?php if (!empty($getId)) {
+                  	if($_SESSION['userId'] === $getId) {  ?><span style="color:red"><?php if($userFriendsRequests[0]['count']>0) { echo $userFriendsRequests[0]['count']; ?></span><?php }}}?></a></li>
                 </ul>
                 <ul class="follow-me list-inline">
                   
@@ -53,7 +54,8 @@
                 <li><a href="AboutController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>" > About</a></li>
                 <li><a href="GalleryController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>" class="active">Gallery</a></li>
                 <li><a href="VideosController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Videos</a></li>
-                <li><a href="Timeline-friendsController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Friends</a></li>
+                <li><a href="Timeline-friendsController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Friends  <?php if (!empty($getId)) {
+                  	if($_SESSION['userId'] === $getId) {  ?><span style="color:red"><?php if($userFriendsRequests[0]['count']>0) { echo $userFriendsRequests[0]['count']; ?></span><?php }}}?></a></li>
               </ul>
               
             </div>

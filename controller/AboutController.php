@@ -1,4 +1,6 @@
 <?php
+$controller = 'controller';
+try {
 session_start ();
 function __autoload($className) {
 	require_once "../model/" . $className . '.php';
@@ -8,10 +10,13 @@ $userId = '';
 $id='';
 if(!empty($_SESSION['userId'])) {
 	$userId = $_SESSION['userId'];
+}else {
+	header('Location:HomeController.php');die();
 }
 
 if(empty($_GET['id'])) {
 	$id = $userId;
+	$getId=$id;
 }else {
 	$id = $_GET['id'];
 	$getId=$id;
@@ -28,7 +33,7 @@ $userInterests = DbHelper::getInstance()->getUserInterests($id);
 $userAddress = DbHelper::getInstance()->getUserAddress($id);
 $userFollowers = DbHelper::getInstance()->countUserFollowers($id);
 $age = floor((time() - strtotime($userData[0]['date_of_birth'])) / 31556926);
-
+$userFriendsRequests = DbHelper::getInstance()->countUserRequests($_SESSION['userId']);
 	//DELETE REQUESTS
 	if($_SERVER ['REQUEST_METHOD'] === 'DELETE') {
 
@@ -134,4 +139,7 @@ $age = floor((time() - strtotime($userData[0]['date_of_birth'])) / 31556926);
 	if($_SERVER ['REQUEST_METHOD'] === 'GET'){
 		include_once '../view/timeline-about.php';
 	}
-
+} catch (PDOException $e) {
+	$_SESSION['error'] = 'Something went wrong, please try again later!';
+	header ( 'Location:DBerrorController.php' );die();
+}

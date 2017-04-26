@@ -1,4 +1,6 @@
 <?php
+$controller = 'controller';
+try {
 function __autoload($className) {
 	require_once "../model/" . $className . '.php';
 }
@@ -16,4 +18,8 @@ session_start();
 // 	}
 // }
 
-
+} catch (PDOException $e) {
+	$_SESSION['error'] = 'Something went wrong, please try again later!';
+	header ( 'Location:DBerrorController.php' );die();
+}
+?>

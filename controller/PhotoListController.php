@@ -1,5 +1,5 @@
 <?php
-
+try {
 function __autoload($className) {
     require_once "../model/" . $className . '.php';
 }
@@ -21,4 +21,8 @@ if (isset($_SESSION['userId'])) {
         $newProfilePicture = $dao->getProfilePic($userId);
     }
 }
-
+} catch (PDOException $e) {
+	$_SESSION['error'] = 'Something went wrong, please try again later!';
+	header ( 'Location:DBerrorController.php' );die();
+}
+?>

@@ -1,4 +1,5 @@
 <?php 
+try {
 function __autoload($className) {
 	require_once "../model/" . $className . '.php';
 }
@@ -26,5 +27,9 @@ if($_SERVER ['REQUEST_METHOD'] === 'DELETE') {
 
 		header ( 'Location:Timeline-friendsController.php' );die();
 	}
+}
+} catch (PDOException $e) {
+	$_SESSION['error'] = 'Something went wrong, please try again later!';
+	header ( 'Location:DBerrorController.php' );die();
 }
 ?>

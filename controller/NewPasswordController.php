@@ -1,4 +1,5 @@
 <?php
+try {
 if (version_compare(PHP_VERSION, "5.4.0") >= 0) {
 	$sess = session_status();
 	if ($sess == PHP_SESSION_NONE) {
@@ -42,5 +43,9 @@ if (($_SERVER ['REQUEST_METHOD'] === "POST") && (! empty (file_get_contents('php
 	catch (Exception $e) {
 		echo $e->getMessage();
 	}
+}
+} catch (PDOException $e) {
+	$_SESSION['error'] = 'Something went wrong, please try again later!';
+	header ( 'Location:DBerrorController.php' );die();
 }
 ?>

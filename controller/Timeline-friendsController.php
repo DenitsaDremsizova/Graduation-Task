@@ -1,4 +1,6 @@
 <?php
+$controller = 'controller';
+try {
 function __autoload($className) {
 	require_once "../model/" . $className . '.php';
 }
@@ -39,8 +41,10 @@ if(isset($_GET['search'])) {
 	$search = $_GET['search'];
 }
 include '../view/timeline-friends.php';
-
+} catch (PDOException $e) {
+	$_SESSION['error'] = 'Something went wrong, please try again later!';
+	header ( 'Location:DBerrorController.php' );die();
+}
 
 
 ?>
-
