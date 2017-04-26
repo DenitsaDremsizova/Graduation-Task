@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
 		
 		$userData = $userObject->getLoggedUserData();
 		if(!$ajax) {
-			header('Location:AboutController.php');die();
+			header('Location:TimelineController.php');die();
 		}
 		
 	}

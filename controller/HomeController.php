@@ -19,7 +19,7 @@ function __autoload($className) {
 	require_once "../model/" . $className . '.php';
 }
 if(!empty($_SESSION['userId'])) {
-	header('Location:AboutController.php');die();
+	header('Location:TimelineController.php');die();
 }
 
 $system = new System();

@@ -51,7 +51,6 @@ if(!isset($controller)) {
                <?php } ?>
               </li>
               <li class="dropdown">
-                <a href="NewsFeedController.php" class="dropdown-toggle"button" >Newsfeed <span></span></a>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">All pages <span><img src="../view/images/down-arrow.png" alt="" /></span></a>
@@ -60,15 +59,15 @@ if(!isset($controller)) {
                   <li><a href="AboutController.php">About</a></li>
                   <li><a href="GalleryController.php">Gallery</a></li>
                   <li><a href="VideosController.php">Videos</a></li>
-                  <li><a href="FriendsController.php">Friends</a></li>
+                  <li><a href="Timeline-friendsController.php">Friends</a></li>
                 </ul>
               </li>     
-              <li class="dropdown"><a href="ContactController.php">Contact</a></li>
             </ul>
             <form class="navbar-form navbar-right hidden-sm" method="GET" action="Timeline-friendsController.php">
               <div class="form-group">
+              <?php if(isset($_SESSION['userId'])) {?>
                 <i class="icon ion-android-search"></i>
-                <input value="<?php if(!empty($search)) { echo $search; }?>" id="searchBar" name="search" type="text" class="form-control" placeholder="Search friends by Email" onkeyup="reloadSearchedTable()">
+                <input value="<?php if(!empty($search)) { echo $search; }?>" id="searchBar" name="search" type="text" class="form-control" placeholder="Search friends by Email" onkeyup="reloadSearchedTable()"> <?php }?>
               </div>
             </form>
           </div><!-- /.navbar-collapse -->

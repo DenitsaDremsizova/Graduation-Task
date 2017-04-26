@@ -52,7 +52,7 @@ if (isset ( $_POST ['submit'] )) {
 		mkdir($mkdirVideo);
 		mkdir($mkdirPhotos);
 		
-		header ( 'Location:AboutController.php' );die();
+		header ( 'Location:TimelineController.php' );die();
 	} catch ( Exception $e ) {
 		$_SESSION ['error'] = $e->getMessage ();
 		header ( 'Location:HomeController.php' );die();

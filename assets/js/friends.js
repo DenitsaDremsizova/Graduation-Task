@@ -13,7 +13,7 @@ function createRow(friend) {
         content += "<img src='http://placehold.it/300x300' alt='user' class='profile-photo-lg'/>";
         content += "<div class='friend-info'>";
         content += "<p class='pull-right text-green'>"+ friend.country +"</p>";
-        content += "<h5><a href='AboutController.php?id=" + friend.id + "'class='profile-link'>" + friend.firstName + " " + friend.lastName + "</a></h5>";
+        content += "<h5><a href='TimelineController.php?id=" + friend.id + "'class='profile-link'>" + friend.firstName + " " + friend.lastName + "</a></h5>";
 	content += "<p>" + friend.email + "</p>";
 	content += "</div></div></div></div>";
 	
@@ -27,7 +27,7 @@ function createRequestRow (friend) {
         content += "<img src='http://placehold.it/300x300' alt='user' class='profile-photo-lg'/>";
         content += "<div class='friend-info'>";
         content += "<p class='pull-right text-green'>"+ friend.country +"</p>";
-        content += "<h5><a href='AboutController.php?id=" + friend.id + "'class='profile-link'>" + friend.firstName + " " + friend.lastName + "</a></h5>";
+        content += "<h5><a href='TimelineController.php?id=" + friend.id + "'class='profile-link'>" + friend.firstName + " " + friend.lastName + "</a></h5>";
 	content += "<p>" + friend.email + "</p>";
 	content += "<span style='color:green' onclick=\"addNewFrined(" + friend.id + ")\" onmouseover=\"this.style.cursor='pointer'\">Confirm </span>" +
 			"<br/><span onmouseover=\"this.style.cursor='pointer'\" style='color:red' onclick=\"deleteFriendRequest(" + friend.id + ")\"> Delete Request</span>";
