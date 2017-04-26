@@ -101,8 +101,9 @@ function addNewPost() {
 
         xhr.onload = function () {
             if (xhr.status == 200) {
+                var getId = document.getElementById('getId').value;
                 document.getElementById('new-post').innerHTML = xhr.responseText;
-                reloadTimeline();
+                reloadTimeline(getId);
             }
         }
     }

@@ -4,7 +4,7 @@
 
         <div class="container">
             <input type="hidden" name="getId" id="getId" value="<?= $getId ?>">
-
+			<?php echo $getId;?>
             <!-- Timeline
             ================================================= -->
             <div class="timeline">
@@ -128,7 +128,7 @@
                 ================================================= -->
                 <?php include_once 'footer.php';?>
 
-                ================================================= -->
+                 <!-- ================================================= -->
 
                 <script src="../view/js/jquery-3.1.1.min.js"></script>
                 <script src="../view/js/bootstrap.min.js"></script>
