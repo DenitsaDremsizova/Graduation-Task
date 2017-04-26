@@ -13,9 +13,10 @@ function createProfilePic(photo) {
 //    document.getElementById('timeline-cover').style.backgroundImage=coverUrl;
 //});
 
-function reloadProfPic() {
+function reloadProfPic(getId) {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '../controller/ProfilePicController.php', true);
+    var url = '../controller/ProfilePicController.php' + '?id=' + getId;
+    xhr.open('GET', url, true);
 
     xhr.onload = function () {
         if (xhr.status == 200) {
@@ -30,6 +31,7 @@ function reloadProfPic() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    reloadProfPic();
+    var getId = document.getElementById('getId').value;
+    reloadProfPic(getId);
 });
 

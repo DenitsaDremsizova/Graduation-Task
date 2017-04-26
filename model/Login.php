@@ -32,7 +32,13 @@ class Login extends Action {
 		$headers = "From: 'delqnkolevv@gmail.com'" . "\r\n" .
 				"CC: hyperniki@abv.bg"; /*extra header*/
 		
-		if (mail ( $email, $subject, $message, $headers )) {
+		$to = $email;
+		$subject = "Reset password";
+		$txt = 'Your new password is ' . $password; 
+		$headers = "From: getTogether@abv.bg" . "\r\n" .
+				"CC: delyankolevv@gmail.com";
+		
+		if(mail($to,$subject,$txt,$headers)) {
 			echo "mail send successfully";
 		}
 	}

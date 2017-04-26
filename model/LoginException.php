@@ -6,5 +6,3 @@ class LoginException extends Exception {
 }
 
 ?>
-
-

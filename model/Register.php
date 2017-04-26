@@ -4,8 +4,8 @@ class Register extends Action {
 	const CHECK_USER_ALRADY_EXIST_SQL = "SELECT email, id FROM users WHERE email = ?;";
 	const REGISTER_NEW_USER_SQL = "INSERT into users VALUES (?,?,?,?,?,?,?,?);";
 	const GET_ALL_COUNTRIES = "SELECT * FROM countries;";
-	
 	const ADD_USER_ADDRESS = 'INSERT INTO user_address VALUES (?,?,?);';
+	const SET_USER_PROFILE_PICTURE = '';
 	
 	public function checkUserExist() {
 		$result = $this->exec ( self::CHECK_USER_ALRADY_EXIST_SQL, array (
@@ -45,9 +45,9 @@ class Register extends Action {
 		);
 		$this->exec ( self::ADD_USER_ADDRESS, $userBindParams, false );
 		
-		
-		$this->db->commit();
 		$this->logUser(self::getLoggedUserData());
+		$this->db->commit();
+		
 		}
 		catch (Exception $e) {
 			$this->db->rollBack();

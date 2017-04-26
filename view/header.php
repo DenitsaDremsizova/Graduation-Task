@@ -1,10 +1,10 @@
 <head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="This is social network html5 template available in themeforest......" />
+		<meta name="description" content="This is social network" />
 		<meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
 		<meta name="robots" content="index, follow" />
-		<title>Friend Finder | A Complete Social Network Template</title>
+		<title>GetTogether Social Network</title>
 
     <!-- Stylesheets
     ================================================= -->

@@ -20,11 +20,11 @@ if (empty($id)) {
 }
 
 	$dao = new FriendDAO();
-echo $getId;
+
 	$checkIfInFriendsList = $dao->checkIfInFriendsList($userId,$getId);
-	var_dump($checkIfInFriendsList);
+
 	$checkIfInFriendRequestList = $dao->checkIfInFriendRequestList($userId,$getId);
-	var_dump($checkIfInFriendRequestList);
+
 	
 
 $userFollowers = DbHelper::getInstance()->countUserFollowers($id);

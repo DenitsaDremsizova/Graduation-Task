@@ -36,11 +36,11 @@
               </div>
               <div class="col-md-9">
                 <ul class="list-inline profile-menu">
-                   <li><a href="TimelineController.php">Timeline</a></li>
-                  <li><a href="AboutController.php" >About</a></li>
-                  <li><a href="GalleryController.php">Gallery</a></li>
-                  <li><a href="VideosController.php">Videos</a></li>
-                  <li><a href="Timeline-friendsController.php"class="<?php if(empty($search)) { echo 'active'; }?>">Friends</a></li>
+                   <li><a href="TimelineController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Timeline</a></li>
+                  <li><a href="AboutController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>" >About</a></li>
+                  <li><a href="GalleryController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Gallery</a></li>
+                  <li><a href="VideosController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Videos</a></li>
+                  <li><a href="Timeline-friendsController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>"class="<?php if(empty($search)) { echo 'active'; }?>">Friends</a></li>
                   <?php if ($userId === $getId){?>
                   <li><a onmouseover="this.style.cursor='pointer'" onclick="this.className = 'active',reloadRequestTable()">Friends Requests <span style="color:red"><?php echo $userFriendsRequests[0]['count']; ?></span></a></li>
                   <?php } ?>
@@ -57,7 +57,7 @@
         			<?php }
         			if($checkIfInFriendsList) {
         			?>
-                   <li><button class="btn-primary" style="background-color:red" onclick='deleteFriend(<?= $getId ?>)'>Delete Friend</button></li>
+                   <li><button class="btn-primary" style="background-color:red" onclick='deleteFriend(<?= $getId; ?>)'>Delete Friend</button></li>
           			<?php }}
           			?>
                 </ul>
@@ -71,16 +71,20 @@
                 <div id="profile-photo-small-scr">
                     <img src="http://placehold.it/300x300" alt="" class="img-responsive profile-photo" />
                 </div>
-              <h4>Sarah Cruiz</h4>
-              <p class="text-muted">Creative Director</p>
+              <h4> <?php
+                  if(!((empty($userData[0]['first_name'])) && ((empty([0]['last_name']))))) {
+	                  	echo $userData[0]['first_name'] . " " . $userData[0]['last_name'];
+		              echo "</h4>";
+		              }
+                  ?>
             </div>
             <div class="mobile-menu">
               <ul class="list-inline">
-                 <li><a href="TimelineController.php">Timeline</a></li>
-                  <li><a href="AboutController.php">About</a></li>
-                  <li><a href="GalleryController.php">Gallery</a></li>
-                  <li><a href="VideosController.php">Videos</a></li>
-                  <li><a href="Timeline-friendsController.php" class="<?php if(empty($search)) { echo 'active'; }?>" >Friends</a></li>
+                 <li><a href="TimelineController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Timeline</a></li>
+                  <li><a href="AboutController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">About</a></li>
+                  <li><a href="GalleryController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Gallery</a></li>
+                  <li><a href="VideosController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Videos</a></li>
+                  <li><a href="Timeline-friendsController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>" class="<?php if(empty($search)) { echo 'active'; }?>" >Friends</a></li>
              
                <?php 
                   if ($getId !== $userId) {
@@ -130,59 +134,7 @@
 
     <!-- Footer
     ================================================= -->
-    <footer id="footer">
-      <div class="container">
-      	<div class="row">
-          <div class="footer-wrapper">
-            <div class="col-md-3 col-sm-3">
-            </div>
-            <div class="col-md-2 col-sm-2">
-              <h6>For individuals</h6>
-              <ul class="footer-links">
-                <li><a href="">Signup</a></li>
-                <li><a href="">login</a></li>
-                <li><a href="">Explore</a></li>
-                <li><a href="">Finder app</a></li>
-                <li><a href="">Features</a></li>
-                <li><a href="">Language settings</a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 col-sm-2">
-              <h6>For businesses</h6>
-              <ul class="footer-links">
-                <li><a href="">Business signup</a></li>
-                <li><a href="">Business login</a></li>
-                <li><a href="">Benefits</a></li>
-                <li><a href="">Resources</a></li>
-                <li><a href="">Advertise</a></li>
-                <li><a href="">Setup</a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 col-sm-2">
-              <h6>About</h6>
-              <ul class="footer-links">
-                <li><a href="">About us</a></li>
-                <li><a href="">Contact us</a></li>
-                <li><a href="">Privacy Policy</a></li>
-                <li><a href="">Terms</a></li>
-                <li><a href="">Help</a></li>
-              </ul>
-            </div>
-            <div class="col-md-3 col-sm-3">
-              <h6>Contact Us</h6>
-                <ul class="contact">
-                	<li><i class="icon ion-ios-telephone-outline"></i>+1 (234) 222 0754</li>
-                	<li><i class="icon ion-ios-email-outline"></i>info@thunder-team.com</li>
-                  <li><i class="icon ion-ios-location-outline"></i>228 Park Ave S NY, USA</li>
-                </ul>
-            </div>
-          </div>
-      	</div>
-      </div>
-      <div class="copyright">
-        <p>Thunder Team © 2016. All rights reserved</p>
-      </div>
-		</footer>
+    <?php include_once 'footer.php';?>
 
     <!-- Scripts
     ================================================= -->

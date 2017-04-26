@@ -33,7 +33,7 @@ if (($_SERVER ['REQUEST_METHOD'] === "POST") && (! empty (file_get_contents('php
 			if(empty($userObject->checkEmailExist($email))) {
 					throw new LoginException("Email doesn't exist!");
 			}
-			echo $password;
+
 			$userObject->ResetPassowrd($email,$password);
 			$userObject->sendNewPassowrd($email, $password);
 		
