@@ -19,6 +19,9 @@ if (isset($_SESSION['userId'])) {
     $galleryOwnerName = $galleryOwner->firstName . " " . $galleryOwner->lastName;
     $galleryOwnerAddress = $galleryOwner->city . ", " . $galleryOwner->country;
     
+    $checkIfInFriendsList = $dao->checkIfInFriendsList($userId,$getId);
+    $checkIfInFriendRequestList = $dao->checkIfInFriendRequestList($userId,$getId);
+    
     $profPic = "";
     if ($_SERVER ['REQUEST_METHOD'] === 'POST') {
     $profilePic = json_decode($_POST['data']);
@@ -32,11 +35,7 @@ if (isset($_SESSION['userId'])) {
     $userFriendsRequests = DbHelper::getInstance()->countUserRequests($_SESSION['userId']);
     include_once '../view/timeline-gallery.php';
 } else {
-<<<<<<< HEAD
 	header('Location:HomeController.php');die();
-=======
-    header ( 'Location:HomeController.php' );die();
->>>>>>> a3ffc7017e3c9a49ba6f6051a66625740ca7182b
 }
 } catch (PDOException $e) {
 	$_SESSION['error'] = 'Something went wrong, please try again later!';
