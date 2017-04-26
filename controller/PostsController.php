@@ -93,7 +93,7 @@ if (isset($_SESSION['userId'])) {
                 $_SESSION['error-msg'] = $e->getMessage();
             } finally {
                 //go to timeline:
-                header('Location:./TimelineController.php?getId=' . $getId, true, 302);
+                header('Location:./TimelineController.php?id=' . $getId, true, 302);
             }
         }
 
