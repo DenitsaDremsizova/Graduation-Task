@@ -22,9 +22,7 @@ if (empty($id)) {
 }
 
 	$dao = new FriendDAO();
-
 	$checkIfInFriendsList = $dao->checkIfInFriendsList($userId,$getId);
-
 	$checkIfInFriendRequestList = $dao->checkIfInFriendRequestList($userId,$getId);
 
 	

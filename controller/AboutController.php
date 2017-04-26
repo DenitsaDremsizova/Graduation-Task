@@ -24,6 +24,10 @@ if(empty($_GET['id'])) {
 if (empty($id)) {
 	header('Location:HomeController.php');die();
 }
+$dao = new FriendDAO();
+$checkIfInFriendsList = $dao->checkIfInFriendsList($userId,$getId);
+$checkIfInFriendRequestList = $dao->checkIfInFriendRequestList($userId,$getId);
+
 
 $userData = DbHelper::getInstance()->getUserData($id);
 $userWorkExperience = DbHelper::getInstance()->getWorkExperience($id);

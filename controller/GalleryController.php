@@ -24,8 +24,11 @@ if (isset($_SESSION['userId'])) {
     $profilePic = json_decode($_POST['data']);
     $profPic = $profilePic->id;
     }
-
+	// add remove button
     $dao = new FriendDAO();
+    $checkIfInFriendsList = $dao->checkIfInFriendsList($userId,$getId);
+    $checkIfInFriendRequestList = $dao->checkIfInFriendRequestList($userId,$getId);
+    
     $galleryOwner = $dao->getOneFriend($getId);
     $userName = $galleryOwner->firstName . " " . $galleryOwner->lastName;
     $userAddress = $galleryOwner->city . ", " . $galleryOwner->country;

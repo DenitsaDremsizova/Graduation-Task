@@ -4,10 +4,7 @@
 
         <div class="container">
             <input type="hidden" name="getId" id="getId" value="<?= $getId ?>">
-<<<<<<< HEAD
-=======
-			
->>>>>>> b5289463feeea8d70efd48465b09dcc032541aad
+
             <!-- Timeline
             ================================================= -->
             <div class="timeline">
@@ -34,10 +31,19 @@
                                    <li><a href="Timeline-friendsController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Friends  <?php if (!empty($getId)) {
                   					if($_SESSION['userId'] === $getId) {  ?><span style="color:red"><?php if($userFriendsRequests[0]['count']>0) { echo $userFriendsRequests[0]['count']; ?></span><?php }}}?></a></li>
                                 </ul>
-                                <ul class="follow-me list-inline">
-                                    <li></li>
-                                    <li></li>
-                                </ul>
+                               <ul class="follow-me list-inline">
+				                     <?php 
+				                  if ($getId !== $userId) {
+				                  	if(!$checkIfInFriendRequestList && !$checkIfInFriendsList) {
+				                  ?>
+				                  <li><button class="btn-primary" onclick='sendFriendRequest(<?= $getId ?>)'>Add Friend</button></li>
+				        			<?php }
+				        			if($checkIfInFriendsList) {
+				        			?>
+				                   <li><button class="btn-primary" style="background-color:red" onclick='deleteFriend(<?= $getId; ?>)'>Delete Friend</button></li>
+				          			<?php }}
+				          			?>
+				                </ul>
                             </div>
                         </div>
                     </div><!--Timeline Menu for Large Screens End-->
@@ -59,6 +65,17 @@
                                 <li><a href="VideosController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Videos</a></li>
                                 <li><a href="Timeline-friendsController.php<?php if(!empty($getId)) { echo '?id=' . $getId;} ?>">Friends  <?php if (!empty($getId)) {
                  			 	if($_SESSION['userId'] === $getId) {  ?><span style="color:red"><?php if($userFriendsRequests[0]['count']>0) { echo $userFriendsRequests[0]['count']; ?></span><?php }}}?></a></li>
+                            <?php 
+			                  if ($getId !== $userId) {
+			                  	if(!$checkIfInFriendRequestList && !$checkIfInFriendsList) {
+			                  ?>
+			                  <li><button class="btn-primary" onclick='sendFriendRequest(<?= $getId ?>)'>Add Friend</button></li>
+			        			<?php }
+			        			if($checkIfInFriendsList) {
+			        			?>
+			                   <li><button class="btn-primary" style="background-color:red" onclick='deleteFriend(<?= $getId ?>)'>Delete Friend</button></li>
+			          			<?php }}
+			          			?>
                             </ul>
                             
                         </div>
@@ -141,6 +158,6 @@
                 <script src="../assets/js/posts.js" type="text/javascript"></script>
                 <script src="../assets/js/timeline-modal-form.js" type="text/javascript"></script>
                 <script src="../assets/js/profile-pic.js" type="text/javascript"></script>
-
+				<script src="../assets/js/friends.js" type="text/javascript"></script>
                 </body>
                 </html>

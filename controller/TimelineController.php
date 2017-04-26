@@ -22,6 +22,10 @@ if (!isset($_SESSION['userId'])) {
     $userName = $_SESSION['first_name'] . " " . $_SESSION['last_name'];
     $userFriendsRequests = DbHelper::getInstance()->countUserRequests($_SESSION['userId']);
     $dao = new FriendDAO();
+    // add remove button
+    $checkIfInFriendsList = $dao->checkIfInFriendsList($userId,$getId);
+    $checkIfInFriendRequestList = $dao->checkIfInFriendRequestList($userId,$getId);
+    
     $timeline = $dao->getOneFriend($getId);
     $timelineName = $timeline->firstName . " " . $timeline->lastName;
     $timelineAddress = $timeline->city . ", " . $timeline->country;
