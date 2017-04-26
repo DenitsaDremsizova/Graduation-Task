@@ -41,8 +41,15 @@ class FriendDAO {
 						$result = array();
 						
 						foreach ($friends as $friend) {
-							$result[] = new Friend($friend['id'], $friend['first_name'], $friend['last_name'],
-									$friend['country'],$friend['city'],$friend['email'], $friend['gender'], $friend['date_of_birth'], $friend['personal_info']);
+                                                    $photoDAO = new PhotoDAO();
+                                                    $profPicObject = $photoDAO->getProfilePic($friend['id']);
+                                                    $profilePictureFile = $profPicObject->file;
+                                                    
+                                                    $covPicObject = $photoDAO->getCoverPic($friend['id']);
+                                                    $coverPictureFile = $covPicObject->file;
+                                                    
+                                                    $result[] = new Friend($friend['id'], $friend['first_name'], $friend['last_name'],
+									$friend['country'],$friend['city'],$friend['email'], $friend['gender'], $friend['date_of_birth'], $friend['personal_info'], $profilePictureFile, $coverPictureFile);
 						}
 						
 						return $result;
@@ -56,8 +63,15 @@ class FriendDAO {
 						$result = array();
 						
 						foreach ($friends as $friend) {
+                                                    $photoDAO = new PhotoDAO();
+                                                    $profPicObject = $photoDAO->getProfilePic($friend['id']);
+                                                    $profilePictureFile = $profPicObject->file;
+                                                    
+                                                    $covPicObject = $photoDAO->getCoverPic($friend['id']);
+                                                    $coverPictureFile = $covPicObject->file;
+                                                    
 							$result[] = new Friend($friend['id'], $friend['first_name'], $friend['last_name'],
-									$friend['country'],$friend['city'],$friend['email'], $friend['gender'], $friend['date_of_birth'], $friend['personal_info']);
+									$friend['country'],$friend['city'],$friend['email'], $friend['gender'], $friend['date_of_birth'], $friend['personal_info'], $profilePictureFile, $coverPictureFile);
 						}
 						
 						return $result;
@@ -92,8 +106,15 @@ class FriendDAO {
 						$result = array();
 						
 						foreach ($friends as $friend) {
-							$result[] = new Friend($friend['id'], $friend['first_name'], $friend['last_name'],
-									$friend['country'],$friend['city'],$friend['email'], $friend['gender'], $friend['date_of_birth'], $friend['personal_info']);
+                                                    $photoDAO = new PhotoDAO();
+                                                    $profPicObject = $photoDAO->getProfilePic($friend['id']);
+                                                    $profilePictureFile = $profPicObject->file;
+                                                    
+                                                    $covPicObject = $photoDAO->getCoverPic($friend['id']);
+                                                    $coverPictureFile = $covPicObject->file;
+                                                    
+                                                    $result[] = new Friend($friend['id'], $friend['first_name'], $friend['last_name'],
+									$friend['country'],$friend['city'],$friend['email'], $friend['gender'], $friend['date_of_birth'], $friend['personal_info'], $profilePictureFile, $coverPictureFile);
 						}
 						
 						return $result;

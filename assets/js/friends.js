@@ -8,9 +8,9 @@ function initAjax(url, method)
 
 function createRow(friend) {
 	var content = "<div class='col-md-6 col-sm-6'> <div class='friend-card'>";
-	content += "<img src='http://placehold.it/1030x360' alt='profile-cover' class='img-responsive cover' />";
+	content += "<img src='" + friend.coverPic + "' style='max-height:120px; width:286px' alt='profile-cover' class='img-responsive cover' />";
         content += "<div class='card-info'>";
-        content += "<img src='http://placehold.it/300x300' alt='user' class='profile-photo-lg'/>";
+        content += "<img src='" + friend.profilePic + "' alt='user' class='profile-photo-lg'/>";
         content += "<div class='friend-info'>";
         content += "<p class='pull-right text-green'>"+ friend.country +"</p>";
         content += "<h5><a href='TimelineController.php?id=" + friend.id + "'class='profile-link'>" + friend.firstName + " " + friend.lastName + "</a></h5>";
@@ -22,9 +22,9 @@ function createRow(friend) {
 
 function createRequestRow (friend) {
 	var content = "<div class='col-md-6 col-sm-6'> <div class='friend-card'>";
-	content += "<img src='http://placehold.it/1030x360' alt='profile-cover' class='img-responsive cover' />";
+	content += "<img src='" + friend.coverPic + "' style='max-height:120px; width:286px' alt='profile-cover' class='img-responsive cover' />";
         content += "<div class='card-info'>";
-        content += "<img src='http://placehold.it/300x300' alt='user' class='profile-photo-lg'/>";
+        content += "<img src='" + friend.profilePic + "' alt='user' class='profile-photo-lg'/>";
         content += "<div class='friend-info'>";
         content += "<p class='pull-right text-green'>"+ friend.country +"</p>";
         content += "<h5><a href='TimelineController.php?id=" + friend.id + "'class='profile-link'>" + friend.firstName + " " + friend.lastName + "</a></h5>";

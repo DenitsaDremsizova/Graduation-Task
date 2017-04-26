@@ -7,12 +7,11 @@
 		private $gender;
 		private $dateOfBirth;
                 private $personalInfo;
-//                private $address; // @var Address
-//                private $workExperience; // @var workExperience[]
-//                private $interests;
+                private $profilePic;
+                private $coverPic;
 
 		public function __construct($id, $firstName=null, $lastName=null, $country = null, $city = null, 
-                        $email=null, $gender=null, $dateOfBirth=null, $personalInfo=null) {
+                        $email=null, $gender=null, $dateOfBirth=null, $personalInfo=null, $profilePic=null, $coverPic=null) {
 			
                         $this->id = $id;
 			$this->firstName = $firstName;
@@ -23,6 +22,8 @@
 			$this->gender = $gender;
                         $this->dateOfBirth = $dateOfBirth;
                         $this->personalInfo = $personalInfo;
+                        $this->profilePic = $profilePic;
+                        $this->coverPic = $coverPic;
 		}
 		
 		public function jsonSerialize() {
