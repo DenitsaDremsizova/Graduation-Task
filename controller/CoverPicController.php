@@ -9,19 +9,16 @@ try {
     session_start();
     if (isset($_SESSION['userId'])) {
         $userId = $_SESSION['userId'];
-        if (isset($_GET['id'])) {
-            $getId = $_GET['id'];
-        } else {
-            $getId = $userId;
-        }
+        $getId = (isset($_GET['id'])) ? $_GET['id'] : $userId;
 
-        $profPicDAO = new PhotoDAO();
-        $profPic = $profPicDAO->getProfilePic($getId);
-        echo json_encode($profPic);
+        $covPicDAO = new PhotoDAO();
+        $covPic = $covPicDAO->getCoverPic($getId);
+        echo json_encode($covPic);
     }
 } catch (PDOException $e) {
     $_SESSION['error'] = 'Something went wrong, please try again later!';
     header('Location:DBerrorController.php');
     die();
 }
+
 ?>

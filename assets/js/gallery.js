@@ -39,16 +39,11 @@ document.addEventListener('DOMContentLoaded', function () {
     reloadGallery(getId);
 });
 
-function setProfilePic(picId) {
-//    var text = document.getElementById("exampleTextarea").value;
-//    var authorId = document.getElementById("authorId").value;
-//    var timelineId = document.getElementById("timelineId").value;
-//    document.getElementById("exampleTextarea").value = "";
-
-    
+function setProfilePic(picId) { 
 
     var newProfPic = {
-            id: picId
+            id: picId,
+            type: "profilePic"
         };
 
         var xhr = new XMLHttpRequest();
@@ -58,11 +53,28 @@ function setProfilePic(picId) {
 
         xhr.onload = function () {
             if (xhr.status == 200) {
-//                document.getElementById('testId').innerHTML = newProfPic.id; 
                 location.reload();
             }
-        }
-    
+        }    
+}
+
+function setCoverPic(picId) { 
+
+    var newCovPic = {
+            id: picId,
+            type: "coverPic"
+        };
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '../controller/PhotoListController.php', true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send('data=' + JSON.stringify(newCovPic));
+
+        xhr.onload = function () {
+            if (xhr.status == 200) {
+                location.reload();
+            }
+        }    
 }
 
 
