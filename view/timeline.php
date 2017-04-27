@@ -103,7 +103,9 @@
                                     <div class="col-md-7 col-sm-7">
                                         <div class="form-group">                                                       
 										<?php if($checkIfInFriendsList || $_SESSION['userId'] === $getId) {?>
-                                            <img src="http://placehold.it/300x300" alt="" class="profile-photo-md" />
+                                            <div id="user-prof-pic">
+                                            <img src="<?=$userPicFile?>" alt="" class="profile-photo-md" />
+                                            </div>
                                             <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Write what you wish" required></textarea>
                                             <input type="hidden" value="<?php echo $userId; ?>" id="authorId"/>
                                             <input type="hidden" value="<?php echo $getId; ?>" id="getId"/>  

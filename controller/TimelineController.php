@@ -67,6 +67,11 @@ if (!isset($_SESSION['userId'])) {
         echo $uploadFormHtml;                
     }
     
+    //get current user picture:
+        $userPicDAO = new PhotoDAO();
+        $userPicObject = $userPicDAO->getProfilePic($userId);
+        $userPicFile = $userPicObject->file;
+    
     //TO DO: if not mine or friend's timeline show limited info
     include '../view/timeline.php';
 }
