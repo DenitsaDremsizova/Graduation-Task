@@ -37,7 +37,7 @@ if(!isset($controller)) {
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="TimelineController.php"><img src="../view/images/logo.png" alt="logo" /></a>
+            <a class="navbar-brand" href="TimelineController.php"><img src="../view/images/new-logo-white.png" alt="logo" style="width: 168px; height:30px"/></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
