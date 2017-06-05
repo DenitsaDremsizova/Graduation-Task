@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2017 at 06:57 PM
+-- Generation Time: Jun 05, 2017 at 06:21 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.9
 
@@ -33,15 +33,6 @@ CREATE TABLE `comments` (
   `author_id` int(11) NOT NULL,
   `commented_post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`id`, `text`, `timestamp`, `author_id`, `commented_post_id`) VALUES
-(1, 'bla-bla', '2017-04-19 23:04:02', 3, 2),
-(2, 'dyra-byra', '2017-04-19 23:04:03', 4, 3),
-(3, 'new comment', '2017-04-19 23:12:31', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -337,11 +328,7 @@ CREATE TABLE `friendships` (
 --
 
 INSERT INTO `friendships` (`user_id`, `friend_id`, `date`) VALUES
-(1, 2, '2017-04-19 00:00:00'),
-(1, 3, '2017-04-19 00:00:00'),
-(2, 5, '2017-04-19 00:00:00'),
-(4, 1, '2017-04-19 00:00:00'),
-(5, 3, '2017-04-19 00:00:00');
+(7, 8, '2017-04-27 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -364,15 +351,6 @@ CREATE TABLE `interests` (
   `interest` varchar(100) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `interests`
---
-
-INSERT INTO `interests` (`interest`, `user_id`) VALUES
-('Coding', 1),
-('Hiking', 1),
-('Reading', 1);
 
 -- --------------------------------------------------------
 
@@ -585,26 +563,9 @@ CREATE TABLE `photos` (
   `id` int(11) NOT NULL,
   `text` varchar(200) CHARACTER SET utf8 NOT NULL,
   `file` varchar(200) CHARACTER SET utf8 NOT NULL,
-  `profile_pic` varchar(1) NOT NULL DEFAULT '0',
-  `cover_pic` varchar(1) NOT NULL DEFAULT '0'
+  `profile_pic` bit(1) NOT NULL DEFAULT b'0',
+  `cover_pic` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `photos`
---
-
-INSERT INTO `photos` (`id`, `text`, `file`, `profile_pic`, `cover_pic`) VALUES
-(9, 'at the beach', '../uploads/1/photos/19-04-2017-11-55-37.jpg', '0', '0'),
-(115, '', '../uploads/1/photos/25-04-2017-03-05-06.jpg', '0', '0'),
-(118, '', '../uploads/1/photos/25-04-2017-03-23-24.jpg', '0', '0'),
-(124, '', '../uploads/1/photos/25-04-2017-03-34-12.png', '0', '0'),
-(126, '', '../uploads/1/photos/25-04-2017-04-38-46.jpg', '0', '0'),
-(127, '', '../uploads/1/photos/25-04-2017-04-53-22.jpg', '0', '0'),
-(136, ':P', '../uploads/1/photos/25-04-2017-07-35-43.png', '0', '0'),
-(137, '', '../uploads/1/photos/25-04-2017-07-42-31.jpg', '0', '0'),
-(140, '', '../uploads/1/photos/25-04-2017-07-48-27.png', '0', '0'),
-(141, '', '../uploads/1/photos/25-04-2017-07-48-46.png', '0', '0'),
-(142, '', '../uploads/1/photos/25-04-2017-07-49-17.jpg', '0', '0');
 
 -- --------------------------------------------------------
 
@@ -619,50 +580,6 @@ CREATE TABLE `posts` (
   `date_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `timeline_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `posts`
---
-
-INSERT INTO `posts` (`id`, `author_id`, `type`, `date_time`, `timeline_id`) VALUES
-(1, 1, 'text_posts', '2017-03-19 17:16:56', 1),
-(2, 1, 'text_posts', '2017-03-30 18:21:00', 1),
-(3, 1, 'text_posts', '2017-04-19 17:00:06', 1),
-(4, 1, 'text_posts', '2017-02-19 17:16:56', 1),
-(5, 1, 'text_posts', '2017-04-19 15:36:35', 2),
-(6, 3, 'text_posts', '2016-04-19 15:36:35', 1),
-(7, 2, 'text_posts', '2017-04-19 17:25:32', 2),
-(8, 1, 'video_posts', '2017-04-19 18:09:25', 1),
-(9, 1, 'photos', '2017-04-19 23:55:37', 1),
-(10, 2, 'uploaded_videos', '2017-04-21 08:41:19', 1),
-(11, 3, 'text_posts', '2017-04-22 16:43:28', 1),
-(12, 3, 'text_posts', '2017-04-22 16:44:56', 1),
-(28, 1, 'text_posts', '2017-04-22 19:12:03', 1),
-(99, 1, 'text_posts', '2017-04-25 14:28:56', 1),
-(101, 1, 'text_posts', '2017-04-25 14:31:36', 1),
-(115, 1, 'photos', '2017-04-25 15:05:06', 1),
-(116, 1, 'uploaded_videos', '2017-04-25 15:17:03', 1),
-(117, 1, 'video_posts', '2017-04-25 15:18:32', 1),
-(118, 1, 'photos', '2017-04-25 15:23:24', 1),
-(119, 1, 'text_posts', '2017-04-25 15:27:05', 1),
-(120, 1, 'text_posts', '2017-04-25 15:27:53', 3),
-(121, 1, 'uploaded_videos', '2017-04-25 15:28:29', 1),
-(122, 1, 'text_posts', '2017-04-25 15:33:00', 1),
-(123, 1, 'text_posts', '2017-04-25 15:33:56', 1),
-(124, 1, 'photos', '2017-04-25 15:34:12', 1),
-(125, 1, 'text_posts', '2017-04-25 15:45:24', 1),
-(126, 1, 'photos', '2017-04-25 16:38:46', 1),
-(127, 1, 'photos', '2017-04-25 16:53:22', 1),
-(131, 1, 'text_posts', '2017-04-25 19:23:14', 1),
-(133, 1, 'uploaded_videos', '2017-04-25 19:33:53', 1),
-(134, 1, 'uploaded_videos', '2017-04-25 19:34:11', 1),
-(136, 1, 'photos', '2017-04-25 19:35:43', 1),
-(137, 1, 'photos', '2017-04-25 19:42:31', 1),
-(138, 1, 'text_posts', '2017-04-25 19:45:56', 1),
-(139, 1, 'text_posts', '2017-04-25 19:46:05', 1),
-(140, 1, 'photos', '2017-04-25 19:48:27', 1),
-(141, 1, 'photos', '2017-04-25 19:48:46', 1),
-(142, 1, 'photos', '2017-04-25 19:49:17', 1);
 
 -- --------------------------------------------------------
 
@@ -686,32 +603,6 @@ CREATE TABLE `text_posts` (
   `text` varchar(1000) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `text_posts`
---
-
-INSERT INTO `text_posts` (`id`, `text`) VALUES
-(1, 'post 1'),
-(2, 'post 2'),
-(3, 'The co-author of a new book detailing Hillary Clinton''s loss in the 2016 presidential election says the Democratic candidate and her top aides could see the wave of populism building in places like Britain, but refused to prepare for its arrival in the United States.'),
-(4, 'post 4'),
-(5, 'post 5'),
-(6, 'post 6'),
-(7, 'New information suggests that a US aircraft carrier group, which Pres. Trump described as an armada, was actually headed away from -- when the administration said it was headed toward -- North Korea.'),
-(11, 'Hey there :) Long time no see...'),
-(12, 'check this out: http://ittalents.bg/home?gclid=COOu6e6ZuNMCFQUq0wodf3UAZQ'),
-(28, 'ÐµÐ¼ Ð½Ð° ÐºÐ¸Ñ€Ð¸Ð»Ð¸Ñ†Ð°, ÐµÐ¼ Ñ AJAX =)'),
-(99, 'gsdggg'),
-(101, 'ffff'),
-(119, 'kjflfk;wd'),
-(120, 'hi'),
-(122, '&lt;h2&gt;jcjlklsd&lt;/h2&gt;'),
-(123, 'ffff'),
-(125, 'grrgewg'),
-(131, 'gggggggggggg'),
-(138, '@13516ujkfjiwquijmd!@##!@$'),
-(139, '!@#!@$!@$!');
-
 -- --------------------------------------------------------
 
 --
@@ -723,17 +614,6 @@ CREATE TABLE `uploaded_videos` (
   `text` varchar(1000) CHARACTER SET utf8 NOT NULL,
   `file` varchar(200) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `uploaded_videos`
---
-
-INSERT INTO `uploaded_videos` (`id`, `text`, `file`) VALUES
-(10, ' ', '../uploads/1/videos/21-04-2017-08-41-19.mp4'),
-(116, '', '../uploads/1/videos/25-04-2017-03-17-03.mp4'),
-(121, '', '../uploads/1/videos/25-04-2017-03-28-29.mp4'),
-(133, '', '../uploads/1/videos/25-04-2017-07-33-53.mp4'),
-(134, 'test', '../uploads/1/videos/25-04-2017-07-34-11.mp4');
 
 -- --------------------------------------------------------
 
@@ -757,12 +637,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `gender`, `date_of_birth`, `personal_info`) VALUES
-(1, 'Denitsa', 'Dremsizova', 'denitsa.dremsizova@gmail.com', '3a7306a7751a1079497609b718251c4a4d76a375f3d893280f1e50db6cbaf5a8', 'F', '1985-03-07 00:00:00', 'High class developer'),
-(2, 'Luka-Bokluka', 'Makariopolski', 'bokluka@yahoo.com', '3a7306a7751a1079497609b718251c4a4d76a375f3d893280f1e50db6cbaf5a8', 'M', '1987-08-15 00:00:00', NULL),
-(3, 'Yan', 'Bibiyan', 'yan@abv.bg', '3a7306a7751a1079497609b718251c4a4d76a375f3d893280f1e50db6cbaf5a8', 'M', '1990-09-23 00:00:00', NULL),
-(4, 'Fred', 'Flinstone', 'fred@bedrock.com', '3a7306a7751a1079497609b718251c4a4d76a375f3d893280f1e50db6cbaf5a8', 'M', '1970-01-01 00:00:00', NULL),
-(5, 'Pesho', 'Ivanov', 'pesho@yahoo.com', '3a7306a7751a1079497609b718251c4a4d76a375f3d893280f1e50db6cbaf5a8', 'M', '1998-03-02 00:00:00', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quae cum essent dicta, discessimus. Duo Reges: constructio interrete. Illud dico, ea, quae dicat, praeclare inter se cohaerere. Ergo opifex plus sibi proponet ad formarum quam civis excellens ad factorum pulchritudinem? Inquit, dasne adolescenti veniam? Quamquam tu hanc copiosiorem etiam soles dicere. '),
-(6, 'Dennie', 'Drem', 'dennie@abv.bg', '3a7306a7751a1079497609b718251c4a4d76a375f3d893280f1e50db6cbaf5a8', 'F', '1991-07-15 00:00:00', NULL);
+(7, 'Dennie', 'Dremsizova', 'denitsa.dremsizova@gmail.com', '3a7306a7751a1079497609b718251c4a4d76a375f3d893280f1e50db6cbaf5a8', 'F', '1985-03-07 00:00:00', NULL),
+(8, 'Pencho', 'Blagoev', 'pencho@abv.bg', '3a7306a7751a1079497609b718251c4a4d76a375f3d893280f1e50db6cbaf5a8', 'M', '1999-10-16 00:00:00', NULL),
+(9, 'Luka', 'Bokluka', 'bokluka@yahoo.com', '3a7306a7751a1079497609b718251c4a4d76a375f3d893280f1e50db6cbaf5a8', 'M', '1935-01-18 00:00:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -774,15 +651,6 @@ CREATE TABLE `users_languages` (
   `user_id` int(11) NOT NULL,
   `lang_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users_languages`
---
-
-INSERT INTO `users_languages` (`user_id`, `lang_id`) VALUES
-(1, 3),
-(1, 13),
-(1, 126);
 
 -- --------------------------------------------------------
 
@@ -801,12 +669,9 @@ CREATE TABLE `user_address` (
 --
 
 INSERT INTO `user_address` (`user_id`, `country_id`, `city`) VALUES
-(1, 35, 'Sofia'),
-(2, 67, 'Kaspichan'),
-(3, 34, 'Elin Pelin'),
-(4, 100, 'Bedrock'),
-(5, 174, 'Dolno nanagornishte'),
-(6, 42, 'Lulin');
+(7, 34, 'Lyulin'),
+(8, 104, 'Kaspichan'),
+(9, 239, 'Ruse');
 
 -- --------------------------------------------------------
 
@@ -819,14 +684,6 @@ CREATE TABLE `video_posts` (
   `link` varchar(500) CHARACTER SET utf8 NOT NULL,
   `text` varchar(500) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `video_posts`
---
-
-INSERT INTO `video_posts` (`id`, `link`, `text`) VALUES
-(8, 'https://www.youtube.com/watch?v=BWXggB-T1jQ', 'some text'),
-(117, 'https://www.youtube.com/watch?v=DD97YL3wZ-w', 'lalalala');
 
 -- --------------------------------------------------------
 
@@ -970,7 +827,7 @@ ALTER TABLE `work_experience`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `countries`
 --
@@ -985,12 +842,12 @@ ALTER TABLE `languages`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- Constraints for dumped tables
 --
